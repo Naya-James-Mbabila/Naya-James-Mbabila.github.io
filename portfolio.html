@@ -9,6 +9,89 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Preload critical assets -->
     <link rel="preload" href="images/portfolio.jpeg" as="image">
+    <style>
+        /* Minor targeted improvements only */
+        .portfolio-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-tag {
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .portfolio-item {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .view-details-btn i {
+            transition: transform 0.3s ease;
+        }
+        
+        .view-details-btn:hover i {
+            transform: translateX(3px);
+        }
+
+        .year-section {
+            margin-bottom: 3rem;
+        }
+
+        .year-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .year-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin: 0;
+            margin-right: 1rem;
+        }
+
+        .year-count {
+            background: #3498db;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .portfolio-filters {
+            margin-bottom: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid #3498db;
+            background: transparent;
+            color: #3498db;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: #3498db;
+            color: white;
+        }
+    </style>
 </head>
 <body>
     <div class="book-container">
@@ -32,148 +115,183 @@
                 <div class="portfolio-section">
                     <h2 class="section-title">Projects & Research</h2>
                     
-                    <div class="portfolio-filters">
-                        <button class="filter-btn active" data-filter="all">All Projects</button>
-                        <button class="filter-btn" data-filter="biomedical">Biomedical</button>
-                        <button class="filter-btn" data-filter="engineering">Engineering</button>
-                        <button class="filter-btn" data-filter="design">Design</button>
-                        <button class="filter-btn" data-filter="research">Research</button>
+                    <!-- 2025 Projects -->
+                    <div class="year-section">
+                        <div class="year-header">
+                            <h3 class="year-title">2025</h3>
+                        </div>
+                        <div class="portfolio-grid">
+                            <div class="portfolio-item" data-category="research design" data-year="2025">
+                                <div class="portfolio-info">
+                                    <h3 class="portfolio-title">International Online Case Study <span class="team-label">(Team Project)</span></h3>
+                                    <p class="portfolio-category"><i class="fas fa-globe-americas"></i> UG Careers Directorate, Ghana/Germany/Kenya</p>
+                                    <p class="portfolio-date"><i class="far fa-calendar-alt"></i> April - June 2025</p>
+                                    <p class="portfolio-desc">Collaborated with students from diverse international institutions and companies to develop real-world solutions for global challenges.</p>
+                                    <div class="portfolio-skills">
+                                        <span class="skill-tag">Problem Solving</span>
+                                        <span class="skill-tag">Interdisciplinary Collaboration</span>
+                                        <span class="skill-tag">Global Development</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <div class="portfolio-grid">
-                        <!-- Elbow Splint (May-Aug 2024) - NEWEST -->
-                        <div class="portfolio-item" data-category="biomedical design">
-                            <div class="portfolio-info">
-                                <h3 class="portfolio-title">Elbow Splint <span class="team-label">(Team Project)</span></h3>
-                                <p class="portfolio-category"><i class="fas fa-bone"></i> Design of Mechanical Systems, BMEN 308 </p>
-                                <p class="portfolio-date"><i class="far fa-calendar-alt"></i> May 2024 - August 2024</p>
-                                <p class="portfolio-desc">Designed an adjustable elbow splint for cerebral palsy patients, improving comfort and range of motion.</p>
-                                <div class="portfolio-skills">
-                                    <span class="skill-tag">Orthotics</span>
-                                    <span class="skill-tag">Mechanical Systems</span>
-                                    <span class="skill-tag">CAD (Modelling and FEA)</span>
+
+                    <!-- 2024 Projects -->
+                    <div class="year-section">
+                        <div class="year-header">
+                            <h3 class="year-title">2024</h3>
+                        </div>
+                        <div class="portfolio-grid">
+                            <div class="portfolio-item" data-category="biomedical design" data-year="2024">
+                                <div class="portfolio-info">
+                                    <h3 class="portfolio-title">Elbow Splint <span class="team-label">(Team Project)</span></h3>
+                                    <p class="portfolio-category"><i class="fas fa-bone"></i> Design of Mechanical Systems, BMEN 308 </p>
+                                    <p class="portfolio-date"><i class="far fa-calendar-alt"></i> May - August 2024</p>
+                                    <p class="portfolio-desc">Designed an adjustable elbow splint for cerebral palsy patients, improving comfort and range of motion.</p>
+                                    <div class="portfolio-skills">
+                                        <span class="skill-tag">Orthotics</span>
+                                        <span class="skill-tag">Mechanical Systems</span>
+                                        <span class="skill-tag">CAD (Modelling and FEA)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="portfolio-item" data-category="engineering design" data-year="2024">
+                                <div class="portfolio-info">
+                                    <h3 class="portfolio-title">Biosand Filter <span class="team-label">(Team Project)</span></h3>
+                                    <p class="portfolio-category"><i class="fas fa-tint"></i> Design and Selection of Biomaterials, BMEN 306 </p>
+                                    <p class="portfolio-date"><i class="far fa-calendar-alt"></i> May - August 2024</p>
+                                    <p class="portfolio-desc">Developed a sustainable water purification system using locally available materials, achieving reduction in turbidity and bacterial removal in field tests.</p>
+                                    <div class="portfolio-skills">
+                                        <span class="skill-tag">Water Treatment</span>
+                                        <span class="skill-tag">Sustainability</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="portfolio-item" data-category="biomedical research" data-year="2024">
+                                <div class="portfolio-info">
+                                    <h3 class="portfolio-title">Stroke Prediction with R</h3>
+                                    <p class="portfolio-category"><i class="fas fa-heartbeat"></i> Coursera Project</p>
+                                    <p class="portfolio-date"><i class="far fa-calendar-alt"></i> 2024</p>
+                                    <p class="portfolio-desc">Developed and implemented machine learning models for stroke prediction using a comprehensive dataset of 5110 patients. Achieved 82.7% accuracy with logistic regression model in analyzing key risk factors including age, glucose levels, and cardiovascular comorbidities.</p>
+                                    <div class="portfolio-skills">
+                                        <span class="skill-tag">Machine Learning</span>
+                                        <span class="skill-tag">R Programming</span>
+                                        <span class="skill-tag">Healthcare Analytics</span>
+                                    </div>
+                                    <a href="https://github.com/Naya-James-Mbabila/Stroke-Prediction-Model-With-R" class="view-details-btn">View Details <i class="fas fa-chevron-right"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="portfolio-item" data-category="software biomedical" data-year="2024">
+                                <div class="portfolio-info">
+                                    <h3 class="portfolio-title">EquiBase - Medical Equipment Inventory Software <span class="team-label">(Team Project)</span></h3>
+                                    <p class="portfolio-category"><i class="fas fa-laptop-medical"></i> Komfo Anokye Teaching Hospital</p>
+                                    <p class="portfolio-date"><i class="far fa-calendar-alt"></i> 2023 - 2024</p>
+                                    <p class="portfolio-desc">Developed and implemented equipment management software for tracking medical devices, collaborated with engineers at KATH.</p>
+                                    <div class="portfolio-skills">
+                                        <span class="skill-tag">Software Development</span>
+                                        <span class="skill-tag">Hospital Systems</span>
+                                        <span class="skill-tag">Database Design</span>
+                                    </div>
+                                    <a href="https://www.youtube.com/watch?v=owVlq5qH_Tg" class="view-details-btn">View Details <i class="fas fa-chevron-right"></i></a>
                                 </div>
                             </div>
                         </div>
-                        
-                        <!-- Biosand Filter (May-Aug 2024) -->
-                        <div class="portfolio-item" data-category="engineering design">
-                            <div class="portfolio-info">
-                                <h3 class="portfolio-title">Biosand Filter <span class="team-label">(Team Project)</span></h3>
-                                <p class="portfolio-category"><i class="fas fa-tint"></i> Design and Selection of Biomaterials, BMEN 306 </p>
-                                <p class="portfolio-date"><i class="far fa-calendar-alt"></i> May 2024 - August 2024</p>
-                                <p class="portfolio-desc">Developed a sustainable water purification system using locally available materials, achieving reduction in turbidity and bacterial removal in field tests.</p>
-                                <div class="portfolio-skills">
-                                    <span class="skill-tag">Water Treatment</span>
-                                    <span class="skill-tag">Sustainability</span>
+                    </div>
+
+                    <!-- 2023 Projects -->
+                    <div class="year-section">
+                        <div class="year-header">
+                            <h3 class="year-title">2023</h3>
+                        </div>
+                        <div class="portfolio-grid">
+                            <div class="portfolio-item" data-category="research" data-year="2023">
+                                <div class="portfolio-info">
+                                    <h3 class="portfolio-title">AI-Enhanced Malaria Treatment Research <span class="team-label">(Team Project)</span></h3>
+                                    <p class="portfolio-category"><i class="fas fa-flask"></i> Mini-PhD Program, ReachSci, USA</p>
+                                    <p class="portfolio-date"><i class="far fa-calendar-alt"></i> November 2023 - July 2024</p>
+                                    <p class="portfolio-desc">Utilized generative AI to analyze molecular structures of plant metabolites in traditional Ghanaian herbal medicines used for malaria treatment, identifying potential bioactive compounds.</p>
+                                    <div class="portfolio-skills">
+                                        <span class="skill-tag">AI Research</span>
+                                        <span class="skill-tag">Bioinformatics</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="portfolio-item" data-category="biomedical engineering" data-year="2023">
+                                <div class="portfolio-info">
+                                    <h3 class="portfolio-title">Echolocation Glasses <span class="team-label">(Team Project)</span></h3>
+                                    <p class="portfolio-category"><i class="fas fa-glasses"></i> Introduction to Biomedical Engineering, BMEN 202</p>
+                                    <p class="portfolio-date"><i class="far fa-calendar-alt"></i> March - June 2023</p>
+                                    <p class="portfolio-desc">Prototyped assistive glasses using ultrasonic sensors conduction to help visually impaired navigate via echolocation, presented at 4th National GSBE Conference.</p>
+                                    <div class="portfolio-skills">
+                                        <span class="skill-tag">Assistive Tech</span>
+                                        <span class="skill-tag">Arduino & Proteus</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="portfolio-item" data-category="biomedical research" data-year="2023">
+                                <div class="portfolio-info">
+                                    <h3 class="portfolio-title">Cyanogenic Glycosides Research <span class="team-label">(Team Project)</span></h3>
+                                    <p class="portfolio-category"><i class="fas fa-microscope"></i> Research Methods, BMEN 315 </p>
+                                    <p class="portfolio-date"><i class="far fa-calendar-alt"></i> October 2022 - December 2023</p>
+                                    <p class="portfolio-desc">Proposed an evaluation of antimicrobial properties of cyanogenic glycosides from cassava for potential applications in preventing human-machine interface infections.</p>
+                                    <div class="portfolio-skills">
+                                        <span class="skill-tag">Biomaterials</span>
+                                        <span class="skill-tag">Microbiology</span>
+                                        <span class="skill-tag">Research Methods</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        
-                        <!-- AI-Enhanced Malaria Treatment Research (Nov 2023 - Jul 2024) -->
-                        <div class="portfolio-item" data-category="research">
-                            <div class="portfolio-info">
-                                <h3 class="portfolio-title">AI-Enhanced Malaria Treatment Research <span class="team-label">(Team Project)</span></h3>
-                                <p class="portfolio-category"><i class="fas fa-flask"></i> Mini-PhD Program, ReachSci, USA</p>
-                                <p class="portfolio-date"><i class="far fa-calendar-alt"></i> November 2023 - July 2024</p>
-                                <p class="portfolio-desc">Utilized generative AI to analyze molecular structures of plant metabolites in traditional Ghanaian herbal medicines used for malaria treatment, identifying potential bioactive compounds.</p>
-                                <div class="portfolio-skills">
-                                    <span class="skill-tag">AI Research</span>
-                                    <span class="skill-tag">Bioinformatics</span>
+                    </div>
+
+                    <!-- 2022 Projects -->
+                    <div class="year-section">
+                        <div class="year-header">
+                            <h3 class="year-title">2022</h3>
+                        </div>
+                        <div class="portfolio-grid">
+                            <div class="portfolio-item" data-category="biomedical engineering" data-year="2022">
+                                <div class="portfolio-info">
+                                    <h3 class="portfolio-title">Hand-Operated Centrifuge <span class="team-label">(Team Project)</span></h3>
+                                    <p class="portfolio-category"><i class="fas fa-vial"></i> Virtual Immersion into Biomedical Engineering, WPI</p>
+                                    <p class="portfolio-date"><i class="far fa-calendar-alt"></i> June - July 2022</p>
+                                    <p class="portfolio-desc">Created a low-cost portable hand-operated centrifuge achieving 3,000 RPM for anemia diagnosis in low-resource settings, presented at Worcester Polytechnic Institute.</p>
+                                    <div class="portfolio-skills">
+                                        <span class="skill-tag">Low-Cost Design</span>
+                                        <span class="skill-tag">Diagnostics</span>
+                                        <span class="skill-tag">Global Health</span>
+                                    </div>
+                                    <a href="https://www.youtube.com/watch?v=x-U2XrCqTuc" target="_blank" class="view-details-btn">View Project <i class="fas fa-external-link-alt"></i></a>
                                 </div>
                             </div>
                         </div>
-                        
-                        <!-- Stroke Prediction with R (2024) -->
-                        <div class="portfolio-item" data-category="biomedical research">
-                            <div class="portfolio-info">
-                                <h3 class="portfolio-title">Stroke Prediction with R</h3>
-                                <p class="portfolio-category"><i class="fas fa-heartbeat"></i> Coursera Project</p>
-                                <p class="portfolio-date"><i class="far fa-calendar-alt"></i> 2024</p>
-                                <p class="portfolio-desc">Developed and implemented machine learning models for stroke prediction using a comprehensive dataset of 5110 patients. Achieved 82.7% accuracy with logistic regression model in analyzing key risk factors including age, glucose levels, and cardiovascular comorbidities.</p>
-                                <div class="portfolio-skills">
-                                    <span class="skill-tag">Machine Learning</span>
-                                    <span class="skill-tag">R Programming</span>
-                                    <span class="skill-tag">Healthcare Analytics</span>
-                                </div>
-                                <a href="https://github.com/Naya-James-Mbabila/Stroke-Prediction-Model-With-R" class="view-details-btn">View Details <i class="fas fa-chevron-right"></i></a>
-                            </div>
+                    </div>
+
+                    <!-- 2021 Projects -->
+                    <div class="year-section">
+                        <div class="year-header">
+                            <h3 class="year-title">2021</h3>
                         </div>
-                        
-                        <!-- EquiBase - Medical Equipment Inventory Software (2023-2024) -->
-                        <div class="portfolio-item" data-category="software biomedical">
-                            <div class="portfolio-info">
-                                <h3 class="portfolio-title">EquiBase - Medical Equipment Inventory Software <span class="team-label">(Team Project)</span></h3>
-                                <p class="portfolio-category"><i class="fas fa-laptop-medical"></i> Komfo Anokye Teaching Hospital</p>
-                                <p class="portfolio-date"><i class="far fa-calendar-alt"></i> 2023 - 2024</p>
-                                <p class="portfolio-desc">Developed and implemented equipment management software for tracking medical devices, collaborated with engineers at KATH.</p>
-                                <div class="portfolio-skills">
-                                    <span class="skill-tag">Software Development</span>
-                                    <span class="skill-tag">Hospital Systems</span>
-                                    <span class="skill-tag">Database Design</span>
+                        <div class="portfolio-grid">
+                            <div class="portfolio-item" data-category="engineering" data-year="2021">
+                                <div class="portfolio-info">
+                                    <h3 class="portfolio-title">Mini-Hydropower Generator <span class="team-label">(Team Project)</span></h3>
+                                    <p class="portfolio-category"><i class="fas fa-bolt"></i> Senior High School Renewable Energy Challenge (SHSREC)</p>
+                                    <p class="portfolio-date"><i class="far fa-calendar-alt"></i> 2021</p>
+                                    <p class="portfolio-desc">Developed and presented an eco-friendly mini-hydropower generator that produces 12V/5A from low water flow, utilizing a motor with an alternator. This team project, created with the guidance of our science teacher at Nandom Senior High School, earned 3rd place at the SHSREC Regional Competition in Wa, Upper West Region, Ghana.</p>
+                                    <div class="portfolio-skills">
+                                        <span class="skill-tag">Renewable Energy</span>
+                                        <span class="skill-tag">Prototyping</span>
+                                        <span class="skill-tag">Public Speaking</span>
+                                    </div>
+                                    <a href="https://www.facebook.com/share/v/1BpVYpetAE/" class="view-details-btn">View Details <i class="fas fa-chevron-right"></i></a>
                                 </div>
-                                <a href="https://www.youtube.com/watch?v=owVlq5qH_Tg" class="view-details-btn">View Details <i class="fas fa-chevron-right"></i></a>
-                            </div>
-                        </div>
-                        
-                        <!-- Cyanogenic Glycosides Research (Oct 2022 - Dec 2023) -->
-                        <div class="portfolio-item" data-category="biomedical research">
-                            <div class="portfolio-info">
-                                <h3 class="portfolio-title">Cyanogenic Glycosides Research <span class="team-label">(Team Project)</span></h3>
-                                <p class="portfolio-category"><i class="fas fa-microscope"></i> Research Methods, BMEN 315 </p>
-                                <p class="portfolio-date"><i class="far fa-calendar-alt"></i> October 2022 - December 2023</p>
-                                <p class="portfolio-desc">Proposed an evaluation of antimicrobial properties of cyanogenic glycosides from cassava for potential applications in preventing human-machine interface infections.</p>
-                                <div class="portfolio-skills">
-                                    <span class="skill-tag">Biomaterials</span>
-                                    <span class="skill-tag">Microbiology</span>
-                                    <span class="skill-tag">Research Methods</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Echolocation Glasses (Mar-Jun 2023) -->
-                        <div class="portfolio-item" data-category="biomedical engineering">
-                            <div class="portfolio-info">
-                                <h3 class="portfolio-title">Echolocation Glasses <span class="team-label">(Team Project)</span></h3>
-                                <p class="portfolio-category"><i class="fas fa-glasses"></i> Introduction to Biomedical Engineering, BMEN 202</p>
-                                <p class="portfolio-date"><i class="far fa-calendar-alt"></i> March 2023 - June 2023</p>
-                                <p class="portfolio-desc">Prototyped assistive glasses using ultrasonic sensors conduction to help visually impaired navigate via echolocation, presented at 4th National GSBE Conference.</p>
-                                <div class="portfolio-skills">
-                                    <span class="skill-tag">Assistive Tech</span>
-                                    <span class="skill-tag">Arduino & Proteus</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Hand-Operated Centrifuge (June-July 2022) -->
-                        <div class="portfolio-item" data-category="biomedical engineering">
-                            <div class="portfolio-info">
-                                <h3 class="portfolio-title">Hand-Operated Centrifuge <span class="team-label">(Team Project)</span></h3>
-                                <p class="portfolio-category"><i class="fas fa-vial"></i> Virtual Immersion into Biomedical Engineering, WPI</p>
-                                <p class="portfolio-date"><i class="far fa-calendar-alt"></i> June - July 2022</p>
-                                <p class="portfolio-desc">Created a low-cost portable hand-operated centrifuge achieving 3,000 RPM for anemia diagnosis in low-resource settings, presented at Worcester Polytechnic Institute.</p>
-                                <div class="portfolio-skills">
-                                    <span class="skill-tag">Low-Cost Design</span>
-                                    <span class="skill-tag">Diagnostics</span>
-                                    <span class="skill-tag">Global Health</span>
-                                </div>
-                                <a href="https://www.youtube.com/watch?v=x-U2XrCqTuc" target="_blank" class="view-details-btn">View Project <i class="fas fa-external-link-alt"></i></a>
-                            </div>
-                        </div>
-                        
-                        <!-- Mini-Hydropower Generator (2021) - OLDEST -->
-                        <div class="portfolio-item" data-category="engineering">
-                            <div class="portfolio-info">
-                                <h3 class="portfolio-title">Mini-Hydropower Generator <span class="team-label">(Team Project)</span></h3>
-                                <p class="portfolio-category"><i class="fas fa-bolt"></i> Senior High School Renewable Energy Challenge</p>
-                                <p class="portfolio-date"><i class="far fa-calendar-alt"></i> 2021</p>
-                                <p class="portfolio-desc">Designed and built an eco-friendly mini-hydropower generator capable of producing 12V/5A from low water flow, presented SHSREC Regional Competition, Wa, Upper West Region, Ghana.</p>
-                                <div class="portfolio-skills">
-                                    <span class="skill-tag">Renewable Energy</span>
-                                    <span class="skill-tag">Prototyping</span>
-                                    <span class="skill-tag">Public Speaking</span>
-                                </div>
-                                <a href="https://www.facebook.com/share/v/1BpVYpetAE/" class="view-details-btn">View Details <i class="fas fa-chevron-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -229,19 +347,37 @@
                     
                     const filterValue = this.getAttribute('data-filter');
                     const portfolioItems = document.querySelectorAll('.portfolio-item');
+                    const yearSections = document.querySelectorAll('.year-section');
                     
-                    portfolioItems.forEach(item => {
-                        if (filterValue === 'all') {
+                    if (filterValue === 'all') {
+                        // Show all items and sections
+                        portfolioItems.forEach(item => {
                             item.style.display = 'block';
-                        } else {
+                        });
+                        yearSections.forEach(section => {
+                            section.style.display = 'block';
+                        });
+                    } else {
+                        // Filter items by category
+                        portfolioItems.forEach(item => {
                             const categories = item.getAttribute('data-category').split(' ');
                             if (categories.includes(filterValue)) {
                                 item.style.display = 'block';
                             } else {
                                 item.style.display = 'none';
                             }
-                        }
-                    });
+                        });
+                        
+                        // Hide year sections that have no visible items
+                        yearSections.forEach(section => {
+                            const visibleItems = section.querySelectorAll('.portfolio-item[style="display: block;"]');
+                            if (visibleItems.length === 0) {
+                                section.style.display = 'none';
+                            } else {
+                                section.style.display = 'block';
+                            }
+                        });
+                    }
                     
                     // Animate visible items
                     document.querySelectorAll('.portfolio-item[style="display: block;"]').forEach((item, index) => {
