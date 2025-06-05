@@ -9,8 +9,197 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Preload critical assets -->
     <link rel="preload" href="images/index.png" as="image">
+    <style>
+        /* Additional styles for the improved gallery layout */
+        .gallery-container {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+        }
+        
+        .gallery-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            height: auto;
+            aspect-ratio: 1/1.2;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .gallery-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px) !important;
+        }
+        
+        .gallery-image-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.05);
+        }
+        
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%);
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+            opacity: 0;
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease;
+        }
+        
+        .gallery-item.visible .gallery-caption {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.3s;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .gallery-caption h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+        }
+        
+        .gallery-caption p {
+            margin: 0;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .gallery-category-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            z-index: 2;
+        }
+        
+        /* Wave animation background */
+        .wave-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .wave-layer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+            animation: waveAnimation 20s infinite linear;
+            opacity: 0.1;
+        }
+        
+        .wave-1 {
+            animation-delay: 0s;
+            height: 90%;
+        }
+        
+        .wave-2 {
+            animation-delay: -5s;
+            animation-duration: 25s;
+            height: 85%;
+        }
+        
+        .wave-3 {
+            animation-delay: -10s;
+            animation-duration: 30s;
+            height: 80%;
+        }
+        
+        .wave-4 {
+            animation-delay: -15s;
+            animation-duration: 35s;
+            height: 75%;
+        }
+        
+        @keyframes waveAnimation {
+            0% {
+                transform: translateX(0) translateY(0);
+            }
+            50% {
+                transform: translateX(-25%) translateY(-5%);
+            }
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .gallery-container {
+                flex-direction: column;
+            }
+            
+            .gallery-item {
+                aspect-ratio: 1/1;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Unique wave animation background -->
+    <div class="wave-background">
+        <div class="wave-layer wave-1"></div>
+        <div class="wave-layer wave-2"></div>
+        <div class="wave-layer wave-3"></div>
+        <div class="wave-layer wave-4"></div>
+    </div>
+    
     <div class="book-container">
         <header class="book-header">
             <div class="profile-photo">
@@ -22,7 +211,7 @@
         <nav class="tabs" aria-label="Main Navigation">
             <a href="index.html" class="tab-btn">Curriculum Vitae</a>
             <a href="portfolio.html" class="tab-btn">Project Portfolio</a>
-            <a href="skills.html" class="tab-btn">Skills </a>
+            <a href="skills.html" class="tab-btn">Skills</a>
             <a href="gallery.html" class="tab-btn gallery-tab active" aria-current="page">Gallery</a>
         </nav>
         
@@ -30,152 +219,22 @@
             <section class="gallery-section">
                 <div class="gallery-header">
                     <h2 class="section-title">Professional Gallery</h2>
-                    <p class="section-subtitle">A visual journey through my academic, professional, and personal milestones</p>
-                </div>
                 
                 <div class="filter-controls">
                     <button class="filter-btn active" data-filter="all">All Photos</button>
                     <button class="filter-btn" data-filter="academic">Academic</button>
                     <button class="filter-btn" data-filter="professional">Professional</button>
                     <button class="filter-btn" data-filter="events">Events</button>
+                    <button class="filter-btn" data-filter="personal">Personal</button>
                 </div>
                 
                 <div class="gallery-counter">
-                    <span id="showing-count">13</span> of <span id="total-count">13</span> items
+                    <span id="showing-count">14</span> of <span id="total-count">14</span> items
                 </div>
                 
                 <div class="gallery-container">
-                    <!-- Gallery Item 1 -->
-                    <div class="gallery-item" data-category="professional">
-                        <div class="gallery-category-badge">Professional</div>
-                        <img src="images/gallery1.png" alt="Naya James Mbabila profile photo" class="gallery-image loading">
-                        <div class="gallery-caption">
-                            <h3>Professional Profile</h3>
-                            <p>Official profile picture</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Gallery Item 2 -->
-                    <div class="gallery-item" data-category="professional">
-                        <div class="gallery-category-badge">Professional</div>
-                        <img src="images/gallery2.jpg" alt="With mentor Richard Densu" class="gallery-image loading">
-                        <div class="gallery-caption">
-                            <h3>With Mentor: Ing. Richard Densu</h3>
-                            <p>Professional mentorship session</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Gallery Item 3 -->
-                    <div class="gallery-item" data-category="professional">
-                        <div class="gallery-category-badge">Professional</div>
-                        <img src="images/gallery3.jpg" alt="With mentor Elsie Effah Kaufmann" class="gallery-image loading">
-                        <div class="gallery-caption">
-                            <h3>With Mentor: Ing. Prof. Elsie Effah Kaufmann</h3>
-                            <p>Academic and professional guidance session</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Gallery Item 4 -->
-                    <div class="gallery-item" data-category="events">
-                        <div class="gallery-category-badge">Events</div>
-                        <img src="images/gallery4.jpg" alt="Studentpreneur Africa Network conference" class="gallery-image loading">
-                        <div class="gallery-caption">
-                            <h3>Studentpreneur Africa Network Conference</h3>
-                            <p>2025 conference at Accra Digital Center with Claudia Twum, SAN Founder</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Gallery Item 5 -->
-                    <div class="gallery-item" data-category="academic">
-                        <div class="gallery-category-badge">Academic</div>
-                        <img src="images/gallery5.jpg" alt="Capstone project defense" class="gallery-image loading">
-                        <div class="gallery-caption">
-                            <h3>After Capstone Project Defense</h3>
-                            <p>Department of Biomedical Engineering</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Gallery Item 6 -->
-                    <div class="gallery-item" data-category="personal">
-                        <div class="gallery-category-badge">Personal</div>
-                        <img src="images/gallery6.jpg" alt="With siblings" class="gallery-image loading">
-                        <div class="gallery-caption">
-                            <h3>Family</h3>
-                            <p>With siblings</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Gallery Item 7 -->
-                    <div class="gallery-item" data-category="academic">
-                        <div class="gallery-category-badge">Academic</div>
-                        <img src="images/gallery7.jpg" alt="Nanotechnology lecture" class="gallery-image loading">
-                        <div class="gallery-caption">
-                            <h3>Nanotechnology Lecture</h3>
-                            <p>At the Engineering Center</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Gallery Item 8 -->
-                    <div class="gallery-item" data-category="events">
-                        <div class="gallery-category-badge">Events</div>
-                        <img src="images/gallery8.jpg" alt="GSBE-UG handing over ceremony" class="gallery-image loading">
-                        <div class="gallery-caption">
-                            <h3>Handing Over Ceremony</h3>
-                            <p>Showing certificate of registration</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Gallery Item 9 -->
-                    <div class="gallery-item" data-category="academic">
-                        <div class="gallery-category-badge">Academic</div>
-                        <img src="images/gallery9.jpg" alt="National Science and Maths Quiz" class="gallery-image loading">
-                        <div class="gallery-caption">
-                            <h3>National Science and Maths Quiz (2021)</h3>
-                            <p>Academic competition participation</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Gallery Item 10 -->
-                    <div class="gallery-item" data-category="academic">
-                        <div class="gallery-category-badge">Academic</div>
-                        <img src="images/gallery10.jpg" alt="Medical Physics tour" class="gallery-image loading">
-                        <div class="gallery-caption">
-                            <h3>Medical Physics Tour</h3>
-                            <p>University of Ghana Medical Center visit</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Gallery Item 11 -->
-                    <div class="gallery-item" data-category="professional">
-                        <div class="gallery-category-badge">Professional</div>
-                        <img src="images/gallery11.jpg" alt="Industry visit to Atlantic Life Sciences" class="gallery-image loading">
-                        <div class="gallery-caption">
-                            <h3>Industry Visit</h3>
-                            <p>Field trip to Atlantic Life Sciences</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Gallery Item 12 -->
-                    <div class="gallery-item" data-category="events">
-                        <div class="gallery-category-badge">Events</div>
-                        <img src="images/gallery12.jpg" alt="GSBE Conference presentation" class="gallery-image loading">
-                        <div class="gallery-caption">
-                            <h3>4th Annual GSBE Conference</h3>
-                            <p>Presenting Echoglasses design for visually impaired mobility and navigation, with group member Coleman Azuntaaba</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Gallery Item 14 -->
-                    <div class="gallery-item" data-category="professional">
-                        <div class="gallery-category-badge">Professional</div>
-                        <img src="images/gallery14.jpeg" alt="Professional photo" class="gallery-image loading">
-                    </div>
-                    
-                    <!-- No results message -->
-                    <div class="no-results">
-                        <i class="fas fa-search"></i>
-                        <p>No gallery items match your filter selection.</p>
-                    </div>
+                    <div class="gallery-column" id="column1"></div>
+                    <div class="gallery-column" id="column2"></div>
                 </div>
             </section>
         </main>
@@ -204,15 +263,205 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Filter functionality
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const galleryItems = document.querySelectorAll('.gallery-item');
-            const noResultsMessage = document.querySelector('.no-results');
+            // Gallery data - organized for better maintainability
+            const galleryData = [
+                {
+                    src: "images/gallery1.png",
+                    alt: "Naya James Mbabila profile photo",
+                    category: "professional",
+                    title: "Professional Profile",
+                    description: "Official profile picture"
+                },
+                {
+                    src: "images/gallery2.jpg",
+                    alt: "With mentor Richard Densu",
+                    category: "professional",
+                    title: "With Mentor: Ing. Richard Densu",
+                    description: "Professional mentorship session"
+                },
+                {
+                    src: "images/gallery3.jpg",
+                    alt: "With mentor Elsie Effah Kaufmann",
+                    category: "professional",
+                    title: "With Mentor: Ing. Prof. Elsie Effah Kaufmann",
+                    description: "Academic and professional guidance session"
+                },
+                {
+                    src: "images/gallery4.jpg",
+                    alt: "Studentpreneur Africa Network conference",
+                    category: "events",
+                    title: "Studentpreneur Africa Network Conference",
+                    description: "2025 conference at Accra Digital Center with Claudia Twum, SAN Founder"
+                },
+                {
+                    src: "images/gallery5.jpg",
+                    alt: "Capstone project defense",
+                    category: "academic",
+                    title: "After Capstone Project Defense",
+                    description: "Department of Biomedical Engineering"
+                },
+                {
+                    src: "images/gallery15.png",
+                    alt: "Meeting with GSBE-UG Patron",
+                    category: "events",
+                    title: "Meeting with GSBE-UG patron",
+                    description: "2023 - 2024 tenure as president of the Ghana Society of Biomedical Engineers - University of Ghana Chapter."
+                },
+                {
+                    src: "images/gallery6.jpg",
+                    alt: "With siblings",
+                    category: "personal",
+                    title: "Family",
+                    description: "With siblings"
+                },
+                {
+                    src: "images/gallery7.jpg",
+                    alt: "Nanotechnology lecture",
+                    category: "academic",
+                    title: "Nanotechnology Lecture",
+                    description: "At the Engineering Center"
+                },
+                {
+                    src: "images/gallery8.jpg",
+                    alt: "GSBE-UG handing over ceremony",
+                    category: "events",
+                    title: "Handing Over Ceremony",
+                    description: "Showing certificate of registration"
+                },
+                {
+                    src: "images/gallery9.jpg",
+                    alt: "National Science and Maths Quiz",
+                    category: "academic",
+                    title: "National Science and Maths Quiz (2021)",
+                    description: "Academic competition participation"
+                },
+                {
+                    src: "images/gallery10.jpg",
+                    alt: "Medical Physics tour",
+                    category: "academic",
+                    title: "Medical Physics Tour",
+                    description: "University of Ghana Medical Center visit"
+                },
+                {
+                    src: "images/gallery11.jpg",
+                    alt: "Industry visit to Atlantic Life Sciences",
+                    category: "professional",
+                    title: "Industry Visit",
+                    description: "Field trip to Atlantic Life Sciences"
+                },
+                {
+                    src: "images/gallery12.jpg",
+                    alt: "GSBE Conference presentation",
+                    category: "events",
+                    title: "4th Annual GSBE Conference",
+                    description: "Presenting Echoglasses design for visually impaired mobility and navigation, with group member Coleman Azuntaaba"
+                },
+                {
+                    src: "images/gallery14.jpeg",
+                    alt: "Professional photo",
+                    category: "professional",
+                    title: "Professional Headshot",
+                    description: "Professional profile image"
+                }
+            ];
+
+            // Initialize gallery
+            const column1 = document.getElementById('column1');
+            const column2 = document.getElementById('column2');
             const showingCount = document.getElementById('showing-count');
             const totalCount = document.getElementById('total-count');
             
             // Set total count
-            totalCount.textContent = galleryItems.length;
+            totalCount.textContent = galleryData.length;
+            showingCount.textContent = galleryData.length;
+            
+            // Generate gallery items
+            function generateGalleryItems(filter = 'all') {
+                column1.innerHTML = '';
+                column2.innerHTML = '';
+                let visibleCount = 0;
+                
+                const filteredItems = galleryData.filter(item => filter === 'all' || item.category === filter);
+                showingCount.textContent = filteredItems.length;
+                
+                filteredItems.forEach((item, index) => {
+                    const galleryItem = document.createElement('div');
+                    galleryItem.className = 'gallery-item';
+                    galleryItem.setAttribute('data-category', item.category);
+                    galleryItem.setAttribute('data-index', index);
+                    
+                    galleryItem.innerHTML = `
+                        <div class="gallery-category-badge">${item.category.charAt(0).toUpperCase() + item.category.slice(1)}</div>
+                        <div class="gallery-image-container">
+                            <img src="${item.src}" alt="${item.alt}" class="gallery-image loading">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>${item.title}</h3>
+                            <p>${item.description}</p>
+                        </div>
+                    `;
+                    
+                    // Distribute items between columns (approximately 50/50)
+                    if (index % 2 === 0) {
+                        column1.appendChild(galleryItem);
+                    } else {
+                        column2.appendChild(galleryItem);
+                    }
+                    
+                    visibleCount++;
+                });
+                
+                // Initialize images after they're added to DOM
+                initializeImages();
+                initializeModal();
+                
+                // Trigger intersection observer to check visibility
+                observeGalleryItems();
+            }
+            
+            // Initialize image loading and error handling
+            function initializeImages() {
+                document.querySelectorAll('.gallery-image').forEach(img => {
+                    img.addEventListener('load', function() {
+                        this.classList.remove('loading');
+                        this.parentElement.querySelector('.image-overlay').style.opacity = '1';
+                    });
+                    
+                    img.addEventListener('error', function() {
+                        this.classList.remove('loading');
+                        this.src = 'images/placeholder.jpg';
+                        this.alt = 'Image not available';
+                    });
+                    
+                    if (img.complete) {
+                        img.classList.remove('loading');
+                        img.parentElement.querySelector('.image-overlay').style.opacity = '1';
+                    }
+                });
+            }
+            
+            // Intersection Observer for scroll animations
+            function observeGalleryItems() {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+                
+                document.querySelectorAll('.gallery-item').forEach(item => {
+                    observer.observe(item);
+                });
+            }
+            
+            // Filter functionality
+            const filterButtons = document.querySelectorAll('.filter-btn');
             
             filterButtons.forEach(button => {
                 button.addEventListener('click', function() {
@@ -221,160 +470,144 @@
                     this.classList.add('active');
                     
                     const filterValue = this.getAttribute('data-filter');
-                    let visibleCount = 0;
-                    
-                    galleryItems.forEach(item => {
-                        if (filterValue === 'all' || item.getAttribute('data-category').toLowerCase() === filterValue) {
-                            item.style.display = 'block';
-                            visibleCount++;
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    });
-                    
-                    // Update showing count
-                    showingCount.textContent = visibleCount;
-                    
-                    // Show/hide no results message
-                    noResultsMessage.style.display = visibleCount === 0 ? 'flex' : 'none';
-                    
-                    // Apply fade-in animation to visible cards
-                    document.querySelectorAll('.gallery-item[style="display: block;"]').forEach((item, index) => {
-                        item.style.animation = 'none';
+                    generateGalleryItems(filterValue);
+                });
+            });
+            
+            // Initialize modal functionality
+            function initializeModal() {
+                const modal = document.getElementById('imageModal');
+                const modalImg = document.getElementById('enlargedImg');
+                const modalCaption = document.getElementById('modalCaption');
+                const closeBtn = document.querySelector('.close');
+                const prevBtn = document.getElementById('prevBtn');
+                const nextBtn = document.getElementById('nextBtn');
+                
+                let currentImageIndex = 0;
+                let filteredImages = [];
+                
+                // Open modal when clicking on gallery images
+                document.querySelectorAll('.gallery-item').forEach(item => {
+                    item.addEventListener('click', function() {
+                        const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+                        const itemIndex = parseInt(this.getAttribute('data-index'));
+                        
+                        // Get all currently visible images based on filter
+                        filteredImages = galleryData
+                            .filter(item => activeFilter === 'all' || item.category === activeFilter)
+                            .map(item => ({
+                                src: item.src,
+                                alt: item.alt,
+                                title: item.title,
+                                description: item.description
+                            }));
+                        
+                        // Find current image index in filtered array
+                        currentImageIndex = filteredImages.findIndex(img => 
+                            img.src === this.querySelector('img').src
+                        );
+                        
+                        // Show modal with current image
+                        modal.style.display = 'flex';
+                        modalImg.src = filteredImages[currentImageIndex].src;
+                        modalImg.alt = filteredImages[currentImageIndex].alt;
+                        modalCaption.innerHTML = `
+                            <h3>${filteredImages[currentImageIndex].title}</h3>
+                            <p>${filteredImages[currentImageIndex].description}</p>
+                        `;
+                        
                         setTimeout(() => {
-                            item.style.animation = `fadeIn 0.5s forwards ${index * 0.05}s`;
+                            modal.classList.add('show');
                         }, 10);
                     });
                 });
-            });
-            
-            // Modal functionality
-            const modal = document.getElementById('imageModal');
-            const modalImg = document.getElementById('enlargedImg');
-            const modalCaption = document.getElementById('modalCaption');
-            const closeBtn = document.querySelector('.close');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            let currentImageIndex = 0;
-            let filteredImages = [];
-            
-            // Handle image loading
-            document.querySelectorAll('.gallery-image').forEach(img => {
-                img.addEventListener('load', function() {
-                    this.classList.remove('loading');
-                });
                 
-                img.addEventListener('error', function() {
-                    this.classList.remove('loading');
-                    this.src = 'images/placeholder.jpg';
-                    this.alt = 'Image not available';
-                });
-                
-                if (img.complete) {
-                    img.classList.remove('loading');
+                // Navigation functions
+                function showImage(index) {
+                    if (filteredImages.length === 0) return;
+                    
+                    if (index >= filteredImages.length) {
+                        currentImageIndex = 0;
+                    } else if (index < 0) {
+                        currentImageIndex = filteredImages.length - 1;
+                    } else {
+                        currentImageIndex = index;
+                    }
+                    
+                    modalImg.src = filteredImages[currentImageIndex].src;
+                    modalImg.alt = filteredImages[currentImageIndex].alt;
+                    modalCaption.innerHTML = `
+                        <h3>${filteredImages[currentImageIndex].title}</h3>
+                        <p>${filteredImages[currentImageIndex].description}</p>
+                    `;
                 }
-            });
-            
-            // Open modal when clicking on gallery images
-            galleryItems.forEach((item, index) => {
-                const img = item.querySelector('.gallery-image');
-                const caption = item.querySelector('.gallery-caption').innerHTML;
                 
-                img.addEventListener('click', function() {
-                    // Get all currently visible images based on filter
-                    const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
-                    filteredImages = Array.from(galleryItems)
-                        .filter(item => activeFilter === 'all' || 
-                              item.getAttribute('data-category').toLowerCase() === activeFilter)
-                        .map(item => ({
-                            src: item.querySelector('.gallery-image').src,
-                            caption: item.querySelector('.gallery-caption').innerHTML
-                        }));
-                    
-                    // Find current image index in filtered array
-                    currentImageIndex = filteredImages.findIndex(image => image.src === this.src);
-                    
-                    // Show modal with current image
-                    modal.style.display = 'flex';
-                    modalImg.src = this.src;
-                    modalCaption.innerHTML = caption;
-                    
+                // Event listeners for modal navigation
+                prevBtn.addEventListener('click', () => showImage(currentImageIndex - 1));
+                nextBtn.addEventListener('click', () => showImage(currentImageIndex + 1));
+                
+                // Close modal
+                closeBtn.addEventListener('click', closeModal);
+                window.addEventListener('click', (event) => {
+                    if (event.target === modal) {
+                        closeModal();
+                    }
+                });
+                
+                document.addEventListener('keydown', function(event) {
+                    if (event.key === 'Escape' && modal.style.display === 'flex') {
+                        closeModal();
+                    } else if (event.key === 'ArrowLeft' && modal.style.display === 'flex') {
+                        showImage(currentImageIndex - 1);
+                    } else if (event.key === 'ArrowRight' && modal.style.display === 'flex') {
+                        showImage(currentImageIndex + 1);
+                    }
+                });
+                
+                function closeModal() {
+                    modal.classList.remove('show');
                     setTimeout(() => {
-                        modal.classList.add('show');
-                    }, 10);
+                        modal.style.display = 'none';
+                    }, 300);
+                }
+                
+                // Handle touch swipe for mobile devices
+                let touchStartX = 0;
+                let touchEndX = 0;
+                
+                modal.addEventListener('touchstart', e => {
+                    touchStartX = e.changedTouches[0].screenX;
+                }, false);
+                
+                modal.addEventListener('touchend', e => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                }, false);
+                
+                function handleSwipe() {
+                    if (touchEndX < touchStartX - 50) {
+                        showImage(currentImageIndex + 1); // Swipe left - next image
+                    } else if (touchEndX > touchStartX + 50) {
+                        showImage(currentImageIndex - 1); // Swipe right - previous image
+                    }
+                }
+            }
+            
+            // Initialize the gallery with all items
+            generateGalleryItems();
+            
+            // Scroll to top button
+            const scrollTopBtn = document.getElementById('scrollTopBtn');
+            scrollTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
                 });
             });
             
-            // Navigation functions
-            function showImage(index) {
-                if (filteredImages.length === 0) return;
-                
-                if (index >= filteredImages.length) {
-                    currentImageIndex = 0;
-                } else if (index < 0) {
-                    currentImageIndex = filteredImages.length - 1;
-                } else {
-                    currentImageIndex = index;
-                }
-                
-                modalImg.src = filteredImages[currentImageIndex].src;
-                modalCaption.innerHTML = filteredImages[currentImageIndex].caption;
-            }
-            
-            // Event listeners for modal navigation
-            prevBtn.addEventListener('click', () => {
-                showImage(currentImageIndex - 1);
+            window.addEventListener('scroll', () => {
+                scrollTopBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
             });
-            
-            nextBtn.addEventListener('click', () => {
-                showImage(currentImageIndex + 1);
-            });
-            
-            // Close modal
-            closeBtn.addEventListener('click', closeModal);
-            window.addEventListener('click', (event) => {
-                if (event.target === modal) {
-                    closeModal();
-                }
-            });
-            
-            document.addEventListener('keydown', function(event) {
-                if (event.key === 'Escape' && modal.style.display === 'flex') {
-                    closeModal();
-                } else if (event.key === 'ArrowLeft' && modal.style.display === 'flex') {
-                    showImage(currentImageIndex - 1);
-                } else if (event.key === 'ArrowRight' && modal.style.display === 'flex') {
-                    showImage(currentImageIndex + 1);
-                }
-            });
-            
-            function closeModal() {
-                modal.classList.remove('show');
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                }, 300);
-            }
-            
-            // Handle touch swipe for mobile devices
-            let touchStartX = 0;
-            let touchEndX = 0;
-            
-            modal.addEventListener('touchstart', e => {
-                touchStartX = e.changedTouches[0].screenX;
-            }, false);
-            
-            modal.addEventListener('touchend', e => {
-                touchEndX = e.changedTouches[0].screenX;
-                handleSwipe();
-            }, false);
-            
-            function handleSwipe() {
-                if (touchEndX < touchStartX - 50) {
-                    showImage(currentImageIndex + 1); // Swipe left - next image
-                } else if (touchEndX > touchStartX + 50) {
-                    showImage(currentImageIndex - 1); // Swipe right - previous image
-                }
-            }
         });
     </script>
 </body>
