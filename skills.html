@@ -7,7 +7,6 @@
     <title>Naya James Mbabila - Skills & Expertise</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Preload critical assets -->
     <link rel="preload" href="images/skills.jpg" as="image">
 </head>
 <body>
@@ -28,7 +27,6 @@
         
         <main class="content-wrapper">
             <section id="skills" class="tab-content active">
-                <!-- Technical Skills section first -->
                 <div class="cv-section">
                     <h2 class="section-title">Technical Skills</h2>
                     <div class="skills-grid">
@@ -90,7 +88,6 @@
                     </div>
                 </div>
                 
-                <!-- Essential Skills section -->
                 <div class="cv-section">
                     <h2 class="section-title">Soft Skills</h2>
                     <div class="skills-grid">
@@ -146,7 +143,6 @@
                     </div>
                 </div>
                 
-                <!-- Languages section -->
                 <div class="cv-section">
                     <h2 class="section-title">Languages</h2>
                     <div class="skills-grid">
@@ -178,7 +174,6 @@
                     </div>
                 </div>
                 
-               <!-- Academic Courses section -->
                 <div class="cv-section">
                     <h2 class="section-title">Academic Coursework - Biomedical Engineering</h2>
                     
@@ -231,7 +226,6 @@
                     </style>
                     
                     <div class="academic-grid">
-                        <!-- First Year -->
                         <div class="semester-column">
                             <h4 class="semester-title">First Year - Semester 1</h4>
                             <ul class="courses-list">
@@ -258,7 +252,6 @@
                             </ul>
                         </div>
                         
-                        <!-- Second Year -->
                         <div class="semester-column">
                             <h4 class="semester-title">Second Year - Semester 1</h4>
                             <ul class="courses-list">
@@ -284,7 +277,6 @@
                             </ul>
                         </div>
                         
-                        <!-- Third Year -->
                         <div class="semester-column">
                             <h4 class="semester-title">Third Year - Semester 1</h4>
                             <ul class="courses-list">
@@ -310,7 +302,6 @@
                             </ul>
                         </div>
                         
-                        <!-- Fourth Year -->
                         <div class="semester-column">
                             <h4 class="semester-title">Fourth Year - Semester 1</h4>
                             <ul class="courses-list">
@@ -338,271 +329,267 @@
                     </div>
                 </div>
                 
-                <!-- Certifications section -->
                 <div id="certifications" class="cv-section certifications-section">
                     <h2 class="section-title">Certifications </h2>
                     
                     <div class="certification-filters">
-                        <button class="filter-btn active" data-filter="all">All Certifications</button>
-                        <button class="filter-btn" data-filter="technical">Technical</button>
-                        <button class="filter-btn" data-filter="management">Management</button>
-                        <button class="filter-btn" data-filter="science">Science</button>
+                        <button class="filter-btn active" data-filter="all">All Certifications <span class="cert-count" id="totalCount"></span></button>
+                        <button class="filter-btn" data-filter="technical">Technical <span class="cert-count" id="technicalCount"></span></button>
+                        <button class="filter-btn" data-filter="management">Leadership & Management <span class="cert-count" id="managementCount"></span></button>
+                        <button class="filter-btn" data-filter="science">Science & Research <span class="cert-count" id="scienceCount"></span></button>
+                        <button class="filter-btn" data-filter="biomedical">Biomedical <span class="cert-count" id="biomedicalCount"></span></button>
                     </div>
 
+                    <style>
+                        .cert-count {
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+                            background: rgba(255, 255, 255, 0.2);
+                            border-radius: 12px;
+                            padding: 2px 8px;
+                            font-size: 0.85em;
+                            font-weight: 600;
+                            margin-left: 6px;
+                            min-width: 24px;
+                        }
+                        
+                        .filter-btn.active .cert-count {
+                            background: rgba(255, 255, 255, 0.3);
+                        }
+                        
+                        .course-completion-note {
+                            font-size: 0.85rem;
+                            color: #666;
+                            margin-top: 8px;
+                            font-style: italic;
+                        }
+                    </style>
+
                     <div class="certification-cards">                   
-                        <!-- Google Adbanced Data Analytics-->
-                        <div class="certification-card" data-category="Technical">
+                        <div class="certification-card" data-category="technical">
                             <div class="cert-header">
                               <h3>Google Advanced Data Analytics</h3>
                             </div>
                             <div class="cert-body">
                               <div class="cert-issuer"><i class="fas fa-award"></i> Coursera & Google</div>
-                              <div class="cert-date"><i class="far fa-calendar-alt"></i> 2025</div>
+                              <div class="cert-date"><i class="far fa-calendar-alt"></i> Oct 2025</div>
+                              <div class="course-completion-note">Professional Certificate - Completed 7 courses</div>
                               <img src="images/GoogleAnalytics.png" alt="Google Advanced Data Analytics Professional Certificate" class="credential-badge" loading="lazy">
                               <a href="https://www.credly.com/badges/d7ec0fef-d469-41f8-829f-1ef4813d619e" class="cert-link" target="_blank" rel="noopener">View Certificate <i class="fas fa-external-link-alt"></i></a>
                             </div>
                         </div>
-                        <!-- German-Africa Student Consultancy Project -->
+
                         <div class="certification-card" data-category="management">
                             <div class="cert-header">
-                              <h3>German-Africa Student Project</h3>
+                              <h3>German-Africa Student Project on Sustainability</h3>
                             </div>
                             <div class="cert-body">
-                              <div class="cert-issuer"><i class="fas fa-award"></i> University of Ghana & All Listed Partners</div>
-                              <div class="cert-date"><i class="far fa-calendar-alt"></i> 2024</div>
+                              <div class="cert-issuer"><i class="fas fa-award"></i> University of Ghana & Partners</div>
+                              <div class="cert-date"><i class="far fa-calendar-alt"></i> Aug 2025</div>
                               <img src="images/African-GermanProject.jpg" alt="German-Africa Student Consultancy Project" class="credential-badge" loading="lazy">
                             </div>
-                        </div>    
-                         <!-- Google Project Management -->
-                        <div class="certification-card" data-category="management">
-                            <div class="cert-header">
-                              <h3>Google Project Management</h3>
-                            </div>
-                            <div class="cert-body">
-                              <div class="cert-issuer"><i class="fas fa-award"></i> Coursera & Google</div>
-                              <div class="cert-date"><i class="far fa-calendar-alt"></i> 2024</div>
-                              <img src="images/google-pm-badge.png" alt="Google Project Management Professional Certificate" class="credential-badge" loading="lazy">
-                              <a href="https://www.credly.com/badges/edc5bb20-9076-4cc1-aaa4-d220d0f0d77c/linked_in_profile" class="cert-link" target="_blank" rel="noopener">View Certificate <i class="fas fa-external-link-alt"></i></a>
-                            </div>
                         </div>
-                    
-                        <!-- Particle Physics -->
-                        <div class="certification-card" data-category="science">
-                            <div class="cert-header"><h3>Particle Physics: An Introduction</h3></div>
-                            <div class="cert-body">
-                                <div class="cert-issuer"><i class="fas fa-award"></i> Université de Genève</div>
-                                <div class="cert-date"><i class="far fa-calendar-alt"></i> Nov 2023</div>
-                                <img src="images/particle.png" alt="Particle Physics Certificate" class="credential-badge" loading="lazy">
-                                <a href="https://coursera.org/share/32404c415e6846d87d1797341173d4fe" class="cert-link" target="_blank" rel="noopener">View Certificate <i class="fas fa-external-link-alt"></i></a>
-                            </div>
-                        </div>
-                    
-                        <!-- Biomedical Engineering -->
+
                         <div class="certification-card" data-category="technical">
-                            <div class="cert-header"><h3>Virtual Immersion in Biomedical Engineering</h3></div>
+                            <div class="cert-header">
+                              <h3>Cybersecurity Fundamentals with Capstone Project</h3>
+                            </div>
                             <div class="cert-body">
-                                <div class="cert-issuer"><i class="fas fa-award"></i> Worcester Polytechnic Institute</div>
-                                <div class="cert-date"><i class="far fa-calendar-alt"></i> Summer 2022</div>
-                                <img src="images/vibe.png" alt="VIBE 22" class="credential-badge" loading="lazy">
+                              <div class="cert-issuer"><i class="fas fa-award"></i> IBM (Coursera)</div>
+                              <div class="cert-date"><i class="far fa-calendar-alt"></i> Jun 2025</div>
                             </div>
                         </div>
                     
-                        <!-- Quantum Computing -->
-                        <div class="certification-card" data-category="technical science">
-                            <div class="cert-header"><h3>Quantum Computing</h3></div>
+                        <div class="certification-card" data-category="technical management biomedical">
+                            <div class="cert-header"><h3>Hospital Planning and Design Training</h3></div>
                             <div class="cert-body">
-                                <div class="cert-issuer"><i class="fas fa-award"></i> Qubit by Qubit / The Coding School</div>
-                                <div class="cert-date"><i class="far fa-calendar-alt"></i> Apr 2023</div>
-                                <img src="images/quantum.jpg" alt="Quantum computing" class="credential-badge" loading="lazy">
-                                <a href="https://verified.sertifier.com/en/verify/57329896918427/" class="cert-link" target="_blank" rel="noopener">View Certificate <i class="fas fa-external-link-alt"></i></a>
-                            </div>
-                        </div>
-                    
-                        <!-- Hospital Planning -->
-                        <div class="certification-card" data-category="technical management">
-                            <div class="cert-header"><h3>Hospital Planning and Design</h3></div>
-                            <div class="cert-body">
-                                <div class="cert-issuer"><i class="fas fa-award"></i> Hospital Engineering Academy</div>
+                                <div class="cert-issuer"><i class="fas fa-award"></i> Hospital Engineering GmbH</div>
                                 <div class="cert-date"><i class="far fa-calendar-alt"></i> Nov 2024</div>
                                 <img src="images/planning.png" alt="Hospital Planning and Design" class="credential-badge" loading="lazy">
                             </div>
                         </div>
-                    
-                        <!-- Equipment Management -->
-                        <div class="certification-card" data-category="technical management">
-                            <div class="cert-header"><h3>Equipment Management</h3></div>
+
+                        <div class="certification-card" data-category="technical science biomedical">
+                            <div class="cert-header"><h3>Bioinformatics Course</h3></div>
                             <div class="cert-body">
-                                <div class="cert-issuer"><i class="fas fa-award"></i> Hospital Engineering Academy</div>
-                                <div class="cert-date"><i class="far fa-calendar-alt"></i> Oct 2024</div>
-                                <img src="images/equipment.png" alt="Equipment Management" class="credential-badge" loading="lazy">
+                                <div class="cert-issuer"><i class="fas fa-award"></i> Genomac Institute</div>
+                                <div class="cert-date"><i class="far fa-calendar-alt"></i> Nov 2024</div>
                             </div>
                         </div>
 
-                        <!-- People & Teams -->
+                        <div class="certification-card" data-category="technical management biomedical">
+                            <div class="cert-header"><h3>Equipment Management and Maintenance Training</h3></div>
+                            <div class="cert-body">
+                                <div class="cert-issuer"><i class="fas fa-award"></i> Hospital Engineering GmbH</div>
+                                <div class="cert-date"><i class="far fa-calendar-alt"></i> Nov 2024</div>
+                                <img src="images/equipment.png" alt="Equipment Management" class="credential-badge" loading="lazy">
+                            </div>
+                        </div>
+                    
                         <div class="certification-card" data-category="management">
-                            <div class="cert-header"><h3>People & Teams Capstone</h3></div>
+                            <div class="cert-header">
+                              <h3>Google Project Management Professional</h3>
+                            </div>
+                            <div class="cert-body">
+                              <div class="cert-issuer"><i class="fas fa-award"></i> Coursera & Google</div>
+                              <div class="cert-date"><i class="far fa-calendar-alt"></i> Sep 2024</div>
+                              <div class="course-completion-note">Professional Certificate - Completed 6 courses</div>
+                              <img src="images/google-pm-badge.png" alt="Google Project Management Professional Certificate" class="credential-badge" loading="lazy">
+                              <a href="https://www.credly.com/badges/edc5bb20-9076-4cc1-aaa4-d220d0f0d77c/linked_in_profile" class="cert-link" target="_blank" rel="noopener">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="certification-card" data-category="science">
+                            <div class="cert-header"><h3>Understanding Einstein: The Special Theory of Relativity</h3></div>
+                            <div class="cert-body">
+                                <div class="cert-issuer"><i class="fas fa-award"></i> Stanford University (Coursera)</div>
+                                <div class="cert-date"><i class="far fa-calendar-alt"></i> Sep 2024</div>
+                            </div>
+                        </div>
+
+                        <div class="certification-card" data-category="technical">
+                            <div class="cert-header"><h3>Introduction to SIEM (Splunk)</h3></div>
+                            <div class="cert-body">
+                                <div class="cert-issuer"><i class="fas fa-award"></i> EDUCBA</div>
+                                <div class="cert-date"><i class="far fa-calendar-alt"></i> Apr 2024</div>
+                            </div>
+                        </div>
+
+                        <div class="certification-card" data-category="management">
+                            <div class="cert-header"><h3>Leading People and Teams Capstone</h3></div>
                             <div class="cert-body">
                                 <div class="cert-issuer"><i class="fas fa-award"></i> University of Michigan (Coursera)</div>
                                 <div class="cert-date"><i class="far fa-calendar-alt"></i> Feb 2024</div>
                             </div>
                         </div>
-
-                        <!-- SIEM -->
-                        <div class="certification-card" data-category="technical">
-                            <div class="cert-header"><h3>Introduction to SIEM (Splunk)</h3></div>
-                            <div class="cert-body">
-                                <div class="cert-issuer"><i class="fas fa-award"></i> EDUCBBA (Coursera)</div>
-                                <div class="cert-date"><i class="far fa-calendar-alt"></i> Apr 2024</div>
-                            </div>
-                        </div>
                     
-                        <!-- Generative AI -->
                         <div class="certification-card" data-category="technical">
-                            <div class="cert-header"><h3>Generative AI with LLMs</h3></div>
+                            <div class="cert-header"><h3>Generative AI with Large Language Models</h3></div>
                             <div class="cert-body">
                                 <div class="cert-issuer"><i class="fas fa-award"></i> DeepLearning.AI & AWS</div>
-                                <div class="cert-date"><i class="far fa-calendar-alt"></i> 2024</div>
+                                <div class="cert-date"><i class="far fa-calendar-alt"></i> Feb 2024</div>
                                 <a href="https://coursera.org/verify/27JV8F695R2N" class="cert-link" target="_blank" rel="noopener">View Certificate <i class="fas fa-external-link-alt"></i></a>
                             </div>
                         </div>
-                    
-                        <!-- Creativity & Innovation -->
-                        <div class="certification-card" data-category="management">
-                            <div class="cert-header"><h3>Creativity & Innovation</h3></div>
-                            <div class="cert-body">
-                                <div class="cert-issuer"><i class="fas fa-award"></i> Penn State (Coursera)</div>
-                                <div class="cert-date"><i class="far fa-calendar-alt"></i> 2024</div>
-                                <a href="https://coursera.org/verify/RE5UJTG6MV26" class="cert-link" target="_blank" rel="noopener">View Certificate <i class="fas fa-external-link-alt"></i></a>
-                            </div>
-                        </div>
-                    
-                        <!-- Cloud Foundations -->
-                        <div class="certification-card" data-category="technical">
-                            <div class="cert-header"><h3>Cloud Foundations</h3></div>
-                            <div class="cert-body">
-                                <div class="cert-issuer"><i class="fas fa-award"></i> Great Learning Academy</div>
-                                <div class="cert-date"><i class="far fa-calendar-alt"></i> 2024</div>
-                            </div>
-                        </div>
-                    
-                        <!-- Nuclear Fuel -->
+
                         <div class="certification-card" data-category="science">
-                            <div class="cert-header"><h3>In-core Nuclear Fuel</h3></div>
+                            <div class="cert-header"><h3>In-core Nuclear Fuel Management</h3></div>
                             <div class="cert-body">
                                 <div class="cert-issuer"><i class="fas fa-award"></i> UNAM (Coursera)</div>
                                 <div class="cert-date"><i class="far fa-calendar-alt"></i> Feb 2024</div>
                             </div>
                         </div>
                     
-                        <!-- Writing & Publishing -->
-                        <div class="certification-card" data-category="technical">
-                            <div class="cert-header"><h3>Write & Publish a Paper</h3></div>
+                        <div class="certification-card" data-category="management">
+                            <div class="cert-header"><h3>Creativity, Innovation and Transformation</h3></div>
                             <div class="cert-body">
-                                <div class="cert-issuer"><i class="fas fa-award"></i> École Polytechnique</div>
-                                <div class="cert-date"><i class="far fa-calendar-alt"></i> Nov 2023</div>
+                                <div class="cert-issuer"><i class="fas fa-award"></i> Penn State University (Coursera)</div>
+                                <div class="cert-date"><i class="far fa-calendar-alt"></i> Feb 2024</div>
+                                <a href="https://coursera.org/verify/RE5UJTG6MV26" class="cert-link" target="_blank" rel="noopener">View Certificate <i class="fas fa-external-link-alt"></i></a>
                             </div>
                         </div>
                     
-                        <!-- Cybersecurity Intro -->
                         <div class="certification-card" data-category="technical">
-                            <div class="cert-header"><h3>Introduction to Cybersecurity</h3></div>
+                            <div class="cert-header"><h3>Cloud Foundations</h3></div>
                             <div class="cert-body">
-                                <div class="cert-issuer"><i class="fas fa-award"></i> IBM (Coursera)</div>
-                                <div class="cert-date"><i class="far fa-calendar-alt"></i> Aug 2023</div>
+                                <div class="cert-issuer"><i class="fas fa-award"></i> Great Learning</div>
+                                <div class="cert-date"><i class="far fa-calendar-alt"></i> Jan 2024</div>
                             </div>
                         </div>
-                    
-                        <!-- Hardware & OS -->
+
                         <div class="certification-card" data-category="technical">
-                            <div class="cert-header"><h3>Hardware & OS</h3></div>
+                            <div class="cert-header"><h3>Network Security</h3></div>
                             <div class="cert-body">
-                                <div class="cert-issuer"><i class="fas fa-award"></i> IBM (Coursera)</div>
-                                <div class="cert-date"><i class="far fa-calendar-alt"></i> Aug 2023</div>
-                            </div>
-                        </div>
-                    
-                        <!-- Machine Learning -->
-                        <div class="certification-card" data-category="technical">
-                            <div class="cert-header"><h3>Machine Learning</h3></div>
-                            <div class="cert-body">
-                                <div class="cert-issuer"><i class="fas fa-award"></i> Google (Coursera)</div>
-                                <div class="cert-date"><i class="far fa-calendar-alt"></i> Sep 2023</div>
-                            </div>
-                        </div>
-                    
-                        <!-- Network Security -->
-                        <div class="certification-card" data-category="technical">
-                            <div class="cert-header"><h3>Cisco Network Security</h3></div>
-                            <div class="cert-body">
-                                <div class="cert-issuer"><i class="fas fa-award"></i> Cisco (Coursera)</div>
+                                <div class="cert-issuer"><i class="fas fa-award"></i> Cisco</div>
                                 <div class="cert-date"><i class="far fa-calendar-alt"></i> Dec 2023</div>
                             </div>
                         </div>
                     
-                        <!-- Security Risks -->
                         <div class="certification-card" data-category="technical">
-                            <div class="cert-header"><h3>Manage Security Risks</h3></div>
+                            <div class="cert-header"><h3>How to Write and Publish a Scientific Paper</h3></div>
+                            <div class="cert-body">
+                                <div class="cert-issuer"><i class="fas fa-award"></i> École Polytechnique (Coursera)</div>
+                                <div class="cert-date"><i class="far fa-calendar-alt"></i> Nov 2023</div>
+                            </div>
+                        </div>
+                    
+                        <div class="certification-card" data-category="science">
+                            <div class="cert-header"><h3>Particle Physics: An Introduction</h3></div>
+                            <div class="cert-body">
+                                <div class="cert-issuer"><i class="fas fa-award"></i> University of Geneva (Coursera)</div>
+                                <div class="cert-date"><i class="far fa-calendar-alt"></i> Nov 2023</div>
+                                <img src="images/particle.png" alt="Particle Physics Certificate" class="credential-badge" loading="lazy">
+                                <a href="https://coursera.org/share/32404c415e6846d87d1797341173d4fe" class="cert-link" target="_blank" rel="noopener">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="certification-card" data-category="technical management">
+                            <div class="cert-header"><h3>A Strategic Approach to Cybersecurity</h3></div>
+                            <div class="cert-body">
+                                <div class="cert-issuer"><i class="fas fa-award"></i> University of Maryland (Coursera)</div>
+                                <div class="cert-date"><i class="far fa-calendar-alt"></i> Oct 2023</div>
+                                <a href="https://coursera.org/verify/M3SYL9V3S3PK" class="cert-link" target="_blank" rel="noopener">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                    
+                        <div class="certification-card" data-category="technical">
+                            <div class="cert-header"><h3>Advanced Writing</h3></div>
+                            <div class="cert-body">
+                                <div class="cert-issuer"><i class="fas fa-award"></i> UC Irvine (Coursera)</div>
+                                <div class="cert-date"><i class="far fa-calendar-alt"></i> Oct 2023</div>
+                                <a href="https://coursera.org/verify/CAKOZDVDFEEN" class="cert-link" target="_blank" rel="noopener">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                    
+                        <div class="certification-card" data-category="technical">
+                            <div class="cert-header"><h3>Introduction to Cybersecurity Tools & Cyber Attacks</h3></div>
+                            <div class="cert-body">
+                                <div class="cert-issuer"><i class="fas fa-award"></i> IBM (Coursera)</div>
+                                <div class="cert-date"><i class="far fa-calendar-alt"></i> Aug 2023</div>
+                            </div>
+                        </div>
+
+                        <div class="certification-card" data-category="technical">
+                            <div class="cert-header"><h3>Introduction to Hardware and Operating Systems</h3></div>
+                            <div class="cert-body">
+                                <div class="cert-issuer"><i class="fas fa-award"></i> IBM (Coursera)</div>
+                                <div class="cert-date"><i class="far fa-calendar-alt"></i> Aug 2023</div>
+                            </div>
+                        </div>
+
+                        <div class="certification-card" data-category="technical">
+                            <div class="cert-header"><h3>Play It Safe: Manage Security Risks</h3></div>
                             <div class="cert-body">
                                 <div class="cert-issuer"><i class="fas fa-award"></i> Google (Coursera)</div>
                                 <div class="cert-date"><i class="far fa-calendar-alt"></i> Aug 2023</div>
                             </div>
                         </div>
-                    
-                        <!-- Data Insights -->
+
                         <div class="certification-card" data-category="technical">
-                            <div class="cert-header"><h3>Data to Insights</h3></div>
+                            <div class="cert-header"><h3>Foundations of Cybersecurity</h3></div>
                             <div class="cert-body">
                                 <div class="cert-issuer"><i class="fas fa-award"></i> Google (Coursera)</div>
-                                <div class="cert-date"><i class="far fa-calendar-alt"></i> 2023</div>
-                                <a href="https://coursera.org/verify/EABLVA9DTUDE" class="cert-link" target="_blank" rel="noopener">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                                <div class="cert-date"><i class="far fa-calendar-alt"></i> Jun 2023</div>
                             </div>
                         </div>
                     
-                        <!-- Strategic Cybersecurity -->
-                        <div class="certification-card" data-category="technical management">
-                            <div class="cert-header"><h3>Strategic Cybersecurity</h3></div>
+                        <div class="certification-card" data-category="technical science">
+                            <div class="cert-header"><h3>Introduction to Quantum Computing (QxQ)</h3></div>
                             <div class="cert-body">
-                                <div class="cert-issuer"><i class="fas fa-award"></i> Univ. of Maryland (Coursera)</div>
-                                <div class="cert-date"><i class="far fa-calendar-alt"></i> 2023</div>
-                                <a href="https://coursera.org/verify/M3SYL9V3S3PK" class="cert-link" target="_blank" rel="noopener">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                                <div class="cert-issuer"><i class="fas fa-award"></i> The Coding School</div>
+                                <div class="cert-date"><i class="far fa-calendar-alt"></i> Apr 2023</div>
+                                <img src="images/quantum.jpg" alt="Quantum computing" class="credential-badge" loading="lazy">
+                                <a href="https://verified.sertifier.com/en/verify/57329896918427/" class="cert-link" target="_blank" rel="noopener">View Certificate <i class="fas fa-external-link-alt"></i></a>
                             </div>
                         </div>
                     
-                        <!-- Advanced Writing -->
-                        <div class="certification-card" data-category="technical">
-                            <div class="cert-header"><h3>Advanced Writing</h3></div>
+                        <div class="certification-card" data-category="technical biomedical">
+                            <div class="cert-header"><h3>Virtual Immersion into Biomedical Engineering Summer Program</h3></div>
                             <div class="cert-body">
-                                <div class="cert-issuer"><i class="fas fa-award"></i> UC Irvine (Coursera)</div>
-                                <div class="cert-date"><i class="far fa-calendar-alt"></i> 2023</div>
-                                <a href="https://coursera.org/verify/CAKOZDVDFEEN" class="cert-link" target="_blank" rel="noopener">View Certificate <i class="fas fa-external-link-alt"></i></a>
-                            </div>
-                        </div>
-                    
-                        <!-- Data Science -->
-                        <div class="certification-card" data-category="technical">
-                            <div class="cert-header"><h3>Foundations of Data Science</h3></div>
-                            <div class="cert-body">
-                                <div class="cert-issuer"><i class="fas fa-award"></i> Google (Coursera)</div>
-                                <div class="cert-date"><i class="far fa-calendar-alt"></i> 2023</div>
-                                <a href="https://coursera.org/verify/2ZW3VFU6MP4H" class="cert-link" target="_blank" rel="noopener">View Certificate <i class="fas fa-external-link-alt"></i></a>
-                            </div>
-                        </div>
-                    
-                        <!-- Cyber Forensics -->
-                        <div class="certification-card" data-category="technical">
-                            <div class="cert-header"><h3>Cyber Forensics</h3></div>
-                            <div class="cert-body">
-                                <div class="cert-issuer"><i class="fas fa-award"></i> Great Learning Academy</div>
-                                <div class="cert-date"><i class="far fa-calendar-alt"></i> 2023</div>
-                            </div>
-                        </div>
-                    
-                        <!-- Ethical Hacking -->
-                        <div class="certification-card" data-category="technical">
-                            <div class="cert-header"><h3>Introduction to Ethical Hacking</h3></div>
-                            <div class="cert-body">
-                                <div class="cert-issuer"><i class="fas fa-award"></i> Great Learning Academy</div>
-                                <div class="cert-date"><i class="far fa-calendar-alt"></i> 2023</div>
+                                <div class="cert-issuer"><i class="fas fa-award"></i> Worcester Polytechnic Institute</div>
+                                <div class="cert-date"><i class="far fa-calendar-alt"></i> Aug 2022</div>
+                                <img src="images/vibe.png" alt="VIBE 22" class="credential-badge" loading="lazy">
                             </div>
                         </div>
                     </div>
@@ -625,18 +612,41 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Animation for skill bars with a slight delay for each bar
+        function countCertifications() {
+            const cards = document.querySelectorAll('.certification-card');
+            let totalCount = cards.length;
+            let technicalCount = 0;
+            let managementCount = 0;
+            let scienceCount = 0;
+            let biomedicalCount = 0;
+            
+            cards.forEach(card => {
+                const categories = card.getAttribute('data-category').toLowerCase().split(' ');
+                if (categories.includes('technical')) technicalCount++;
+                if (categories.includes('management')) managementCount++;
+                if (categories.includes('science')) scienceCount++;
+                if (categories.includes('biomedical')) biomedicalCount++;
+            });
+            
+            document.getElementById('totalCount').textContent = totalCount;
+            document.getElementById('technicalCount').textContent = technicalCount;
+            document.getElementById('managementCount').textContent = managementCount;
+            document.getElementById('scienceCount').textContent = scienceCount;
+            document.getElementById('biomedicalCount').textContent = biomedicalCount;
+        }
+        
+        countCertifications();
+        
         setTimeout(function() {
             document.querySelectorAll('.skill-level').forEach(function(skillBar, index) {
                 setTimeout(function() {
                     const targetWidth = skillBar.style.getPropertyValue('--target-width');
                     skillBar.style.width = targetWidth;
                     skillBar.style.animation = 'skillBarAnimation 1s forwards';
-                }, index * 100); // Stagger animations by 100ms
+                }, index * 100);
             });
         }, 300);
         
-        // Enhanced hover effects for skill bars
         document.querySelectorAll('.skill-bar').forEach(function(bar) {
             bar.addEventListener('mouseenter', function() {
                 const skillLevel = this.querySelector('.skill-level');
@@ -651,7 +661,6 @@
             });
         });
         
-        // Active tab management
         document.querySelectorAll('.tab-btn').forEach(function(tab) {
             tab.addEventListener('click', function() {
                 document.querySelectorAll('.tab-btn').forEach(function(t) {
@@ -661,13 +670,11 @@
             });
         });
         
-        // Certification filtering system
         const filterButtons = document.querySelectorAll('.filter-btn');
         const certificationCards = document.querySelectorAll('.certification-card');
         
         filterButtons.forEach(button => {
             button.addEventListener('click', function() {
-                // Update active button
                 filterButtons.forEach(btn => btn.classList.remove('active'));
                 this.classList.add('active');
                 
@@ -677,7 +684,7 @@
                     if (filterValue === 'all') {
                         card.style.display = 'flex';
                     } else {
-                        const categories = card.getAttribute('data-category').split(' ');
+                        const categories = card.getAttribute('data-category').toLowerCase().split(' ');
                         if (categories.includes(filterValue)) {
                             card.style.display = 'flex';
                         } else {
@@ -686,7 +693,6 @@
                     }
                 });
                 
-                // Apply fade-in animation to visible cards
                 document.querySelectorAll('.certification-card[style="display: flex;"]').forEach((card, index) => {
                     card.style.animation = 'none';
                     setTimeout(() => {
@@ -696,14 +702,12 @@
             });
         });
         
-        // Check for hash in URL to scroll to certifications section if needed
         if (window.location.hash === '#certifications') {
             setTimeout(() => {
                 document.getElementById('certifications').scrollIntoView({behavior: 'smooth'});
             }, 500);
         }
         
-        // Add scroll to top functionality
         const scrollToTopBtn = document.getElementById('scrollTopBtn');
         
         window.addEventListener('scroll', function() {
@@ -723,7 +727,6 @@
             });
         });
         
-        // Add intersection observer for fade-in effects
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -739,8 +742,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
