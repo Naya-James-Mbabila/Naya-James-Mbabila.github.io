@@ -610,12 +610,11 @@
             </div>
         </footer>
     </div>
-
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         function countCertifications() {
             const cards = document.querySelectorAll('.certification-card');
-            let totalCount = cards.length;
+            let totalCount = 0;
             let technicalCount = 0;
             let managementCount = 0;
             let scienceCount = 0;
@@ -623,10 +622,23 @@
             
             cards.forEach(card => {
                 const categories = card.getAttribute('data-category').toLowerCase().split(' ');
-                if (categories.includes('technical')) technicalCount++;
-                if (categories.includes('management')) managementCount++;
-                if (categories.includes('science')) scienceCount++;
-                if (categories.includes('biomedical')) biomedicalCount++;
+                const title = card.querySelector('h3').textContent;
+                
+                // Count courses for multi-course certifications
+                let courseCount = 1; 
+                
+                if (title.includes('Google Advanced Data Analytics')) {
+                    courseCount = 7; 
+                } else if (title.includes('Google Project Management')) {
+                    courseCount = 6; 
+                }
+                
+                totalCount += courseCount;
+                
+                if (categories.includes('technical')) technicalCount += courseCount;
+                if (categories.includes('management')) managementCount += courseCount;
+                if (categories.includes('science')) scienceCount += courseCount;
+                if (categories.includes('biomedical')) biomedicalCount += courseCount;
             });
             
             document.getElementById('totalCount').textContent = totalCount;
@@ -743,3 +755,4 @@
     </script>
 </body>
 </html>
+
