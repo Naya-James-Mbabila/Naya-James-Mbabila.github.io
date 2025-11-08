@@ -101,6 +101,26 @@
             line-height: 1.6;
             color: #334155;
         }
+
+        /* CV Download Icon Styles */
+        .cv-download-icon {
+            display: inline-block;
+            margin-left: 15px;
+            color: #dc2626;
+            font-size: 0.7em;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            vertical-align: middle;
+        }
+
+        .cv-download-icon:hover {
+            color: #991b1b;
+            transform: translateY(-3px) scale(1.1);
+        }
+
+        .cv-download-icon i {
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
     </style>
 </head>
 <body>
@@ -109,7 +129,12 @@
             <div class="profile-photo">
                 <img src="images/index.png" alt="Naya James Mbabila profile photo" loading="eager">
             </div>
-            <h1 class="book-title">Naya James Mbabila</h1>
+            <h1 class="book-title">
+                Naya James Mbabila 
+                <a href="assets/Naya_CV.pdf" download class="cv-download-icon" title="Download CV" aria-label="Download CV">
+                    <i class="fas fa-file-pdf"></i>
+                </a>
+            </h1>
             <p class="book-subtitle">Biomedical Engineering Student</p>
         </header>
         
@@ -523,8 +548,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
