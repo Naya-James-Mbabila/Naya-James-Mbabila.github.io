@@ -74,10 +74,13 @@
         .entry {
             margin-bottom: 20px;
             transition: all 0.3s ease;
+            padding: 10px;
+            border-left: 4px solid #f0f0f0;
         }
         
         .entry:hover {
             transform: translateX(5px);
+            border-left-color: #2563eb;
         }
         
         /* Timeline visual elements for experiences */
@@ -121,6 +124,28 @@
         .cv-download-icon i {
             filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
         }
+
+        /* Improved list styles */
+        ul.entry-details-list,
+        ul.awards-list,
+        ul.membership-list,
+        ul.media-list,
+        ul.skills-list,
+        ul.certificates-list {
+            list-style-type: disc;
+            margin-left: 20px;
+            padding-left: 10px;
+        }
+
+        ul.entry-details-list li,
+        ul.awards-list li,
+        ul.membership-list li,
+        ul.media-list li,
+        ul.skills-list li,
+        ul.certificates-list li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
     </style>
 </head>
 <body>
@@ -135,7 +160,7 @@
                     <i class="fas fa-file-pdf"></i>
                 </a>
             </h1>
-            <p class="book-subtitle">Biomedical Engineering Student</p>
+            <p class="book-subtitle">B.Sc. Biomedical Engineering (Graduating in February 2026)</p>
         </header>
         
         <nav class="tabs" aria-label="Main Navigation">
@@ -155,11 +180,14 @@
                         <h3 class="interests-title">Areas of Interest</h3>
                         <div class="interest-tags">
                             <!-- Biomedical Engineering Tags -->
+                            <div class="interest-tag biomedical-tag" data-category="biomedical">Biophotonics</div>
+                            <div class="interest-tag biomedical-tag" data-category="biomedical">Medical Imaging and Sensing</div>
+                            <div class="interest-tag biomedical-tag" data-category="biomedical">Biophysics</div>
                             <div class="interest-tag biomedical-tag" data-category="biomedical">Bioinstrumentation</div>
                             <div class="interest-tag biomedical-tag" data-category="biomedical">Photonics</div>
                             <div class="interest-tag biomedical-tag" data-category="biomedical">Engineering Design</div>
                             <div class="interest-tag biomedical-tag" data-category="biomedical">Biomaterials</div>
-                            <div class="interest-tag biomedical-tag" data-category="biomedical">Biophysics</div>
+                            <div class="interest-tag biomedical-tag" data-category="biomedical">Biomechanics</div>
                             <div class="interest-tag biomedical-tag" data-category="biomedical">IoMT </div>
                             <div class="interest-tag biomedical-tag" data-category="biomedical">Bioinformatics </div>
                             <div class="interest-tag biomedical-tag" data-category="biomedical">Nanotechnology</div>
@@ -200,6 +228,22 @@
                                 School of Engineering Sciences, University of Ghana</p>
                         <p class="entry-subtitle">University of Ghana, Legon</p>
                         <p class="entry-date">2022 - 2025</p>
+                        <ul class="entry-details-list">
+                            <li>Capstone Project: Design of Novel Aspirator Connector for Fluid Evacuation during Cesarean Sections</li>
+                            <li>Relevant Coursework: Bioinstrumentation, Biophotonics, Biomaterials, Biophysics, Biomechanics, Biomedical Engineering Systems, Medical Physics, Nanotechnology, Bioinformatics, Medical Imaging, Calculus I & II, Mechanics I & II, Anatomy & Physiology, Thermodynamics, Bioinformatics, Programming, Fluid Mechanics, Law for Engineers</li>
+                            <li>Highlights: President, GSBE-UG; OBED Fellow; Speaker, ESUG; Dean’s Honor List</li>
+                            <li>Final CGPA: 3.8182</li>
+                        </ul>
+                    </div>
+                    <div class="entry">
+                        <h3 class="entry-title">General Science Program</h3>
+                        <p class="institution">Nandom Senior High School</p>
+                        <p class="entry-subtitle">UWR, Ghana</p>
+                        <p class="entry-date">2018 - 2021</p>
+                        <ul class="entry-details-list">
+                            <li>WASSCE Aggregate: 9</li>
+                            <li>Highlights: School Principal Contestant, National Science & Maths Quiz (NSMQ 2021); Contestant, Senior High School Renewable Energy Challenge (SHSREC 2021)</li>
+                        </ul>
                     </div>
                 </div>
                 
@@ -207,21 +251,80 @@
                     <h2 class="section-title">Professional and Academic Experience</h2>
                     
                     <div class="default-experiences">
-                        <h3 class="subsection-title">Recent Academic Programs</h3>
+                        <h3 class="subsection-title">Recent Experiences</h3>
                         <div class="entry">
-                            <h3 class="entry-title">Obed Fellowship</h3>
-                            <p class="entry-subtitle">University of Michigan, Global Health Design Initiative</p>
-                            <p class="entry-date">August 2024 - September 2024</p>
+                            <h3 class="entry-title">Fully-Funded Global Delegate, Future Action Summit Malaysia 2025</h3>
+                            <p class="entry-subtitle">Echo Change</p>
+                            <p class="entry-date">Nov 27 – 30, 2025</p>
+                            <p class="entry-subtitle">Kuala Lumpur, Malaysia</p>
                             <ul class="entry-details-list">
-                                <li>Conducted clinical needs assessment at Obstetrics and Gynecology Units of Korle Bu Teaching Hospital through ethnographic research</li>
-                                <li>Collaborated with interdisciplinary team to identify healthcare technology gaps</li>
+                                <li>Selected as one of the top ten fully-funded participants from a global pool of thousands of applicants.</li>
+                                <li>Led working group on Medical Technology and Policy, contributing to the development of the Post-2030 Youth Charter for Global Development.</li>
+                                <li>Engaged in discussions on Sustainable Development Goals (SDGs) with international changemakers and leaders.</li>
+                                <li>Participated in workshops, simulations, and cultural exchanges to advance youth-driven solutions for sustainability.</li>
+                            </ul>
+                        </div>
+                        <div class="entry">
+                            <h3 class="entry-title">2024 Fellow, Global Health Design Initiative</h3>
+                            <p class="entry-subtitle">University of Michigan & University of Ghana</p>
+                            <p class="entry-date">Aug 2024 – Sep 2024</p>
+                            <p class="entry-subtitle">Korle Bu Teaching Hospital, Accra</p>
+                            <ul class="entry-details-list">
+                                <li>Conducted a comprehensive needs assessment within the Obstetrics and Gynecology Department through ethnographic observation of surgeries and clinician ward rounds, complemented by interviews and stakeholder engagements to identify medical and engineering challenges.</li>
+                                <li>Assessed 60 unique problems, developed design specifications, and selected one for a capstone project.</li>
+                                <li>Supervised by Ing. Prof. Elsie Effah Kaufmann, Dr. Claude Fiifi Hayford, Dr. Dhanalakshmi Thiyagarajan (University of Michigan), Prof. Julia Kramer (University of Michigan)</li>
+                            </ul>
+                        </div>
+                        <div class="entry">
+                            <h3 class="entry-title">Biomedical Engineering Intern</h3>
+                            <p class="entry-subtitle">Komfo Anokye Teaching Hospital</p>
+                            <p class="entry-date">May 2023 - Aug 2023 & Feb 2024 – Apr 2024</p>
+                            <p class="entry-subtitle">Kumasi, Ghana</p>
+                            <ul class="entry-details-list">
+                                <li>Participated in calibrating, troubleshooting, servicing, repairing, and maintaining medical equipment including X-ray, MRI, ventilators, dialysis and anesthesia machines.</li>
+                                <li>Programmed and deployed a medical equipment inventory software (EquiBase) for the Biomedical Engineering Department to assist in device inventory management.</li>
+                            </ul>
+                        </div>
+                        <div class="entry">
+                            <h3 class="entry-title">Medical Laboratory Intern</h3>
+                            <p class="entry-subtitle">Powerhouse Hospital</p>
+                            <p class="entry-date">Oct 2022 – Dec 2022</p>
+                            <p class="entry-subtitle">Kumasi, Ghana</p>
+                            <ul class="entry-details-list">
+                                <li>Performed laboratory analyses on biological samples (hematology, clinical chemistry, microbiology, serology) and conducted procedures such as blood cross-matching and microscopic examinations using diagnostic equipment to support patient diagnoses.</li>
+                            </ul>
+                        </div>
+                        <div class="entry">
+                            <h3 class="entry-title">Paint Technician Apprentice</h3>
+                            <p class="entry-subtitle">Lumba Vehicle Spraying Shop</p>
+                            <p class="entry-date">2013 - 2021</p>
+                            <p class="entry-subtitle">Suame Magazine, Kumasi, Ghana</p>
+                            <ul class="entry-details-list">
+                                <li>Progressed from preparation tasks to independently executing vehicle painting projects and customer engagement.</li>
                             </ul>
                         </div>
                         <h3 class="subsection-title">Recent Leadership Roles</h3>
                         
                         <div class="entry">
+                            <h3 class="entry-title">SES Editorial Board | National Service Personnel</h3>
+                            <p class="entry-subtitle">University of Ghana · Full-time</p>
+                            <p class="entry-date">Nov 2025 - Present · 2 mos</p>
+                            <p class="entry-subtitle">Legon, Greater Accra Region, Ghana · On-site</p>
+                            <ul class="entry-details-list">
+                                <li>SES committees</li>
+                            </ul>
+                        </div>
+                        <div class="entry">
+                            <h3 class="entry-title">SES Building Expansion Committee Member</h3>
+                            <p class="entry-subtitle">University of Ghana · Hybrid</p>
+                            <p class="entry-date">Jan 2025 - Present · 1 yr</p>
+                            <ul class="entry-details-list">
+                                <li>SES committees</li>
+                            </ul>
+                        </div>
+                        <div class="entry">
                             <h3 class="entry-title">Speaker of Parliament</h3>
-                            <p class="entry-subtitle">Engineering Students Associaion of University of Ghana (ESUG)</p>
+                            <p class="entry-subtitle">Engineering Students Association of University of Ghana (ESUG)</p>
                             <p class="entry-date">November 2024 - September 2025 </p>
                             <div class="promotion-path">
                                 <span>Previously: Electoral Commission Chair (Sep 2023-Oct 2024)</span>
@@ -251,82 +354,15 @@
                     </button>
                     
                     <div class="additional-experiences" style="display: none;">
-                        <h3 class="subsection-title">Current Positions</h3>                        
+                        <h3 class="subsection-title">Additional Experiences</h3>                        
                         <div class="entry">
                             <h3 class="entry-title">Building Expansion Committee Member</h3>
                             <p class="entry-subtitle">School of Engineering Sciences, University of Ghana</p>
-                            <p class="entry-date">January 2025 - Present</p>
+                            <p class="entry-date">2025 - Present</p>
                             <ul class="entry-details-list">
-                                <li>Contributed to planning and design discussions for school infrastructure expansion</li>
+                                <li>Contributing to the planning and expansion of engineering facilities</li>
                             </ul>
                         </div>
-                        
-                        <div class="entry">
-                            <h3 class="entry-title">Project Department Head</h3>
-                            <p class="entry-subtitle">Street Fund Global Foundation</p>
-                            <p class="entry-date">January 2025 - Present</p>
-                            <ul class="entry-details-list">
-                                <li>Oversaw project planning and implementation for community development initiatives</li>
-                            </ul>
-                        </div>
-                        
-                        <h3 class="subsection-title">Recent Positions</h3>
-                        <div class="entry">
-                            <h3 class="entry-title">Ambassador</h3>
-                            <p class="entry-subtitle">Studentpreneur Africa Network (SAN)</p>
-                            <p class="entry-date">February 2025 - April 2025</p>
-                            <ul class="entry-details-list">
-                                <li>Represented the organization and promoted entrepreneurial initiatives on campus</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="entry">
-                            <h3 class="entry-title">Conference Presenter</h3>
-                            <p class="entry-subtitle">4th National GSBE Conference</p>
-                            <p class="entry-date">October 2024</p>
-                            <ul class="entry-details-list">
-                                <li>Presented research on innovative echolocation assistive device for visually impaired individuals</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="entry">
-                            <h3 class="entry-title">Campus Ambassador</h3>
-                            <p class="entry-subtitle">Euron</p>
-                            <p class="entry-date">November 2024 - April 2025</p>
-                            <ul class="entry-details-list">
-                                <li>Promoted coding workshops and Euron's educational programs through campus events and social media</li>
-                            </ul>
-                        </div>
-                        
-                        <h3 class="subsection-title">Internships</h3>
-                        <div class="entry">
-                            <h3 class="entry-title">International Online Case Study Internship <span class="team-label">(Team Project)</span></h3>
-                            <p class="entry-subtitle">UG Careers Directorate, Ghana/Germany/Kenya</p>
-                            <p class="entry-date">April 2025</p>
-                            <ul class="entry-details-list">
-                                <li>Collaborated with international students and companies to develop real-world solutions.</li>
-                            </ul>
-                        </div>
-                        <div class="entry">
-                            <h3 class="entry-title">Clinical Engineering Intern</h3>
-                            <p class="entry-subtitle">Komfo Anokye Teaching Hospital</p>
-                            <p class="entry-date">February-April 2024 & September-October 2023</p>
-                            <ul class="entry-details-list">
-                                <li>Calibrated, serviced, and maintained medical equipment including anesthesia machines and MRI systems</li>
-                                <li>Programmed and installed medical equipment inventory management software (EquiBase)</li>
-                            </ul>
-                        </div>
-
-                        <div class="entry">
-                            <h3 class="entry-title">Medical Laboratory Intern</h3>
-                            <p class="entry-subtitle">Powerhouse Hospital, Kumasi, Ghana</p>
-                            <p class="entry-date">October 2022 - December 2022</p>
-                            <ul class="entry-details-list">
-                                <li>Performed diverse laboratory analyses on biological samples using advanced diagnostic equipment</li>
-                                <li>Maintained laboratory equipment and documented test results</li>
-                            </ul>
-                        </div>
-
                         <h3 class="subsection-title">Technical & Academic Programs</h3>
                         <div class="entry">
                             <h3 class="entry-title">Quantum Computing Program</h3>
@@ -374,24 +410,42 @@
                 <div class="cv-section">
                     <h2 class="section-title">Scholarships & Recognitions </h2>
                     <ul class="awards-list">
-                        <li><strong>HoD Recognition Award for Distinguished Leadership</strong> - Department of Biomedical Engineering (July, 2025)</li>
-                        <li><strong>Dean's Honor List</strong> - School of Engineering Sciences, University of Ghana (2023/2024 Academic Year, CGPA: 3.80/4.00)</li>
-                        <li><strong>Educational Pathways International Scholarship</strong> - Full Scholarship at University of Ghana (Awarded January 2022, January 2023, October 2023, November 2024)</li>
+                        <li><strong>Head of Department Recognition Award for Distinguished Leadership</strong> - Department of Biomedical Engineering (July, 2025)</li>
+                        <li><strong>Best Project Presentation Award</strong> - 4th National GSBE Conference (Oct, 2024) | Topic: "Design of Echolocation Glasses for Visually Impaired Individuals"</li>
+                        <li><strong>Dean’s Honor List</strong> - School of Engineering Sciences, University of Ghana (2023/2024 Academic Year, CGPA: 3.80/4.00)</li>
+                        <li><strong>Educational Pathways International Scholarship</strong> - Full Scholarship at University of Ghana (Awarded January 2022, January 2023, October 2023, November 2024) | approximately GH₵ 40,000.00 ($3,600.00 equivalent)</li>
+                        <li><strong>Overall Best Student</strong> - Nandom Senior High School (2018/19 and 2019/20 Academic Years)</li>
                     </ul>
                 </div>
 
                 <div class="cv-section">
-                    <h2 class="section-title">Certifications</h2>
+                    <h2 class="section-title">Skills, Certificates & Interests</h2>
+                    <h3 class="subsection-title">Technical Skills</h3>
+                    <ul class="skills-list">
+                        <li><strong>Engineering:</strong> CAD (SolidWorks, Autodesk Fusion), Medical Equipment Maintenance, Engineering Design, Research, Laboratory Equipment Operation</li>
+                        <li><strong>Technology:</strong> Python (Django, Scikit-learn, OpenCV, Data Science), MATLAB, Arduino, Proteus Design Suite, Machine Learning, SIEM, Cyber Security</li>
+                    </ul>
+
+                    <h3 class="subsection-title">Certificates</h3>
+                    <ul class="certificates-list">
+                        <li><strong>Global SDGs Leadership Certificate</strong> - Echo Change (Issued Nov 2025)</li>
+                        <li><strong>Google Advanced Data Analytics Certificate Badge</strong> - Coursera & Google (2025)</li>
+                        <li><strong>Google Project Management Professional Certificate Badge</strong> - Coursera & Google (2024)</li>
+                        <li><strong>Hospital Planning & Design and Equipment Management</strong> - Hospital Engineering Academy (November 2024)</li>
+                        <li><strong>Particle Physics: An Introduction</strong> - Coursera & Université de Genève (Nov 2023)</li>
+                        <li><strong>Quantum Computing</strong> - Qubit by Qubit, The Coding School & IBM (Oct 2022 - Apr 2023)</li>
+                        <li><strong>Virtual Immersion in Biomedical Engineering</strong> - Worcester Polytechnic Institute (Summer Program 2022)</li>
+                    </ul>
                     <p>View my <a href="skills.html#certifications" class="certificate-link">complete list of professional certifications</a> in the Skills & Expertise section.</p>
                 </div>
                 
                 <div class="cv-section">
                     <h2 class="section-title">Professional Memberships</h2>
                     <ul class="membership-list">
-                        <li><strong>Ghana Institution of Engineering</strong> - Student Member</li>
-                        <li><strong>The Field Engineer</strong> - Student Member</li>
+                        <li><strong>Ghana Institution of Engineering</strong> - Student Member (2024-Present)</li>
+                        <li><strong>The Field Engineer</strong> - Student Member (2023-Present)</li>
                         <li><strong>Elsie Effah Kaufmann Foundation</strong> - Volunteer (2023-Present)</li>
-                        <li><strong>Vispad Institute of Technology, Ghana</strong> - Member (2022-Present)</li>
+                        <li><strong>Vispad Institute of Technology, Ghana</strong> - Member and Teaching Assistant (2022-Present)</li>
                     </ul>
                 </div>
                 
@@ -415,6 +469,17 @@
                             <li>Keynote speaker on "Leveraging Occupational Breaks to Raise Industry Professionals" for biomedical engineering students</li>
                         </ul>
                     </div>
+                </div>
+
+                <div class="cv-section">
+                    <h2 class="section-title">Featured in Media Outlets</h2>
+                    <ul class="media-list">
+                        <li><strong>NSMQ Superstar Spotlight</strong> by Prof. Elsie Effah Kaufmann for excellence. → <a href="https://www.linkedin.com/posts/elsie-effah-kaufmann-phd-b1121a42_superstar-activity-7380622116070797312-68Ux?utm_source=share&utm_medium=member_desktop&rcm=ACoAADnqfwUBj4t375IuK6rq4gJiGmZOduQEHSc" target="_blank">LinkedIn Post</a></li>
+                        <li><strong>Life Studying Biomedical Engineering in Africa</strong> → <a href="https://thefieldengineer.com/blog/a-day-in-the-life-of/life-studying-biomedical-engineering-in-africa/?utm_source=linkedin&utm_medium=social&utm_campaign=grow-social-pro" target="_blank">The Field Engineer Article</a></li>
+                        <li><strong>GSBE-UG Healthcare Revolution</strong> → <a href="https://www.elevatehtm.com/post/revolutionizing-healthcare-gsbe-ug-s-mission-to-empower-biomedical-engineers-in-ghana" target="_blank">Elevate HTM Post</a></li>
+                        <li><strong>Hybrid Power Plant Presentation at the SHS Renewable Energy Challenge</strong> → <a href="https://web.facebook.com/homeradio99.7fmWa/posts/nandom-senior-high-school-students-present-hybrid-package-as-an-alternative-sour/996507717557787/?_rdc=1&_rdr" target="_blank">Home Radio Post</a></li>
+                        <li><strong>Quantum Computing Capstone Project Showcase</strong> → <a href="https://youtu.be/aZ8f94XUji4?si=dEJYnQueCn6p0OlM" target="_blank">YouTube Video</a></li>
+                    </ul>
                 </div>
                 
                 <div class="cv-section signature-section">
