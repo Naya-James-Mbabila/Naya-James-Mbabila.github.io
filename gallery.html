@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Professional and personal gallery of Naya James Mbabila showcasing academic, professional, and project-related photos">
+    <meta name="description" content="Professional gallery of Naya James Mbabila showcasing academic, professional, and project-related photos including Future Action Summit 2025">
     <title>Naya James Mbabila - Gallery</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Preload critical assets -->
     <link rel="preload" href="images/index.png" as="image">
     <style>
-        /* Additional styles for the improved gallery layout */
+        /* Gallery Layout */
         .gallery-container {
             display: flex;
             gap: 20px;
@@ -26,24 +26,51 @@
         
         .gallery-item {
             position: relative;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             height: auto;
             aspect-ratio: 1/1.2;
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            cursor: pointer;
+            background: #fff;
+        }
+        
+        .gallery-item.featured-item {
+            aspect-ratio: 16/9;
+            border: 3px solid transparent;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.3);
+        }
+        
+        .gallery-item.featured-item:hover {
+            border-color: #4ECDC4;
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.5);
         }
         
         .gallery-item.visible {
             opacity: 1;
             transform: translateY(0);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .gallery-item:hover {
-            transform: translateY(-5px) !important;
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
         }
         
         .gallery-image-container {
@@ -56,11 +83,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .gallery-item:hover .gallery-image {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
         
         .image-overlay {
@@ -69,9 +96,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%);
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 100%);
             opacity: 1;
-            transition: opacity 0.3s ease;
+        }
+        
+        .featured-overlay {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
         }
         
         .gallery-caption {
@@ -79,120 +109,347 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            padding: 15px;
+            padding: 20px;
             color: white;
-            transform: translateY(100%);
-            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
-            opacity: 0;
-            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease;
-        }
-        
-        .gallery-item.visible .gallery-caption {
-            opacity: 1;
             transform: translateY(0);
-            transition-delay: 0.3s;
-        }
-        
-        .gallery-item:hover .gallery-caption {
-            transform: translateY(0);
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
             opacity: 1;
         }
         
         .gallery-caption h3 {
-            margin: 0 0 5px 0;
-            font-size: 1.1rem;
+            margin: 0 0 8px 0;
+            font-size: 1.2rem;
+            font-weight: 600;
         }
         
         .gallery-caption p {
             margin: 0;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             opacity: 0.9;
+            line-height: 1.4;
         }
         
-        .gallery-category-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(0,0,0,0.7);
+        /* Read More Button */
+        .read-more-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 6px 15px;
+            background: rgba(136, 115, 1, 0.924);
             color: white;
-            padding: 3px 8px;
-            border-radius: 12px;
-            font-size: 0.7rem;
-            z-index: 2;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
         
-        /* Wave animation background */
-        .wave-background {
+        .read-more-btn:hover {
+            background: rgb(132, 121, 6);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(158, 142, 1, 0.881);
+        }
+        
+        .category-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            z-index: 3;
+        }
+        
+        /* Featured Image Modal */
+        .image-modal {
+            display: none;
             position: fixed;
-            top: 0;
+            z-index: 10000;
             left: 0;
+            top: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            background: rgba(0, 0, 0, 0.95);
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .image-modal.show {
+            display: flex;
+            opacity: 1;
+            animation: modalFadeIn 0.3s ease;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .image-modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 1000px;
+            background: #111;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        
+        .image-modal.show .image-modal-content {
+            transform: translateY(0);
+        }
+        
+        .image-container {
+            position: relative;
+            width: 100%;
+            max-height: 70vh;
             overflow: hidden;
         }
         
-        .wave-layer {
+        #modalImage {
+            width: 100%;
+            height: auto;
+            max-height: 70vh;
+            object-fit: contain;
+            background: #000;
+        }
+        
+        .image-modal-header {
+            padding: 25px;
+            background: rgba(0,0,0,0.95);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .image-modal-header h3 {
+            margin: 0 0 10px 0;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .image-modal-header .image-summary {
+            color: #ddd;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .image-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        .meta-item i {
+            color: #4ECDC4;
+        }
+        
+        .modal-close {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 200%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
-            animation: waveAnimation 20s infinite linear;
-            opacity: 0.1;
+            top: 15px;
+            right: 20px;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            z-index: 10001;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
         }
         
-        .wave-1 {
-            animation-delay: 0s;
-            height: 90%;
+        .modal-close:hover {
+            background: rgba(255,107,107,0.8);
+            transform: rotate(90deg);
         }
         
-        .wave-2 {
-            animation-delay: -5s;
-            animation-duration: 25s;
-            height: 85%;
+        /* Latest Update Banner */
+        .latest-update {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            animation: pulse 2s infinite;
         }
         
-        .wave-3 {
-            animation-delay: -10s;
-            animation-duration: 30s;
-            height: 80%;
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
         }
         
-        .wave-4 {
-            animation-delay: -15s;
-            animation-duration: 35s;
-            height: 75%;
+        .latest-update i {
+            font-size: 1.8rem;
+            color: white;
         }
         
-        @keyframes waveAnimation {
-            0% {
-                transform: translateX(0) translateY(0);
-            }
-            50% {
-                transform: translateX(-25%) translateY(-5%);
-            }
-            100% {
-                transform: translateX(-50%) translateY(0);
-            }
+        .latest-update-content h4 {
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+            font-weight: 600;
         }
         
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
+        .latest-update-content p {
+            margin: 0;
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+        
+        /* Filter Controls */
+        .filter-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 25px 0;
+            padding: 15px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            border: none;
+            background: rgba(255,255,255,0.1);
+            color: #333;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .filter-btn:hover {
+            background: rgba(78, 205, 196, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .filter-btn.active {
+            background: linear-gradient(45deg, #4ECDC4, #44A08D);
+            color: white;
+            box-shadow: 0 4px 15px rgba(78, 205, 196, 0.4);
+        }
+        
+        /* Gallery Counter */
+        .gallery-counter {
+            text-align: center;
+            color: #666;
+            font-size: 0.95rem;
+            margin: 15px 0;
+            padding: 10px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+        }
+        
+        /* Loading Animation */
+        .loading-spinner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top: 3px solid #4ECDC4;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            z-index: 2;
+        }
+        
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
             .gallery-container {
                 flex-direction: column;
             }
             
+            .image-modal-content {
+                width: 95%;
+            }
+        }
+        
+        @media (max-width: 768px) {
             .gallery-item {
-                aspect-ratio: 1/1;
+                aspect-ratio: 16/9;
+            }
+            
+            .gallery-item.featured-item {
+                aspect-ratio: 16/9;
+            }
+            
+            .latest-update {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+            
+            .filter-controls {
+                justify-content: center;
+            }
+            
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+            
+            .image-modal-header {
+                padding: 20px;
+            }
+            
+            .image-modal-header h3 {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-caption {
+                padding: 15px;
+            }
+            
+            .gallery-caption h3 {
+                font-size: 1rem;
+            }
+            
+            .gallery-caption p {
+                font-size: 0.85rem;
+            }
+            
+            .read-more-btn {
+                padding: 4px 10px;
+                font-size: 0.8rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Unique wave animation background -->
+    <!-- Wave Background -->
     <div class="wave-background">
         <div class="wave-layer wave-1"></div>
         <div class="wave-layer wave-2"></div>
@@ -219,19 +476,33 @@
             <section class="gallery-section">
                 <div class="gallery-header">
                     <h2 class="section-title">Professional Gallery</h2>
+                </div>
                 
+                <!-- Latest Update Banner -->
+                <div class="latest-update">
+                    <i class="fas fa-images"></i>
+                    <div class="latest-update-content">
+                        <h4>Latest Update: Future Action Summit 2025</h4>
+                        <p>Featured image from my experience at the Future Action Summit in Kuala Lumpur, Malaysia.</p>
+                    </div>
+                </div>
+                
+                <!-- Filter Controls -->
                 <div class="filter-controls">
-                    <button class="filter-btn active" data-filter="all">All Photos</button>
+                    <button class="filter-btn active" data-filter="all">All Media</button>
                     <button class="filter-btn" data-filter="academic">Academic</button>
                     <button class="filter-btn" data-filter="professional">Professional</button>
                     <button class="filter-btn" data-filter="events">Events</button>
                     <button class="filter-btn" data-filter="personal">Personal</button>
+                    <button class="filter-btn" data-filter="summit">Summit</button>
                 </div>
                 
+                <!-- Gallery Counter -->
                 <div class="gallery-counter">
-                    <span id="showing-count">14</span> of <span id="total-count">14</span> items
+                    <span id="showing-count">18</span> of <span id="total-count">18</span> items
                 </div>
                 
+                <!-- Gallery Grid -->
                 <div class="gallery-container">
                     <div class="gallery-column" id="column1"></div>
                     <div class="gallery-column" id="column2"></div>
@@ -240,12 +511,11 @@
         </main>
         
         <footer class="book-footer">
-            <p>© 2025 Naya James Mbabila. All rights reserved. </p>
+            <p>© 2025 Naya James Mbabila. All rights reserved.</p>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/jm-naya/" class="social-link" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
                 <a href="mailto:nayajames2002@gmail.com" class="social-link" aria-label="Email" title="Email"><i class="fas fa-envelope"></i></a>
                 <a href="assets/Naya_CV.pdf" class="social-link" aria-label="CV" title="CV"><i class="fas fa-file-alt"></i></a>
-                
             </div>
             <div class="scroll-to-top">
                 <button id="scrollTopBtn" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
@@ -253,145 +523,194 @@
         </footer>
     </div>
 
-    <!-- Modal for enlarged image view -->
-    <div id="imageModal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="enlargedImg">
-        <div id="modalCaption" class="modal-caption"></div>
-        <button class="modal-nav-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
-        <button class="modal-nav-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+    <!-- Featured Image Modal -->
+    <div id="imageModal" class="image-modal">
+        <div class="image-modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="image-container">
+                <img id="modalImage" src="" alt="">
+                <div class="loading-spinner" id="imageLoading"></div>
+            </div>
+            <div class="image-modal-header">
+                <h3 id="modalTitle">Future Action Summit 2025 - Kuala Lumpur, Malaysia</h3>
+                <div class="image-summary" id="modalDescription">
+                    Attended the Future Action Summit in Kuala Lumpur, Malaysia as a fully funded delegate.
+                </div>
+                <div class="image-meta" id="modalMeta">
+                    <div class="meta-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>November 27-30, 2025</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Kuala Lumpur, Malaysia</span>
+                    </div>
+                </div>
+                <a id="modalLink" href="#" class="read-more-btn" target="_blank">Read More</a>
+            </div>
+        </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Gallery data - organized for better maintainability
+            // Gallery data 
             const galleryData = [
+                {
+                    src: "images/fas.jpeg",
+                    alt: "Future Action Summit 2025 Kuala Lumpur Malaysia",
+                    category: "summit",
+                    title: "Future Action Summit 2025",
+                    description: "Fully funded delegate at UN SDGs-focused youth summit",
+                    type: "image",
+                    featured: true,
+                    isFeatured: true,
+                    link: "https://www.linkedin.com/posts/jm-naya_fas-futureactionsummit-echochange-activity-7401482941538656256-4xIc?utm_source=share&utm_medium=member_desktop&rcm=ACoAADnqfwUBj4t375IuK6rq4gJiGmZOduQEHSc"
+                },
                 {
                     src: "images/gallery1.png",
                     alt: "Naya James Mbabila profile photo",
                     category: "professional",
                     title: "Profile",
-                    description: "Official profile picture"
+                    description: "Official profile picture",
+                    type: "image"
                 },
                 {
                     src: "images/gallery2.jpg",
                     alt: "With mentor Richard Densu",
                     category: "professional",
-                    title: "With Mentor: Ing. Richard Densu",
-                    description: "Professional mentorship session"
+                    title: "With Mentor: Richard Densu",
+                    description: "Professional mentorship session with Ing. Richard Densu, Engineering Manager",
+                    type: "image"
                 },
                 {
-                    src: "images/gallery3.jpg",
+                    src: "images/gallery3.jpeg",
                     alt: "With mentor Elsie Effah Kaufmann",
                     category: "professional",
-                    title: "With Mentor: Ing. Prof. Elsie Effah Kaufmann",
-                    description: "Academic and professional guidance session"
+                    title: "With Mentor: Prof. Elsie Effah Kaufmann",
+                    description: "Featured in Prof. Kaufmann's World Teachers' Day tribute",
+                    type: "image",
+                    link: "https://www.linkedin.com/posts/elsie-effah-kaufmann-phd-b1121a42_superstar-activity-7380622116070797312-68Ux?utm_source=share&utm_medium=member_desktop&rcm=ACoAADnqfwUBj4t375IuK6rq4gJiGmZOduQEHSc"
                 },
                 {
                     src: "images/gallery16.jpg",
                     alt: "Obed Fellowship Certificate",
                     category: "academic",
                     title: "2024 Obed Fellow",
-                    description: "Received the Prof. Samuel Obed Memorial Scholarship alongside my teammate. Also in the image are our supervisors; Ing. Prof. Elsie Effah Kaufmann and Dr. Claude Fiifi Hayford"
+                    description: "Received the Prof. Samuel Obed Memorial Scholarship",
+                    type: "image"
                 },
                 {
                     src: "images/HODaward.jpg",
                     alt: "HOD Recognition Award for Distinguished Leadership",
                     category: "events",
-                    title: "HOD Recognition Award for Distinguished Leadership",
-                    description: "Delivered by Prof. Samuel Kojo Kwofie, HOD, Department of Biomedical Engineering, School of Engineeering Sciences, University of Ghana (2023-2025)"
+                    title: "HOD Recognition Award",
+                    description: "Delivered by Prof. Samuel Kojo Kwofie, HOD, Department of Biomedical Engineering",
+                    type: "image"
                 }, 
                 {
                     src: "images/gallery4.jpg",
                     alt: "Studentpreneur Africa Network conference",
                     category: "events",
                     title: "Studentpreneur Africa Network Conference",
-                    description: "2025 conference at Accra Digital Center with Claudia Twum, SAN Founder"
+                    description: "2025 conference at Accra Digital Center with Claudia Twum, SAN Founder",
+                    type: "image"
                 },
                 {
                     src: "images/gallery5.jpg",
                     alt: "Capstone project proposal",
                     category: "academic",
-                    title: "After Capstone Project Proposal Defense",
-                    description: "Department of Biomedical Engineering"
+                    title: "Capstone Project Proposal Defense",
+                    description: "Department of Biomedical Engineering",
+                    type: "image"
                 },
                 {
                     src: "images/gallery15.png",
                     alt: "Meeting with GSBE-UG Patron",
                     category: "events",
                     title: "Meeting with GSBE-UG patron",
-                    description: "2023 - 2024 tenure as president of the Ghana Society of Biomedical Engineers - University of Ghana Chapter."
+                    description: "2023 - 2024 tenure as president of Ghana Society of Biomedical Engineers",
+                    type: "image"
                 },
                 {
                     src: "images/IMG-20250806-WA0046.jpg",
                     alt: "German-African Student Project on Sustainability",
                     category: "events",
-                    title: "German-African Student Project on Sustainability",
-                    description: "Received from the Registrar of the University of Ghana, on behalf of CCC, UG."
+                    title: "German-African Student Project",
+                    description: "Received from the Registrar of the University of Ghana",
+                    type: "image"
                 },
                 {
                     src: "images/gallery6.jpg",
                     alt: "With siblings",
                     category: "personal",
                     title: "Family",
-                    description: "With siblings"
+                    description: "With siblings",
+                    type: "image"
                 },
                 {
                     src: "images/gallery7.jpg",
                     alt: "Nanotechnology lecture",
                     category: "academic",
                     title: "Nanotechnology Lecture",
-                    description: "At the Engineering Center"
+                    description: "At the Engineering Center",
+                    type: "image"
                 },
                 {
                     src: "images/gallery8.jpg",
                     alt: "GSBE-UG handing over ceremony",
                     category: "events",
                     title: "Handing Over Ceremony",
-                    description: "Showing certificate of registration"
+                    description: "GSBE-UG leadership transition",
+                    type: "image"
                 },
                 {
                     src: "images/gallery9.jpg",
                     alt: "National Science and Maths Quiz",
                     category: "academic",
-                    title: "National Science and Maths Quiz (2021)",
-                    description: "Academic competition participation"
+                    title: "National Science & Maths Quiz (2021)",
+                    description: "Academic competition participation",
+                    type: "image"
                 },
                 {
                     src: "images/gallery10.jpg",
                     alt: "Medical Physics tour",
                     category: "academic",
                     title: "Medical Physics Tour",
-                    description: "University of Ghana Medical Center visit"
+                    description: "University of Ghana Medical Center visit",
+                    type: "image"
                 },
                 {
                     src: "images/gallery11.jpg",
                     alt: "Industry visit to Atlantic Life Sciences",
                     category: "professional",
                     title: "Industry Visit",
-                    description: "Field trip to Atlantic Life Sciences"
+                    description: "Field trip to Atlantic Life Sciences",
+                    type: "image"
                 },
                 {
                     src: "images/gallery12.jpg",
                     alt: "GSBE Conference presentation",
                     category: "events",
                     title: "4th Annual GSBE Conference",
-                    description: "Presenting Echoglasses design for visually impaired mobility and navigation, with group member Coleman Azuntaaba"
+                    description: "Presenting Echoglasses design for visually impaired mobility",
+                    type: "image"
                 },               
                 {
                     src: "images/gallery14.jpeg",
                     alt: "Professional photo",
                     category: "professional",
-                    title: "full-length shot",
-                    description: "-"
+                    title: "Professional Portrait",
+                    description: "Full-length professional shot",
+                    type: "image"
                 }
             ];
 
-            // Initialize gallery
+            // DOM Elements
             const column1 = document.getElementById('column1');
             const column2 = document.getElementById('column2');
             const showingCount = document.getElementById('showing-count');
             const totalCount = document.getElementById('total-count');
+            const modalLink = document.getElementById('modalLink');
             
             // Set total count
             totalCount.textContent = galleryData.length;
@@ -401,19 +720,77 @@
             function generateGalleryItems(filter = 'all') {
                 column1.innerHTML = '';
                 column2.innerHTML = '';
-                let visibleCount = 0;
                 
-                const filteredItems = galleryData.filter(item => filter === 'all' || item.category === filter);
+                const filteredItems = galleryData.filter(item => {
+                    if (filter === 'summit') return item.category === 'summit';
+                    if (filter === 'all') return true;
+                    return item.category === filter;
+                });
+                
                 showingCount.textContent = filteredItems.length;
                 
-                filteredItems.forEach((item, index) => {
-                    const galleryItem = document.createElement('div');
-                    galleryItem.className = 'gallery-item';
-                    galleryItem.setAttribute('data-category', item.category);
-                    galleryItem.setAttribute('data-index', index);
+                // Sort featured items first
+                const sortedItems = [...filteredItems].sort((a, b) => {
+                    if (a.featured && !b.featured) return -1;
+                    if (!a.featured && b.featured) return 1;
+                    return 0;
+                });
+                
+                sortedItems.forEach((item, index) => {
+                    const galleryItem = createGalleryItem(item, index);
                     
+                    // Distribute between columns
+                    if (index % 2 === 0) {
+                        column1.appendChild(galleryItem);
+                    } else {
+                        column2.appendChild(galleryItem);
+                    }
+                });
+                
+                // Initialize images and observers
+                initializeImages();
+                observeGalleryItems();
+            }
+            
+            // Create gallery item element
+            function createGalleryItem(item, index) {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = `gallery-item ${item.featured ? 'featured-item' : ''}`;
+                galleryItem.setAttribute('data-category', item.category);
+                galleryItem.setAttribute('data-index', index);
+                galleryItem.setAttribute('data-type', item.type);
+                
+                let readMoreButton = '';
+                if (item.link) {
+                    readMoreButton = `<a href="${item.link}" class="read-more-btn" target="_blank" onclick="event.stopPropagation();">Read More</a>`;
+                }
+                
+                // Featured item
+                if (item.featured) {
                     galleryItem.innerHTML = `
-                        <div class="gallery-category-badge">${item.category.charAt(0).toUpperCase() + item.category.slice(1)}</div>
+                        <div class="category-badge">${item.category.charAt(0).toUpperCase() + item.category.slice(1)}</div>
+                        <div class="gallery-image-container">
+                            <img src="${item.src}" alt="${item.alt}" class="gallery-image loading">
+                            <div class="image-overlay featured-overlay"></div>
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>${item.title}</h3>
+                            <p>${item.description}</p>
+                            ${readMoreButton}
+                        </div>
+                    `;
+                    
+                    // Add click event for featured image
+                    galleryItem.addEventListener('click', (e) => {
+                        if (!e.target.closest('.read-more-btn')) {
+                            e.preventDefault();
+                            openFeaturedModal(item);
+                        }
+                    });
+                } else {
+                    // Regular image item
+                    galleryItem.innerHTML = `
+                        <div class="category-badge">${item.category.charAt(0).toUpperCase() + item.category.slice(1)}</div>
                         <div class="gallery-image-container">
                             <img src="${item.src}" alt="${item.alt}" class="gallery-image loading">
                             <div class="image-overlay"></div>
@@ -421,33 +798,27 @@
                         <div class="gallery-caption">
                             <h3>${item.title}</h3>
                             <p>${item.description}</p>
+                            ${readMoreButton}
                         </div>
                     `;
                     
-                    // Distribute items between columns (approximately 50/50)
-                    if (index % 2 === 0) {
-                        column1.appendChild(galleryItem);
-                    } else {
-                        column2.appendChild(galleryItem);
-                    }
-                    
-                    visibleCount++;
-                });
+                    // Add click event for regular images
+                    galleryItem.addEventListener('click', (e) => {
+                        if (!e.target.closest('.read-more-btn')) {
+                            e.preventDefault();
+                            openImageModal(item, galleryData.filter(i => i.type === 'image'));
+                        }
+                    });
+                }
                 
-                // Initialize images after they're added to DOM
-                initializeImages();
-                initializeModal();
-                
-                // Trigger intersection observer to check visibility
-                observeGalleryItems();
+                return galleryItem;
             }
             
-            // Initialize image loading and error handling
+            // Initialize image loading
             function initializeImages() {
                 document.querySelectorAll('.gallery-image').forEach(img => {
                     img.addEventListener('load', function() {
                         this.classList.remove('loading');
-                        this.parentElement.querySelector('.image-overlay').style.opacity = '1';
                     });
                     
                     img.addEventListener('error', function() {
@@ -458,12 +829,11 @@
                     
                     if (img.complete) {
                         img.classList.remove('loading');
-                        img.parentElement.querySelector('.image-overlay').style.opacity = '1';
                     }
                 });
             }
             
-            // Intersection Observer for scroll animations
+            // Intersection Observer for animations
             function observeGalleryItems() {
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
@@ -484,158 +854,184 @@
             
             // Filter functionality
             const filterButtons = document.querySelectorAll('.filter-btn');
-            
             filterButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    // Update active button
                     filterButtons.forEach(btn => btn.classList.remove('active'));
                     this.classList.add('active');
-                    
-                    const filterValue = this.getAttribute('data-filter');
-                    generateGalleryItems(filterValue);
+                    generateGalleryItems(this.getAttribute('data-filter'));
                 });
             });
             
-            // Initialize modal functionality
-            function initializeModal() {
-                const modal = document.getElementById('imageModal');
-                const modalImg = document.getElementById('enlargedImg');
-                const modalCaption = document.getElementById('modalCaption');
-                const closeBtn = document.querySelector('.close');
-                const prevBtn = document.getElementById('prevBtn');
-                const nextBtn = document.getElementById('nextBtn');
+            // Featured Image Modal
+            const imageModal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+            const modalMeta = document.getElementById('modalMeta');
+            const modalClose = document.querySelector('.modal-close');
+            
+            function openFeaturedModal(imageData) {
+                // Set image and content
+                modalImage.src = imageData.src;
+                modalImage.alt = imageData.alt;
+                modalTitle.textContent = imageData.title;
+                modalDescription.textContent = imageData.description;
                 
-                let currentImageIndex = 0;
-                let filteredImages = [];
-                
-                // Open modal when clicking on gallery images
-                document.querySelectorAll('.gallery-item').forEach(item => {
-                    item.addEventListener('click', function() {
-                        const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
-                        const itemIndex = parseInt(this.getAttribute('data-index'));
-                        
-                        // Get all currently visible images based on filter
-                        filteredImages = galleryData
-                            .filter(item => activeFilter === 'all' || item.category === activeFilter)
-                            .map(item => ({
-                                src: item.src,
-                                alt: item.alt,
-                                title: item.title,
-                                description: item.description
-                            }));
-                        
-                        // Find current image index in filtered array
-                        currentImageIndex = filteredImages.findIndex(img => 
-                            img.src === this.querySelector('img').src
-                        );
-                        
-                        // Show modal with current image
-                        modal.style.display = 'flex';
-                        modalImg.src = filteredImages[currentImageIndex].src;
-                        modalImg.alt = filteredImages[currentImageIndex].alt;
-                        modalCaption.innerHTML = `
-                            <h3>${filteredImages[currentImageIndex].title}</h3>
-                            <p>${filteredImages[currentImageIndex].description}</p>
-                        `;
-                        
-                        setTimeout(() => {
-                            modal.classList.add('show');
-                        }, 10);
-                    });
-                });
-                
-                // Navigation functions
-                function showImage(index) {
-                    if (filteredImages.length === 0) return;
-                    
-                    if (index >= filteredImages.length) {
-                        currentImageIndex = 0;
-                    } else if (index < 0) {
-                        currentImageIndex = filteredImages.length - 1;
-                    } else {
-                        currentImageIndex = index;
-                    }
-                    
-                    modalImg.src = filteredImages[currentImageIndex].src;
-                    modalImg.alt = filteredImages[currentImageIndex].alt;
-                    modalCaption.innerHTML = `
-                        <h3>${filteredImages[currentImageIndex].title}</h3>
-                        <p>${filteredImages[currentImageIndex].description}</p>
-                    `;
+                // Set link if available
+                if (imageData.link) {
+                    modalLink.href = imageData.link;
+                    modalLink.style.display = 'inline-block';
+                } else {
+                    modalLink.style.display = 'none';
                 }
                 
-                // Event listeners for modal navigation
-                prevBtn.addEventListener('click', () => showImage(currentImageIndex - 1));
-                nextBtn.addEventListener('click', () => showImage(currentImageIndex + 1));
+                // Show modal
+                imageModal.style.display = 'flex';
+                setTimeout(() => {
+                    imageModal.classList.add('show');
+                }, 10);
                 
-                // Close modal
-                closeBtn.addEventListener('click', closeModal);
-                window.addEventListener('click', (event) => {
-                    if (event.target === modal) {
-                        closeModal();
-                    }
-                });
-                
-                document.addEventListener('keydown', function(event) {
-                    if (event.key === 'Escape' && modal.style.display === 'flex') {
-                        closeModal();
-                    } else if (event.key === 'ArrowLeft' && modal.style.display === 'flex') {
-                        showImage(currentImageIndex - 1);
-                    } else if (event.key === 'ArrowRight' && modal.style.display === 'flex') {
-                        showImage(currentImageIndex + 1);
-                    }
-                });
-                
-                function closeModal() {
-                    modal.classList.remove('show');
-                    setTimeout(() => {
-                        modal.style.display = 'none';
-                    }, 300);
-                }
-                
-                // Handle touch swipe for mobile devices
-                let touchStartX = 0;
-                let touchEndX = 0;
-                
-                modal.addEventListener('touchstart', e => {
-                    touchStartX = e.changedTouches[0].screenX;
-                }, false);
-                
-                modal.addEventListener('touchend', e => {
-                    touchEndX = e.changedTouches[0].screenX;
-                    handleSwipe();
-                }, false);
-                
-                function handleSwipe() {
-                    if (touchEndX < touchStartX - 50) {
-                        showImage(currentImageIndex + 1); // Swipe left - next image
-                    } else if (touchEndX > touchStartX + 50) {
-                        showImage(currentImageIndex - 1); // Swipe right - previous image
-                    }
-                }
+                // Setup image load event
+                const img = new Image();
+                img.onload = function() {
+                    document.getElementById('imageLoading').style.display = 'none';
+                };
+                img.src = imageData.src;
             }
             
-            // Initialize the gallery with all items
-            generateGalleryItems();
+            // Close modal
+            modalClose.addEventListener('click', closeImageModal);
+            imageModal.addEventListener('click', (e) => {
+                if (e.target === imageModal) {
+                    closeImageModal();
+                }
+            });
             
-            // Scroll to top button
+            function closeImageModal() {
+                imageModal.classList.remove('show');
+                setTimeout(() => {
+                    imageModal.style.display = 'none';
+                    modalImage.src = '';
+                }, 300);
+            }
+            
+            // Simple image modal for regular images
+            function openImageModal(imageData, allImages) {
+                // Create simple modal for image viewing
+                const modal = document.createElement('div');
+                modal.className = 'simple-image-modal';
+                modal.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0,0,0,0.95);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    z-index: 10000;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                `;
+                
+                const modalContent = document.createElement('div');
+                modalContent.style.cssText = `
+                    max-width: 90%;
+                    max-height: 90%;
+                    position: relative;
+                    text-align: center;
+                `;
+                
+                const img = document.createElement('img');
+                img.src = imageData.src;
+                img.alt = imageData.alt;
+                img.style.cssText = `
+                    max-width: 100%;
+                    max-height: 70vh;
+                    border-radius: 8px;
+                `;
+                
+                const caption = document.createElement('div');
+                caption.style.cssText = `
+                    color: white;
+                    text-align: center;
+                    margin-top: 15px;
+                `;
+                
+                let linkButton = '';
+                if (imageData.link) {
+                    linkButton = `<a href="${imageData.link}" class="read-more-btn" target="_blank" style="margin-top: 10px;">Read More</a>`;
+                }
+                
+                caption.innerHTML = `
+                    <h3>${imageData.title}</h3>
+                    <p>${imageData.description}</p>
+                    ${linkButton}
+                `;
+                
+                const closeBtn = document.createElement('button');
+                closeBtn.innerHTML = '&times;';
+                closeBtn.style.cssText = `
+                    position: absolute;
+                    top: -40px;
+                    right: 0;
+                    background: none;
+                    border: none;
+                    color: white;
+                    font-size: 30px;
+                    cursor: pointer;
+                `;
+                
+                modalContent.appendChild(img);
+                modalContent.appendChild(caption);
+                modalContent.appendChild(closeBtn);
+                modal.appendChild(modalContent);
+                document.body.appendChild(modal);
+                
+                // Show modal
+                setTimeout(() => {
+                    modal.style.opacity = '1';
+                }, 10);
+                
+                // Close functionality
+                closeBtn.addEventListener('click', () => {
+                    modal.style.opacity = '0';
+                    setTimeout(() => {
+                        document.body.removeChild(modal);
+                    }, 300);
+                });
+                
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal && !e.target.closest('.read-more-btn')) {
+                        modal.style.opacity = '0';
+                        setTimeout(() => {
+                            document.body.removeChild(modal);
+                        }, 300);
+                    }
+                });
+            }
+            
+            // Keyboard shortcuts
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && imageModal.classList.contains('show')) {
+                    closeImageModal();
+                }
+            });
+            
+            // Scroll to top
             const scrollTopBtn = document.getElementById('scrollTopBtn');
             scrollTopBtn.addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
             
             window.addEventListener('scroll', () => {
                 scrollTopBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
             });
+            
+            // Initialize gallery
+            generateGalleryItems();
         });
     </script>
 </body>
 </html>
-
-
-
-
-
