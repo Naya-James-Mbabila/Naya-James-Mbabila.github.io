@@ -3,93 +3,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Project portfolio of Naya James Mbabila showcasing biomedical engineering research, course projects, and innovative designs">
+    <meta name="description" content="Project portfolio of Naya James Mbabila showcasing biomedical engineering, research, design, and leadership projects">
     <title>Naya James Mbabila - Project Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Preload critical assets -->
     <link rel="preload" href="images/portfolio.jpeg" as="image">
     <style>
-        /* Minor targeted improvements only */
-        .portfolio-skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-bottom: 1.5rem;
+        .portfolio-section {
+            padding: 20px;
         }
         
-        .skill-tag {
-            transition: all 0.3s ease;
-        }
-        
-        .skill-tag:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-        
-        .portfolio-item {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        
-        .view-details-btn i {
-            transition: transform 0.3s ease;
-        }
-        
-        .view-details-btn:hover i {
-            transform: translateX(3px);
-        }
-
         .year-section {
-            margin-bottom: 3rem;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
-
+        
         .year-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 2rem;
-            padding-bottom: 0.5rem;
             border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
         }
-
+        
         .year-title {
-            font-size: 1.8rem;
-            font-weight: 600;
+            font-size: 1.5rem;
             color: #2c3e50;
             margin: 0;
-            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-
-        .year-count {
+        
+        .year-title i {
+            color: #3498db;
+        }
+        
+        .project-count {
             background: #3498db;
             color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
+            padding: 2px 10px;
+            border-radius: 12px;
             font-size: 0.9rem;
             font-weight: 500;
         }
-
-        .portfolio-filters {
-            margin-bottom: 2rem;
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-card:hover {
+            border-color: #3498db;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .project-type {
+            display: inline-block;
+            background: #f8f9fa;
+            color: #666;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+        
+        .project-type.research {
+            background: rgba(52, 152, 219, 0.1);
+            color: #3498db;
+        }
+        
+        .project-type.design {
+            background: rgba(46, 204, 113, 0.1);
+            color: #27ae60;
+        }
+        
+        .project-type.software {
+            background: rgba(155, 89, 182, 0.1);
+            color: #8e44ad;
+        }
+        
+        .project-type.leadership {
+            background: rgba(241, 196, 15, 0.1);
+            color: #f39c12;
+        }
+        
+        .project-header {
+            margin-bottom: 15px;
+        }
+        
+        .project-title {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin: 0 0 10px 0;
+            line-height: 1.4;
+        }
+        
+        .project-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .project-meta i {
+            margin-right: 5px;
+            color: #3498db;
+        }
+        
+        .project-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .project-outcomes {
+            margin: 15px 0;
+        }
+        
+        .outcome-item {
+            display: inline-flex;
+            align-items: center;
+            background: #f8f9fa;
+            color: #2c3e50;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin: 0 5px 8px 0;
+        }
+        
+        .outcome-item i {
+            margin-right: 5px;
+            color: #3498db;
+        }
+        
+        .project-skills {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 8px;
+            margin: 15px 0;
         }
-
-        .filter-btn {
-            padding: 0.5rem 1rem;
-            border: 2px solid #3498db;
-            background: transparent;
-            color: #3498db;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
+        
+        .skill-tag {
+            background: #e0e0e0;
+            color: #333;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.85rem;
         }
-
-        .filter-btn.active,
-        .filter-btn:hover {
+        
+        .project-links {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .project-link {
+            display: inline-flex;
+            align-items: center;
             background: #3498db;
             color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .project-link:hover {
+            background: #2980b9;
+        }
+        
+        .project-link i {
+            margin-right: 5px;
+        }
+        
+        .project-link.abstract {
+            background: #2c3e50;
+        }
+        
+        .project-link.abstract:hover {
+            background: #1a252f;
+        }
+        
+        .team-label {
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+            margin-left: 5px;
+        }
+        
+        .conference-badge {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin: 10px 5px 10px 0;
         }
     </style>
 </head>
@@ -113,25 +239,93 @@
         <main class="content-wrapper">
             <section class="tab-content active">
                 <div class="portfolio-section">
-                    <h2 class="section-title">Projects & Research</h2>
-                    
                     <!-- 2025 Projects -->
                     <div class="year-section">
                         <div class="year-header">
-                            <h3 class="year-title">2025</h3>
+                            <h3 class="year-title">
+                                <i class="fas fa-calendar-alt"></i> 2025 
+                                <span class="project-count">3 Projects</span>
+                            </h3>
                         </div>
-                        <div class="portfolio-grid">
-                            <div class="portfolio-item" data-category="research design" data-year="2025">
-                                <div class="portfolio-info">
-                                    <h3 class="portfolio-title">International Online Case Study <span class="team-label">(Team Project)</span></h3>
-                                    <p class="portfolio-category"><i class="fas fa-globe-americas"></i> UG Careers Directorate, Ghana/Germany/Kenya</p>
-                                    <p class="portfolio-date"><i class="far fa-calendar-alt"></i> April - June 2025</p>
-                                    <p class="portfolio-desc">Collaborated with students from diverse international institutions and companies to develop real-world solutions for global challenges.</p>
-                                    <div class="portfolio-skills">
-                                        <span class="skill-tag">Problem Solving</span>
-                                        <span class="skill-tag">Interdisciplinary Collaboration</span>
-                                        <span class="skill-tag">Global Development</span>
+                        
+                        <div class="project-grid">
+                            <div class="project-card">
+                                <span class="project-type research">Research Project</span>
+                                <div class="project-header">
+                                    <h4 class="project-title">International Online Case Study <span class="team-label">(Team Project)</span></h4>
+                                    <div class="project-meta">
+                                        <i class="fas fa-university"></i> UG Careers Directorate, Ghana/Germany/Kenya
                                     </div>
+                                </div>
+                                <p class="project-description">
+                                    Collaborated with students from diverse international institutions and companies to develop real-world solutions for global challenges.
+                                </p>
+                                <div class="project-outcomes">
+                                    <span class="outcome-item"><i class="fas fa-globe"></i> International Collaboration</span>
+                                    <span class="outcome-item"><i class="fas fa-lightbulb"></i> Problem Solving</span>
+                                </div>
+                                <div class="project-skills">
+                                    <span class="skill-tag">Interdisciplinary Collaboration</span>
+                                    <span class="skill-tag">Global Development</span>
+                                    <span class="skill-tag">Cross-cultural Communication</span>
+                                </div>
+                            </div>
+                            
+                            <div class="project-card">
+                                <span class="project-type research">Research Project</span>
+                                <div class="project-header">
+                                    <h4 class="project-title">Computer Vision-Based Health Status Assessment and Transmission of Ocular Images</h4>
+                                    <div class="project-meta">
+                                        <i class="fas fa-university"></i> Telemetry and Telemedicine, University of Ghana
+                                    </div>
+                                </div>
+                                <div class="conference-badge">Medical Innovation Expo 2025</div>
+                                <p class="project-description">
+                                    Developed the Na-β T Platform, a smartphone-based computer vision system for detecting systemic diseases through ocular biomarker analysis in remote areas.
+                                </p>
+                                <div class="project-outcomes">
+                                    <span class="outcome-item"><i class="fas fa-mobile-alt"></i> Smartphone-based diagnostics</span>
+                                    <span class="outcome-item"><i class="fas fa-shield-alt"></i> Secure data transmission</span>
+                                </div>
+                                <div class="project-skills">
+                                    <span class="skill-tag">Computer Vision</span>
+                                    <span class="skill-tag">OpenCV</span>
+                                    <span class="skill-tag">ResNet CNN</span>
+                                    <span class="skill-tag">Python</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://drive.google.com/file/d/1Bl85EOflOgb1PdaV9tvYuBhV3AqhxGWE/view?usp=sharing" target="_blank" class="project-link abstract">
+                                        <i class="fas fa-file-alt"></i> View Abstract
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="project-card">
+                                <span class="project-type research">Research Project</span>
+                                <div class="project-header">
+                                    <h4 class="project-title">Design of Novel Medical Aspirator Connector for Cesarean Sections</h4>
+                                    <div class="project-meta">
+                                        <i class="fas fa-university"></i> Capstone Design, University of Ghana & University of Michigan
+                                    </div>
+                                </div>
+                                <div class="conference-badge">20th International Conference on Advanced Science and Technology | National Chiayi University, Taiwan (Online)</div>
+                                <p class="project-description">
+                                    Designed WICON (Wide-Inlet Connector) to improve fluid evacuation during cesarean sections, addressing surgical field obscuration in resource-constrained settings.
+                                </p>
+                                <div class="project-outcomes">
+                                    <span class="outcome-item"><i class="fas fa-chart-line"></i> 9.7% flow improvement over conventional</span>
+                                    <span class="outcome-item"><i class="fas fa-bolt"></i> 1000ml - 12s clearance time</span>
+                                </div>
+                                <div class="project-skills">
+                                    <span class="skill-tag">Clinical Observation</span>
+                                    <span class="skill-tag">CFD Simulation</span>
+                                    <span class="skill-tag">3D Printing</span>
+                                    <span class="skill-tag">Medical Device Design</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://drive.google.com/file/d/1uc6_UNqyRB_Iqa-OQmTRpyAgAuFexaLt/view?usp=drive_link" target="_blank" class="project-link abstract">
+                                        <i class="fas fa-file-alt"></i> View Abstract
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -140,63 +334,142 @@
                     <!-- 2024 Projects -->
                     <div class="year-section">
                         <div class="year-header">
-                            <h3 class="year-title">2024</h3>
+                            <h3 class="year-title">
+                                <i class="fas fa-calendar-alt"></i> 2024 
+                                <span class="project-count">6 Projects</span>
+                            </h3>
                         </div>
-                        <div class="portfolio-grid">
-                            <div class="portfolio-item" data-category="biomedical design" data-year="2024">
-                                <div class="portfolio-info">
-                                    <h3 class="portfolio-title">Elbow Splint <span class="team-label">(Team Project)</span></h3>
-                                    <p class="portfolio-category"><i class="fas fa-bone"></i> Design of Mechanical Systems, BMEN 308 </p>
-                                    <p class="portfolio-date"><i class="far fa-calendar-alt"></i> May - August 2024</p>
-                                    <p class="portfolio-desc">Designed an adjustable elbow splint for cerebral palsy patients, improving comfort and range of motion.</p>
-                                    <div class="portfolio-skills">
-                                        <span class="skill-tag">Orthotics</span>
-                                        <span class="skill-tag">Mechanical Systems</span>
-                                        <span class="skill-tag">CAD (Modelling and FEA)</span>
+                        
+                        <div class="project-grid">
+                            <div class="project-card">
+                                <span class="project-type design">Design Project</span>
+                                <div class="project-header">
+                                    <h4 class="project-title">Elbow Splint for Cerebral Palsy Patients <span class="team-label">(Team Project)</span></h4>
+                                    <div class="project-meta">
+                                        <i class="fas fa-university"></i> BMEN 308: Design of Mechanical Systems
                                     </div>
+                                </div>
+                                <p class="project-description">
+                                    Designed an adjustable elbow splint for cerebral palsy patients, improving comfort and range of motion through innovative mechanical design.
+                                </p>
+                                <div class="project-skills">
+                                    <span class="skill-tag">Orthotics</span>
+                                    <span class="skill-tag">Mechanical Systems</span>
+                                    <span class="skill-tag">CAD Design</span>
+                                    <span class="skill-tag">FEA Analysis</span>
                                 </div>
                             </div>
                             
-                            <div class="portfolio-item" data-category="engineering design" data-year="2024">
-                                <div class="portfolio-info">
-                                    <h3 class="portfolio-title">Biosand Filter <span class="team-label">(Team Project)</span></h3>
-                                    <p class="portfolio-category"><i class="fas fa-tint"></i> Design and Selection of Biomaterials, BMEN 306 </p>
-                                    <p class="portfolio-date"><i class="far fa-calendar-alt"></i> May - August 2024</p>
-                                    <p class="portfolio-desc">Developed a sustainable water purification system using locally available materials, achieving reduction in turbidity and bacterial removal in field tests.</p>
-                                    <div class="portfolio-skills">
-                                        <span class="skill-tag">Water Treatment</span>
-                                        <span class="skill-tag">Sustainability</span>
+                            <div class="project-card">
+                                <span class="project-type design">Design Project</span>
+                                <div class="project-header">
+                                    <h4 class="project-title">Biosand Filter for Water Purification <span class="team-label">(Team Project)</span></h4>
+                                    <div class="project-meta">
+                                        <i class="fas fa-university"></i> BMEN 306: Design and Selection of Biomaterials
                                     </div>
+                                </div>
+                                <p class="project-description">
+                                    Developed a sustainable water purification system using locally available materials, achieving significant reduction in turbidity and bacterial removal in field tests.
+                                </p>
+                                <div class="project-skills">
+                                    <span class="skill-tag">Water Treatment</span>
+                                    <span class="skill-tag">Sustainability</span>
+                                    <span class="skill-tag">Biomaterials</span>
+                                    <span class="skill-tag">Environmental Engineering</span>
                                 </div>
                             </div>
                             
-                            <div class="portfolio-item" data-category="biomedical research" data-year="2024">
-                                <div class="portfolio-info">
-                                    <h3 class="portfolio-title">Stroke Prediction with R</h3>
-                                    <p class="portfolio-category"><i class="fas fa-heartbeat"></i> Coursera Project</p>
-                                    <p class="portfolio-date"><i class="far fa-calendar-alt"></i> 2024</p>
-                                    <p class="portfolio-desc">Developed and implemented machine learning models for stroke prediction using a comprehensive dataset of 5110 patients. Achieved 82.7% accuracy with logistic regression model in analyzing key risk factors including age, glucose levels, and cardiovascular comorbidities.</p>
-                                    <div class="portfolio-skills">
-                                        <span class="skill-tag">Machine Learning</span>
-                                        <span class="skill-tag">R Programming</span>
-                                        <span class="skill-tag">Healthcare Analytics</span>
+                            <div class="project-card">
+                                <span class="project-type research">Research Project</span>
+                                <div class="project-header">
+                                    <h4 class="project-title">Stroke Prediction with Machine Learning</h4>
+                                    <div class="project-meta">
+                                        <i class="fas fa-laptop-code"></i> Coursera Data Science Project
                                     </div>
-                                    <a href="https://github.com/Naya-James-Mbabila/Stroke-Prediction-Model-With-R" class="view-details-btn">View Details <i class="fas fa-chevron-right"></i></a>
+                                </div>
+                                <p class="project-description">
+                                    Developed and implemented machine learning models for stroke prediction using a comprehensive dataset of 5110 patients. Achieved 82.7% accuracy with logistic regression model.
+                                </p>
+                                <div class="project-outcomes">
+                                    <span class="outcome-item"><i class="fas fa-percentage"></i> 82.7% accuracy</span>
+                                    <span class="outcome-item"><i class="fas fa-database"></i> 5110 patients</span>
+                                </div>
+                                <div class="project-skills">
+                                    <span class="skill-tag">Machine Learning</span>
+                                    <span class="skill-tag">R Programming</span>
+                                    <span class="skill-tag">Healthcare Analytics</span>
+                                    <span class="skill-tag">Statistical Modeling</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/Naya-James-Mbabila/Stroke-Prediction-Model-With-R" target="_blank" class="project-link">
+                                        <i class="fab fa-github"></i> View on GitHub
+                                    </a>
                                 </div>
                             </div>
-
-                            <div class="portfolio-item" data-category="software biomedical" data-year="2024">
-                                <div class="portfolio-info">
-                                    <h3 class="portfolio-title">EquiBase - Medical Equipment Inventory Software</span></h3>
-                                    <p class="portfolio-category"><i class="fas fa-laptop-medical"></i> Komfo Anokye Teaching Hospital</p>
-                                    <p class="portfolio-date"><i class="far fa-calendar-alt"></i> 2023 - 2024</p>
-                                    <p class="portfolio-desc">Developed and implemented equipment management software for tracking medical devices, collaborated with engineers at KATH.</p>
-                                    <div class="portfolio-skills">
-                                        <span class="skill-tag">Software Development</span>
-                                        <span class="skill-tag">Hospital Systems</span>
-                                        <span class="skill-tag">Database Design</span>
+                            
+                            <div class="project-card">
+                                <span class="project-type software">Software Project</span>
+                                <div class="project-header">
+                                    <h4 class="project-title">EquiBase - Medical Equipment Inventory Software</h4>
+                                    <div class="project-meta">
+                                        <i class="fas fa-hospital"></i> Komfo Anokye Teaching Hospital
                                     </div>
-                                    <a href="https://www.youtube.com/watch?v=owVlq5qH_Tg" class="view-details-btn">View Details <i class="fas fa-chevron-right"></i></a>
+                                </div>
+                                <p class="project-description">
+                                    Developed and implemented equipment management software for tracking medical devices at KATH, collaborating with biomedical engineers to streamline inventory management.
+                                </p>
+                                <div class="project-skills">
+                                    <span class="skill-tag">Software Development</span>
+                                    <span class="skill-tag">Hospital Systems</span>
+                                    <span class="skill-tag">Database Design</span>
+                                    <span class="skill-tag">Inventory Management</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://www.youtube.com/watch?v=owVlq5qH_Tg" target="_blank" class="project-link">
+                                        <i class="fab fa-youtube"></i> View Demo
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="project-card">
+                                <span class="project-type research">Research Project</span>
+                                <div class="project-header">
+                                    <h4 class="project-title">AI-Enhanced Malaria Treatment Research <span class="team-label">(Team Project)</span></h4>
+                                    <div class="project-meta">
+                                        <i class="fas fa-flask"></i> Mini-PhD Program, ReachSci, USA
+                                    </div>
+                                </div>
+                                <p class="project-description">
+                                    Utilized generative AI to analyze molecular structures of plant metabolites in traditional Ghanaian herbal medicines used for malaria treatment.
+                                </p>
+                                <div class="project-skills">
+                                    <span class="skill-tag">Generative AI</span>
+                                    <span class="skill-tag">Bioinformatics</span>
+                                    <span class="skill-tag">Computational Chemistry</span>
+                                    <span class="skill-tag">Traditional Medicine</span>
+                                </div>
+                            </div>
+                            
+                            <div class="project-card">
+                                <span class="project-type leadership">Leadership Project</span>
+                                <div class="project-header">
+                                    <h4 class="project-title">OBED Fellowship - Clinical Needs Assessment</h4>
+                                    <div class="project-meta">
+                                        <i class="fas fa-stethoscope"></i> Korle Bu Teaching Hospital & University of Michigan
+                                    </div>
+                                </div>
+                                <p class="project-description">
+                                    Conducted comprehensive clinical ethnography in Obstetrics and Gynecology Department, assessing 60 unique problems through surgical observation and stakeholder engagement.
+                                </p>
+                                <div class="project-outcomes">
+                                    <span class="outcome-item"><i class="fas fa-clipboard-list"></i> 60 problems assessed</span>
+                                    <span class="outcome-item"><i class="fas fa-handshake"></i> Stakeholder engagement</span>
+                                </div>
+                                <div class="project-skills">
+                                    <span class="skill-tag">Clinical Observation</span>
+                                    <span class="skill-tag">Needs Assessment</span>
+                                    <span class="skill-tag">Global Health Design</span>
+                                    <span class="skill-tag">Problem Identification</span>
                                 </div>
                             </div>
                         </div>
@@ -205,46 +478,52 @@
                     <!-- 2023 Projects -->
                     <div class="year-section">
                         <div class="year-header">
-                            <h3 class="year-title">2023</h3>
+                            <h3 class="year-title">
+                                <i class="fas fa-calendar-alt"></i> 2023 
+                                <span class="project-count">3 Projects</span>
+                            </h3>
                         </div>
-                        <div class="portfolio-grid">
-                            <div class="portfolio-item" data-category="research" data-year="2023">
-                                <div class="portfolio-info">
-                                    <h3 class="portfolio-title">AI-Enhanced Malaria Treatment Research <span class="team-label">(Team Project)</span></h3>
-                                    <p class="portfolio-category"><i class="fas fa-flask"></i> Mini-PhD Program, ReachSci, USA</p>
-                                    <p class="portfolio-date"><i class="far fa-calendar-alt"></i> November 2023 - July 2024</p>
-                                    <p class="portfolio-desc">Utilized generative AI to analyze molecular structures of plant metabolites in traditional Ghanaian herbal medicines used for malaria treatment, identifying potential bioactive compounds.</p>
-                                    <div class="portfolio-skills">
-                                        <span class="skill-tag">AI Research</span>
-                                        <span class="skill-tag">Bioinformatics</span>
+                        
+                        <div class="project-grid">
+                            <div class="project-card">
+                                <span class="project-type research">Research Project</span>
+                                <div class="project-header">
+                                    <h4 class="project-title">Cyanogenic Glycosides Research <span class="team-label">(Team Project)</span></h4>
+                                    <div class="project-meta">
+                                        <i class="fas fa-university"></i> BMEN 315: Research Methods
                                     </div>
+                                </div>
+                                <p class="project-description">
+                                    Proposed evaluation of antimicrobial properties of cyanogenic glycosides from cassava for potential applications in preventing human-machine interface infections.
+                                </p>
+                                <div class="project-skills">
+                                    <span class="skill-tag">Biomaterials</span>
+                                    <span class="skill-tag">Microbiology</span>
+                                    <span class="skill-tag">Research Methods</span>
+                                    <span class="skill-tag">Antimicrobial Properties</span>
                                 </div>
                             </div>
                             
-                            <div class="portfolio-item" data-category="biomedical engineering" data-year="2023">
-                                <div class="portfolio-info">
-                                    <h3 class="portfolio-title">Echolocation Glasses <span class="team-label">(Team Project)</span></h3>
-                                    <p class="portfolio-category"><i class="fas fa-glasses"></i> Introduction to Biomedical Engineering, BMEN 202</p>
-                                    <p class="portfolio-date"><i class="far fa-calendar-alt"></i> March - June 2023</p>
-                                    <p class="portfolio-desc">Prototyped assistive glasses using ultrasonic sensors conduction to help visually impaired navigate via echolocation, presented at 4th National GSBE Conference.</p>
-                                    <div class="portfolio-skills">
-                                        <span class="skill-tag">Assistive Tech</span>
-                                        <span class="skill-tag">Arduino & Proteus</span>
+                            <div class="project-card">
+                                <span class="project-type design">Design Project</span>
+                                <div class="project-header">
+                                    <h4 class="project-title">Echolocation Glasses for the Blind <span class="team-label">(Team Project)</span></h4>
+                                    <div class="project-meta">
+                                        <i class="fas fa-university"></i> BMEN 202: Introduction to Biomedical Engineering
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="portfolio-item" data-category="biomedical research" data-year="2023">
-                                <div class="portfolio-info">
-                                    <h3 class="portfolio-title">Cyanogenic Glycosides Research <span class="team-label">(Team Project)</span></h3>
-                                    <p class="portfolio-category"><i class="fas fa-microscope"></i> Research Methods, BMEN 315 </p>
-                                    <p class="portfolio-date"><i class="far fa-calendar-alt"></i> October 2022 - December 2023</p>
-                                    <p class="portfolio-desc">Proposed an evaluation of antimicrobial properties of cyanogenic glycosides from cassava for potential applications in preventing human-machine interface infections.</p>
-                                    <div class="portfolio-skills">
-                                        <span class="skill-tag">Biomaterials</span>
-                                        <span class="skill-tag">Microbiology</span>
-                                        <span class="skill-tag">Research Methods</span>
-                                    </div>
+                                <div class="conference-badge">4th National GSBE Conference</div>
+                                <p class="project-description">
+                                    Prototyped assistive glasses using ultrasonic sensors to help visually impaired navigate via echolocation.
+                                </p>
+                                <div class="project-outcomes">
+                                    <span class="outcome-item"><i class="fas fa-trophy"></i> Best Project Presentation</span>
+                                </div>
+                                <div class="project-skills">
+                                    <span class="skill-tag">Assistive Technology</span>
+                                    <span class="skill-tag">Arduino</span>
+                                    <span class="skill-tag">Proteus Design</span>
+                                    <span class="skill-tag">Ultrasonic Sensors</span>
                                 </div>
                             </div>
                         </div>
@@ -253,21 +532,38 @@
                     <!-- 2022 Projects -->
                     <div class="year-section">
                         <div class="year-header">
-                            <h3 class="year-title">2022</h3>
+                            <h3 class="year-title">
+                                <i class="fas fa-calendar-alt"></i> 2022 
+                                <span class="project-count">1 Project</span>
+                            </h3>
                         </div>
-                        <div class="portfolio-grid">
-                            <div class="portfolio-item" data-category="biomedical engineering" data-year="2022">
-                                <div class="portfolio-info">
-                                    <h3 class="portfolio-title">Hand-Operated Centrifuge <span class="team-label">(Team Project)</span></h3>
-                                    <p class="portfolio-category"><i class="fas fa-vial"></i> Virtual Immersion into Biomedical Engineering, WPI</p>
-                                    <p class="portfolio-date"><i class="far fa-calendar-alt"></i> June - July 2022</p>
-                                    <p class="portfolio-desc">Created a low-cost portable hand-operated centrifuge achieving 3,000 RPM for anemia diagnosis in low-resource settings, presented at Worcester Polytechnic Institute.</p>
-                                    <div class="portfolio-skills">
-                                        <span class="skill-tag">Low-Cost Design</span>
-                                        <span class="skill-tag">Diagnostics</span>
-                                        <span class="skill-tag">Global Health</span>
+                        
+                        <div class="project-grid">
+                            <div class="project-card">
+                                <span class="project-type design">Design Project</span>
+                                <div class="project-header">
+                                    <h4 class="project-title">Hand-Operated Centrifuge <span class="team-label">(Team Project)</span></h4>
+                                    <div class="project-meta">
+                                        <i class="fas fa-university"></i> Virtual Immersion into Biomedical Engineering, WPI
                                     </div>
-                                    <a href="https://www.youtube.com/watch?v=x-U2XrCqTuc" target="_blank" class="view-details-btn">View Project <i class="fas fa-external-link-alt"></i></a>
+                                </div>
+                                <p class="project-description">
+                                    Created a low-cost portable hand-operated centrifuge achieving 3,000 RPM for anemia diagnosis in low-resource settings.
+                                </p>
+                                <div class="project-outcomes">
+                                    <span class="outcome-item"><i class="fas fa-bolt"></i> 3,000 RPM achieved</span>
+                                    <span class="outcome-item"><i class="fas fa-globe"></i> Low-resource settings focus</span>
+                                </div>
+                                <div class="project-skills">
+                                    <span class="skill-tag">Low-Cost Design</span>
+                                    <span class="skill-tag">Diagnostics</span>
+                                    <span class="skill-tag">Global Health</span>
+                                    <span class="skill-tag">Prototyping</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://www.youtube.com/watch?v=x-U2XrCqTuc" target="_blank" class="project-link">
+                                        <i class="fab fa-youtube"></i> View Project
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -276,21 +572,38 @@
                     <!-- 2021 Projects -->
                     <div class="year-section">
                         <div class="year-header">
-                            <h3 class="year-title">2021</h3>
+                            <h3 class="year-title">
+                                <i class="fas fa-calendar-alt"></i> 2021 
+                                <span class="project-count">1 Project</span>
+                            </h3>
                         </div>
-                        <div class="portfolio-grid">
-                            <div class="portfolio-item" data-category="engineering" data-year="2021">
-                                <div class="portfolio-info">
-                                    <h3 class="portfolio-title">Mini-Hydropower Generator <span class="team-label">(Team Project)</span></h3>
-                                    <p class="portfolio-category"><i class="fas fa-bolt"></i> Senior High School Renewable Energy Challenge (SHSREC)</p>
-                                    <p class="portfolio-date"><i class="far fa-calendar-alt"></i> 2021</p>
-                                    <p class="portfolio-desc">Developed and presented an eco-friendly mini-hydropower generator that produces 12V/5A from low water flow, utilizing a motor with an alternator. This team project, created with the guidance of our science teacher at Nandom Senior High School, earned 3rd place at the SHSREC Regional Competition in Wa, Upper West Region, Ghana.</p>
-                                    <div class="portfolio-skills">
-                                        <span class="skill-tag">Renewable Energy</span>
-                                        <span class="skill-tag">Prototyping</span>
-                                        <span class="skill-tag">Public Speaking</span>
+                        
+                        <div class="project-grid">
+                            <div class="project-card">
+                                <span class="project-type design">Design Project</span>
+                                <div class="project-header">
+                                    <h4 class="project-title">Mini-Hydropower Generator <span class="team-label">(Team Project)</span></h4>
+                                    <div class="project-meta">
+                                        <i class="fas fa-university"></i> Senior High School Renewable Energy Challenge (SHSREC)
                                     </div>
-                                    <a href="https://www.facebook.com/share/v/1BpVYpetAE/" class="view-details-btn">View Details <i class="fas fa-chevron-right"></i></a>
+                                </div>
+                                <p class="project-description">
+                                    Developed and presented an eco-friendly mini-hydropower generator that produces 12V/5A from low water flow, earning 3rd place at the SHSREC Regional Competition.
+                                </p>
+                                <div class="project-outcomes">
+                                    <span class="outcome-item"><i class="fas fa-trophy"></i> 3rd Place Regional</span>
+                                    <span class="outcome-item"><i class="fas fa-bolt"></i> 12V/5A output</span>
+                                </div>
+                                <div class="project-skills">
+                                    <span class="skill-tag">Renewable Energy</span>
+                                    <span class="skill-tag">Prototyping</span>
+                                    <span class="skill-tag">Public Speaking</span>
+                                    <span class="skill-tag">Electrical Engineering</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://www.facebook.com/share/v/1BpVYpetAE/" target="_blank" class="project-link">
+                                        <i class="fab fa-facebook"></i> View Details
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -300,7 +613,7 @@
         </main>
         
         <footer class="book-footer">
-            <p>© 2025 Naya James Mbabila. All rights reserved. </p>
+            <p>© 2025 Naya James Mbabila. All rights reserved.</p>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/jm-naya/" class="social-link" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
                 <a href="mailto:nayajames2002@gmail.com" class="social-link" aria-label="Email" title="Email"><i class="fas fa-envelope"></i></a>
@@ -314,82 +627,18 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Enhanced hover effects for portfolio items
-            const portfolioItems = document.querySelectorAll('.portfolio-item');
-            portfolioItems.forEach(item => {
-                item.addEventListener('mouseenter', () => {
-                    item.style.transform = 'translateY(-8px)';
-                    item.style.boxShadow = '0 12px 24px rgba(0,0,0,0.15)';
-                    const detailsBtn = item.querySelector('.view-details-btn');
-                    if (detailsBtn) {
-                        detailsBtn.style.transform = 'translateX(5px)';
-                    }
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            projectCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
                 });
                 
-                item.addEventListener('mouseleave', () => {
-                    item.style.transform = 'translateY(0)';
-                    item.style.boxShadow = '0 6px 12px rgba(0,0,0,0.08)';
-                    const detailsBtn = item.querySelector('.view-details-btn');
-                    if (detailsBtn) {
-                        detailsBtn.style.transform = 'translateX(0)';
-                    }
+                card.addEventListener('mouseleave', () => {
+                    card.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
                 });
             });
 
-            // Portfolio filtering system
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Update active button
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    const filterValue = this.getAttribute('data-filter');
-                    const portfolioItems = document.querySelectorAll('.portfolio-item');
-                    const yearSections = document.querySelectorAll('.year-section');
-                    
-                    if (filterValue === 'all') {
-                        // Show all items and sections
-                        portfolioItems.forEach(item => {
-                            item.style.display = 'block';
-                        });
-                        yearSections.forEach(section => {
-                            section.style.display = 'block';
-                        });
-                    } else {
-                        // Filter items by category
-                        portfolioItems.forEach(item => {
-                            const categories = item.getAttribute('data-category').split(' ');
-                            if (categories.includes(filterValue)) {
-                                item.style.display = 'block';
-                            } else {
-                                item.style.display = 'none';
-                            }
-                        });
-                        
-                        // Hide year sections that have no visible items
-                        yearSections.forEach(section => {
-                            const visibleItems = section.querySelectorAll('.portfolio-item[style="display: block;"]');
-                            if (visibleItems.length === 0) {
-                                section.style.display = 'none';
-                            } else {
-                                section.style.display = 'block';
-                            }
-                        });
-                    }
-                    
-                    // Animate visible items
-                    document.querySelectorAll('.portfolio-item[style="display: block;"]').forEach((item, index) => {
-                        item.style.animation = 'none';
-                        setTimeout(() => {
-                            item.style.animation = `fadeIn 0.3s forwards ${index * 0.05}s`;
-                        }, 10);
-                    });
-                });
-            });
-
-            // Scroll to top functionality
             const scrollToTopBtn = document.getElementById('scrollTopBtn');
             
             window.addEventListener('scroll', function() {
@@ -408,21 +657,7 @@
                     behavior: 'smooth'
                 });
             });
-
-            // Intersection observer for animations
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            document.querySelectorAll('.portfolio-section').forEach(section => {
-                observer.observe(section);
-            });
         });
     </script>
 </body>
 </html>
-
