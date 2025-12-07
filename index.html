@@ -8,6 +8,78 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Biophotonics Wave Animation */
+        .wave-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .light-wave {
+            position: absolute;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(59, 130, 246, 0.03) 25%, 
+                rgba(139, 92, 246, 0.03) 50%, 
+                rgba(236, 72, 153, 0.03) 75%, 
+                transparent 100%);
+            animation: waveFlow 15s linear infinite;
+        }
+
+        .light-wave:nth-child(2) {
+            animation-delay: -5s;
+            opacity: 0.5;
+        }
+
+        .light-wave:nth-child(3) {
+            animation-delay: -10s;
+            opacity: 0.3;
+        }
+
+        @keyframes waveFlow {
+            0% {
+                transform: translateX(-50%) skewY(2deg);
+            }
+            100% {
+                transform: translateX(0%) skewY(2deg);
+            }
+        }
+
+        /* Photon particles */
+        .photon {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.8), transparent);
+            border-radius: 50%;
+            animation: photonMove 8s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes photonMove {
+            0% {
+                opacity: 0;
+                transform: translateX(0) translateY(0);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(100vw) translateY(calc(sin(var(--angle)) * 100px));
+            }
+        }
+
         /* Animation styles for interest tags */
         .interest-tag {
             transition: all 0.4s ease-in-out;
@@ -76,6 +148,7 @@
             transition: all 0.3s ease;
             padding: 10px;
             border-left: 4px solid #f0f0f0;
+            position: relative;
         }
         
         .entry:hover {
@@ -88,21 +161,6 @@
             font-weight: bold;
             color: #4b5563;
             margin-bottom: 5px;
-        }
-
-        /* New Career Objective Styles */
-        .career-objective {
-            background-color: #f8fafc;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            border-left: 4px solid #2563eb;
-        }
-
-        .objective-text {
-            font-size: 1.05rem;
-            line-height: 1.6;
-            color: #334155;
         }
 
         /* CV Download Icon Styles */
@@ -129,7 +187,6 @@
         ul.entry-details-list,
         ul.awards-list,
         ul.membership-list,
-        ul.media-list,
         ul.skills-list,
         ul.certificates-list {
             list-style-type: disc;
@@ -140,16 +197,150 @@
         ul.entry-details-list li,
         ul.awards-list li,
         ul.membership-list li,
-        ul.media-list li,
         ul.skills-list li,
         ul.certificates-list li {
             margin-bottom: 8px;
             line-height: 1.5;
         }
+
+        /* Experience toggle button enhancement */
+        .experience-toggle {
+            margin: 20px auto;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #786203 0%, #786203 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(120, 110, 3, 0.3);
+        }
+
+        .experience-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(117, 89, 6, 0.4);
+        }
+
+        .toggle-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .experience-toggle.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Additional experiences smooth reveal */
+        .additional-experiences {
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.5s ease, opacity 0.5s ease;
+            opacity: 0;
+        }
+
+        .additional-experiences.show {
+            max-height: 5000px;
+            opacity: 1;
+        }
+
+        /* Header relative positioning for wave effect */
+        .book-header {
+            position: relative;
+            z-index: 1;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Promotion path styling */
+        .promotion-path {
+            display: block;
+            font-size: 0.9em;
+            color: #6b7280;
+            font-style: italic;
+            margin-top: 5px;
+            margin-bottom: 8px;
+        }
+
+        .promotion-path span {
+            display: block;
+            margin-top: 3px;
+        }
+
+        /* Section link styling */
+        .certificate-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .certificate-link:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+
+        /* Fade-in animation for sections */
+        .cv-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .cv-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Organization for experience categories */
+        .experience-category {
+            margin-bottom: 25px;
+        }
+        
+        .experience-category:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Experience count indicator */
+        .experience-count {
+            display: inline-block;
+            background-color: #e5e7eb;
+            color: #4b5563;
+            font-size: 0.8rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+        
+        /* Collapsible section for better organization */
+        .collapsible-section {
+            margin-top: 15px;
+        }
+        
+        .collapsible-section .entry {
+            margin-left: 15px;
+            padding-left: 15px;
+            border-left-width: 2px;
+        }
     </style>
 </head>
 <body>
     <div class="book-container">
+        <!-- Biophotonics Wave Background -->
+        <div class="wave-container">
+            <div class="light-wave"></div>
+            <div class="light-wave"></div>
+            <div class="light-wave"></div>
+        </div>
+
         <header class="book-header">
             <div class="profile-photo">
                 <img src="images/index.png" alt="Naya James Mbabila profile photo" loading="eager">
@@ -166,7 +357,7 @@
         <nav class="tabs" aria-label="Main Navigation">
             <a href="index.html" class="tab-btn active">Curriculum Vitae</a>
             <a href="portfolio.html" class="tab-btn">Project Portfolio</a>
-            <a href="skills.html" class="tab-btn">Skills </a>
+            <a href="skills.html" class="tab-btn">Skills</a>
             <a href="gallery.html" class="tab-btn">Gallery</a>
         </nav>
         
@@ -174,7 +365,7 @@
             <section class="tab-content active">
                 <div class="cv-section profile-summary">
                     <h2 class="section-title">Profile Summary</h2>
-                    <p class="summary-text">I am leveraging STEM and leadership to change the African story. </p>
+                    <p class="summary-text">I am leveraging STEM and leadership to change the African story.</p>
                     
                     <div class="interests-showcase">
                         <h3 class="interests-title">Areas of Interest</h3>
@@ -188,25 +379,22 @@
                             <div class="interest-tag biomedical-tag" data-category="biomedical">Engineering Design</div>
                             <div class="interest-tag biomedical-tag" data-category="biomedical">Biomaterials</div>
                             <div class="interest-tag biomedical-tag" data-category="biomedical">Biomechanics</div>
-                            <div class="interest-tag biomedical-tag" data-category="biomedical">IoMT </div>
-                            <div class="interest-tag biomedical-tag" data-category="biomedical">Bioinformatics </div>
+                            <div class="interest-tag biomedical-tag" data-category="biomedical">IoMT</div>
+                            <div class="interest-tag biomedical-tag" data-category="biomedical">Bioinformatics</div>
                             <div class="interest-tag biomedical-tag" data-category="biomedical">Nanotechnology</div>
                             <div class="interest-tag biomedical-tag" data-category="biomedical">Sustainable Healthcare</div>
-                            <div class="interest-tag biomedical-tag" data-category="biomedical">Human-Machine Interfaces</div>
-                            <div class="interest-tag biomedical-tag" data-category="biomedical">Systems Design</div>
-                            <div class="interest-tag biomedical-tag" data-category="biomedical">Medical Imaging</div>
                             
                             <!-- Computing Tags -->
                             <div class="interest-tag computing-tag" data-category="computing">Cybersecurity</div>
                             <div class="interest-tag computing-tag" data-category="computing">Quantum Computing</div>
                             <div class="interest-tag computing-tag" data-category="computing">Artificial Intelligence</div>
-                            <div class="interest-tag computing-tag" data-category="computing">Web and App Development</div>
+                            <div class="interest-tag computing-tag" data-category="computing">Web Development</div>
                             
                             <!-- Professional Tags -->
                             <div class="interest-tag professional-tag" data-category="professional">Leadership</div>
-                            <div class="interest-tag professional-tag" data-category="professional">Management and Governance </div>
-                            <div class="interest-tag professional-tag" data-category="professional">STEM Research and Education</div>
-                            <div class="interest-tag professional-tag" data-category="professional">Finance </div>
+                            <div class="interest-tag professional-tag" data-category="professional">Management</div>
+                            <div class="interest-tag professional-tag" data-category="professional">STEM Education</div>
+                            <div class="interest-tag professional-tag" data-category="professional">Finance</div>
                         </div>
                         
                         <div class="category-filters">
@@ -218,215 +406,219 @@
                     </div>
                 </div>
                 
-               
                 <div class="cv-section">
                     <h2 class="section-title">Education</h2>
                     <div class="entry">
                         <h3 class="entry-title">B.Sc. in Biomedical Engineering</h3>
                         <p class="institution">
                             <a href="https://www.ug.edu.gh/biomedical-engineering/home">Department of Biomedical Engineering</a><br>
-                                School of Engineering Sciences, University of Ghana</p>
+                            School of Engineering Sciences, University of Ghana</p>
                         <p class="entry-subtitle">University of Ghana, Legon</p>
                         <p class="entry-date">2022 - 2025</p>
                         <ul class="entry-details-list">
                             <li>Capstone Project: Design of Novel Aspirator Connector for Fluid Evacuation during Cesarean Sections</li>
-                            <li>Relevant Coursework: Bioinstrumentation, Biophotonics, Biomaterials, Biophysics, Biomechanics, Biomedical Engineering Systems, Medical Physics, Nanotechnology, Bioinformatics, Medical Imaging, Calculus I & II, Mechanics I & II, Anatomy & Physiology, Thermodynamics, Bioinformatics, Programming, Fluid Mechanics, Law for Engineers</li>
-                            <li>Highlights: President, GSBE-UG; OBED Fellow; Speaker, ESUG; Dean’s Honor List</li>
+                            <li>Relevant Coursework: Bioinstrumentation, Biophotonics, Biomaterials, Biophysics, Biomechanics, Biomedical Engineering Systems, Medical Physics, Nanotechnology, Bioinformatics, Medical Imaging, Calculus I & II, Mechanics I & II, Anatomy & Physiology, Thermodynamics, Programming, Fluid Mechanics, Law for Engineers</li>
+                            <li>Highlights: President, GSBE-UG; OBED Fellow; Speaker, ESUG; Dean's Honor List</li>
                             <li><strong>Final CGPA:</strong> 3.8182 <span class="note">(Awaiting Congregation – February 2026)</span> || Official transcript available upon request</li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="cv-section">
-                    <h2 class="section-title">Professional and Academic Experience</h2>
+                    <h2 class="section-title">Professional and Academic Experience Highlights</h2>
                     
                     <div class="default-experiences">
-                        <h3 class="subsection-title">Recent Experiences</h3>
+                        <!-- First 4 experiences remain visible -->
                         <div class="entry">
                             <h3 class="entry-title">Fully-Funded Global Delegate, Future Action Summit Malaysia 2025</h3>
                             <p class="entry-subtitle">Echo Change</p>
                             <p class="entry-date">Nov 27 – 30, 2025</p>
                             <p class="entry-subtitle">Kuala Lumpur, Malaysia</p>
                             <ul class="entry-details-list">
-                                <li>Selected as one of the top ten fully-funded participants from a global pool of thousands of applicants.</li>
-                                <li>Led working group on Medical Technology and Policy, contributing to the development of the Post-2030 Youth Charter for Global Development.</li>
-                                <li>Engaged in discussions on Sustainable Development Goals (SDGs) with international changemakers and leaders.</li>
-                                <li>Participated in workshops, simulations, and cultural exchanges to advance youth-driven solutions for sustainability.</li>
+                                <li>Selected as one of top ten fully-funded participants from thousands of global applicants</li>
+                                <li>Led working group on Medical Technology and Policy for Post-2030 Youth Charter</li>
+                                <li>Engaged in SDG discussions with international changemakers and leaders</li>
                             </ul>
                         </div>
+                        
                         <div class="entry">
-                            <h3 class="entry-title">2024 Fellow, Global Health Design Initiative</h3>
-                            <p class="entry-subtitle">University of Michigan & University of Ghana</p>
+                            <h3 class="entry-title">2024 OBED Fellow, Global Health Design Initiative</h3>
+                            <p class="entry-subtitle">University of Michigan & University of Ghana | OBED Fellowship</p>
                             <p class="entry-date">Aug 2024 – Sep 2024</p>
                             <p class="entry-subtitle">Korle Bu Teaching Hospital, Accra</p>
                             <ul class="entry-details-list">
-                                <li>Conducted a comprehensive needs assessment within the Obstetrics and Gynecology Department through ethnographic observation of surgeries and clinician ward rounds, complemented by interviews and stakeholder engagements to identify medical and engineering challenges.</li>
-                                <li>Assessed 60 unique problems, developed design specifications, and selected one for a capstone project.</li>
-                                <li>Supervised by Ing. Prof. Elsie Effah Kaufmann, Dr. Claude Fiifi Hayford, Dr. Dhanalakshmi Thiyagarajan (University of Michigan), Prof. Julia Kramer (University of Michigan)</li>
+                                <li>Conducted comprehensive needs assessment in Obstetrics and Gynecology through ethnographic observation, interviews, and stakeholder engagement</li>
+                                <li>Assessed 60 unique problems, developed design specifications for capstone project</li>
+                                <li>Supervised by Ing. Prof. Elsie Effah Kaufmann, Dr. Claude Fiifi Hayford, and University of Michigan faculty</li>
                             </ul>
                         </div>
-                        <div class="entry">
-                            <h3 class="entry-title">Biomedical Engineering Intern</h3>
-                            <p class="entry-subtitle">Komfo Anokye Teaching Hospital</p>
-                            <p class="entry-date">May 2023 - Aug 2023 & Feb 2024 – Apr 2024</p>
-                            <p class="entry-subtitle">Kumasi, Ghana</p>
-                            <ul class="entry-details-list">
-                                <li>Participated in calibrating, troubleshooting, servicing, repairing, and maintaining medical equipment including X-ray, MRI, ventilators, dialysis and anesthesia machines.</li>
-                                <li>Programmed and deployed a medical equipment inventory software (EquiBase) for the Biomedical Engineering Department to assist in device inventory management.</li>
-                            </ul>
-                        </div>
-                        <div class="entry">
-                            <h3 class="entry-title">Medical Laboratory Intern</h3>
-                            <p class="entry-subtitle">Powerhouse Hospital</p>
-                            <p class="entry-date">Oct 2022 – Dec 2022</p>
-                            <p class="entry-subtitle">Kumasi, Ghana</p>
-                            <ul class="entry-details-list">
-                                <li>Performed laboratory analyses on biological samples (hematology, clinical chemistry, microbiology, serology) and conducted procedures such as blood cross-matching and microscopic examinations using diagnostic equipment to support patient diagnoses.</li>
-                            </ul>
-                        </div>
-                        <div class="entry">
-                            <h3 class="entry-title">Paint Technician Apprentice</h3>
-                            <p class="entry-subtitle">Lumba Vehicle Spraying Shop</p>
-                            <p class="entry-date">2013 - 2021</p>
-                            <p class="entry-subtitle">Suame Magazine, Kumasi, Ghana</p>
-                            <ul class="entry-details-list">
-                                <li>Progressed from preparation tasks to independently executing vehicle painting projects and customer engagement.</li>
-                            </ul>
-                        </div>
-                        <h3 class="subsection-title">Recent Leadership Roles</h3>
-                        
-                        <div class="entry">
-                            <h3 class="entry-title">SES Editorial Board | National Service Personnel</h3>
-                            <p class="entry-subtitle">University of Ghana · Full-time</p>
-                            <p class="entry-date">Nov 2025 - Present · 2 mos</p>
-                            <p class="entry-subtitle">Legon, Greater Accra Region, Ghana · On-site</p>
-                            <ul class="entry-details-list">
-                                <li>SES committees</li>
-                            </ul>
-                        </div>
-                        <div class="entry">
-                            <h3 class="entry-title">SES Building Expansion Committee Member</h3>
-                            <p class="entry-subtitle">University of Ghana · Hybrid</p>
-                            <p class="entry-date">Jan 2025 - Present · 1 yr</p>
-                            <ul class="entry-details-list">
-                                <li>SES committees</li>
-                            </ul>
-                        </div>
-                        <div class="entry">
-                            <h3 class="entry-title">Speaker of Parliament</h3>
-                            <p class="entry-subtitle">Engineering Students Association of University of Ghana (ESUG)</p>
-                            <p class="entry-date">November 2024 - September 2025 </p>
-                            <div class="promotion-path">
-                                <span>Previously: Electoral Commission Chair (Sep 2023-Oct 2024)</span>
-                                <span>Deputy Electoral Commissioner (Jun-Aug 2023)</span>
-                            </div>
-                            <ul class="entry-details-list">
-                                <li>Oversaw student government legislative processes and parliamentary procedures</li>
-                                <li>Conducted free and fair elections for student government positions</li>
-                            </ul>
-                        </div>
-                
+
                         <div class="entry">
                             <h3 class="entry-title">President</h3>
                             <p class="entry-subtitle">Ghana Society of Biomedical Engineering - University of Ghana (GSBE-UG)</p>
                             <p class="entry-date">August 2023 - August 2024</p>
                             <ul class="entry-details-list">
                                 <li>Launched mentorship program connecting students with industry professionals</li>
-                                <li>Organized nationwide biomedical engineering webinar series</li>
+                                <li>Organized nationwide biomedical engineering webinar series across 7 universities</li>
                                 <li>Conducted technical seminars and coordinated field trips to medical facilities</li>
+                            </ul>
+                        </div>
+
+                        <div class="entry">
+                            <h3 class="entry-title">Biomedical Engineering Intern</h3>
+                            <p class="entry-subtitle">Komfo Anokye Teaching Hospital</p>
+                            <p class="entry-date">May 2023 - Aug 2023 & Feb 2024 – Apr 2024</p>
+                            <p class="entry-subtitle">Kumasi, Ghana</p>
+                            <ul class="entry-details-list">
+                                <li>Participated in calibrating, troubleshooting, and maintaining medical equipment including X-ray, MRI, ventilators, and dialysis machines</li>
+                                <li>Programmed and deployed EquiBase medical equipment inventory software for department management</li>
                             </ul>
                         </div>
                     </div>
                     
                     <button class="experience-toggle" onclick="toggleExperience()">
-                        <span class="toggle-text">Show All Experiences</span>
+                        <span class="toggle-text">View All Experiences</span>
                         <span class="toggle-icon">▼</span>
+                        <span class="experience-count">+7 more</span>
                     </button>
                     
-                    <div class="additional-experiences" style="display: none;">
-                        <h3 class="subsection-title">Additional Experiences</h3>                        
-                        <div class="entry">
-                            <h3 class="entry-title">Building Expansion Committee Member</h3>
-                            <p class="entry-subtitle">School of Engineering Sciences, University of Ghana</p>
-                            <p class="entry-date">2025 - Present</p>
-                            <ul class="entry-details-list">
-                                <li>Contributing to the planning and expansion of engineering facilities</li>
-                            </ul>
-                        </div>
-                        <h3 class="subsection-title">Technical & Academic Programs</h3>
-                        <div class="entry">
-                            <h3 class="entry-title">Quantum Computing Program</h3>
-                            <p class="entry-subtitle">The Coding School</p>
-                            <p class="entry-date">October 2022 - April 2023</p>
-                            <ul class="entry-details-list">
-                                <li>Completed intensive quantum computing course with hands-on experience using IBM quantum platform</li>
-                                <li>Project selected among top 30 for showcase: <a href="https://www.youtube.com/watch?v=aZ8f94XUji4" target="_blank">View Project</a></li>
-                            </ul>
-                        </div>
-                        
-                        <div class="entry">
-                            <h3 class="entry-title">Biomedical Engineering Immersion</h3>
-                            <p class="entry-subtitle">Worcester Polytechnic Institute</p>
-                            <p class="entry-date">June 2022 - July 2022</p>
-                            <ul class="entry-details-list">
-                                <li>Developed portable hand centrifuge prototype for low-resource settings: <a href="https://www.youtube.com/watch?v=x-U2XrCqTuc" target="_blank">View Project</a></li>
-                            </ul>
-                        </div>
-                        
-                        <h3 class="subsection-title">Part-time Work</h3>
-                        <div class="entry">
-                            <h3 class="entry-title">Academic Tutor</h3>
-                            <p class="entry-subtitle">NMJLessons (Part-time)</p>
-                            <p class="entry-date">December 2022 - April 2025</p>
-                            <ul class="entry-details-list">
-                                <li>Provided personalized academic support in STEM subjects to high school and university students</li>
-                                <li>Created educational content and resources for online learning platforms</li>
-                                <li>YouTube Channel: <a href="https://www.youtube.com/@NMJLessons" target="_blank">@NMJLessons</a></li>
-                            </ul>
+                    <div class="additional-experiences">
+                        <!-- Organized into clear categories -->
+                        <div class="experience-category">
+                            <h3 class="subsection-title"> More Experiences</h3>
+
+                            <div class="entry">
+                                <h3 class="entry-title">Speaker of Parliament</h3>
+                                <p class="entry-subtitle">Engineering Students Association of University of Ghana (ESUG)</p>
+                                <p class="entry-date">November 2024 - September 2025</p>
+                                <div class="promotion-path">
+                                    <span>Previously: Electoral Commission Chair (Sep 2023-Oct 2024)</span>
+                                    <span>Deputy Electoral Commissioner (Jun-Aug 2023)</span>
+                                </div>
+                                <ul class="entry-details-list">
+                                    <li>Presided over parliamentary sessions and facilitated policy approvals for 1,000+ engineering students</li>
+                                    <li>Conducted free and fair elections for student government positions</li>
+                                </ul>
+                            </div>
+
+                            <div class="entry">
+                                <h3 class="entry-title">SES Editorial Board | National Service Personnel</h3>
+                                <p class="entry-subtitle">University of Ghana</p>
+                                <p class="entry-date">Nov 2025 - Present</p>
+                                <p class="entry-subtitle">Legon, Greater Accra Region, Ghana</p>
+                            </div>
+
+                            <div class="entry">
+                                <h3 class="entry-title">Head, Project Department</h3>
+                                <p class="entry-subtitle">Street Fund Global Foundation Ghana</p>
+                                <p class="entry-date">Jan 2025 - Present</p>
+                                <ul class="entry-details-list">
+                                    <li>Lead strategic planning and implementation of community-focused social impact initiatives</li>
+                                </ul>
+                            </div>
+
+                            <div class="entry">
+                                <h3 class="entry-title">Building Expansion Committee Member</h3>
+                                <p class="entry-subtitle">School of Engineering Sciences, University of Ghana</p>
+                                <p class="entry-date">Jan 2025 - Present</p>
+                                <ul class="entry-details-list">
+                                    <li>Contributing to planning and expansion of engineering facilities</li>
+                                </ul>
+                            </div>
                         </div>
 
-                        <div class="entry">
-                            <h3 class="entry-title">Paint Technician</h3>
-                            <p class="entry-subtitle">Suame Magazine Vehicle Spraying Shop, Kumasi, Ghana (Part-time)</p>
-                            <p class="entry-date">2013 - 2021</p>
-                            <ul class="entry-details-list">
-                                <li>Developed expertise in all stages of vehicle finishing including surface preparation, paint mixing, and application</li>
-                                <li>Provided client consultation and quality control for automotive paint jobs</li>
-                            </ul>
+                        <div class="experience-category">
+                            <h3 class="subsection-title">Additional Professional Experience</h3>
+
+                            <div class="entry">
+                                <h3 class="entry-title">Medical Laboratory Intern</h3>
+                                <p class="entry-subtitle">Powerhouse Hospital</p>
+                                <p class="entry-date">Oct 2022 – Dec 2022</p>
+                                <p class="entry-subtitle">Kumasi, Ghana</p>
+                                <ul class="entry-details-list">
+                                    <li>Performed laboratory analyses on biological samples across hematology, clinical chemistry, microbiology, and serology</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="experience-category">
+                            <h3 class="subsection-title">Technical Programs & Training</h3>
+
+                            <div class="entry">
+                                <h3 class="entry-title">Quantum Computing Program</h3>
+                                <p class="entry-subtitle">The Coding School</p>
+                                <p class="entry-date">October 2022 - April 2023</p>
+                                <ul class="entry-details-list">
+                                    <li>Completed intensive quantum computing course with IBM quantum platform</li>
+                                    <li>Project selected among top 30 for showcase</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="entry">
+                                <h3 class="entry-title">Biomedical Engineering Immersion</h3>
+                                <p class="entry-subtitle">Worcester Polytechnic Institute</p>
+                                <p class="entry-date">June 2022 - July 2022</p>
+                                <ul class="entry-details-list">
+                                    <li>Developed portable hand centrifuge prototype for low-resource settings</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="experience-category">
+                            <h3 class="subsection-title">Part-Time & Apprenticeship Roles</h3>
+
+                            <div class="entry">
+                                <h3 class="entry-title">Academic Tutor</h3>
+                                <p class="entry-subtitle">NMJLessons (Part-time)</p>
+                                <p class="entry-date">December 2022 - April 2025</p>
+                                <ul class="entry-details-list">
+                                    <li>Provided personalized STEM tutoring to high school and university students</li>
+                                    <li>Created educational content for online learning platforms</li>
+                                </ul>
+                            </div>
+
+                            <div class="entry">
+                                <h3 class="entry-title">Paint Technician Apprentice</h3>
+                                <p class="entry-subtitle">Lumba Vehicle Spraying Shop</p>
+                                <p class="entry-date">2013 - 2021</p>
+                                <p class="entry-subtitle">Suame Magazine, Kumasi, Ghana</p>
+                                <ul class="entry-details-list">
+                                    <li>Progressed from preparation tasks to independently executing vehicle painting projects</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="cv-section">
-                    <h2 class="section-title">Scholarships & Recognitions </h2>
+                    <h2 class="section-title">Scholarships & Recognitions</h2>
                     <ul class="awards-list">
-                        <li><strong>Head of Department Recognition Award for Distinguished Leadership</strong> - Department of Biomedical Engineering (July, 2025)</li>
-                        <li><strong>Best Project Presentation Award</strong> - 4th National GSBE Conference (Oct, 2024) | Topic: "Design of Echolocation Glasses for Visually Impaired Individuals"</li>
-                        <li><strong>Dean’s Honor List</strong> - School of Engineering Sciences, University of Ghana (2023/2024 Academic Year, CGPA: 3.80/4.00)</li>
-                        <li><strong>Educational Pathways International Scholarship</strong> - Full Scholarship at University of Ghana (Awarded January 2022, January 2023, October 2023, November 2024) | approximately GH₵ 40,000.00 ($3,600.00 equivalent)</li>
+                        <li><strong>Head of Department Recognition Award for Distinguished Leadership</strong> - Department of Biomedical Engineering (July 2025)</li>
+                        <li><strong>Best Project Presentation Award</strong> - 4th National GSBE Conference (Oct 2024)</li>
+                        <li><strong>Dean's Honor List</strong> - School of Engineering Sciences, University of Ghana </li>
+                        <li><strong>Educational Pathways International Scholarship</strong> - Full Scholarship at University of Ghana (2022-2024) | approximately $3600/Gh₵ 40,000</li>
                         <li><strong>Overall Best Student</strong> - Nandom Senior High School (2018/19 and 2019/20 Academic Years)</li>
                     </ul>
                 </div>
 
                 <div class="cv-section">
-                    <h2 class="section-title">Skills, Certificates & Interests</h2>
-                    <h3 class="subsection-title">Technical Skills</h3>
+                    <h2 class="section-title">Essential Skills & Certifications</h2>
+                    
+                    <h3 class="subsection-title">Core Technical Skills</h3>
                     <ul class="skills-list">
-                        <li><strong>Engineering:</strong> CAD (SolidWorks, Autodesk Fusion), Medical Equipment Maintenance, Engineering Design, Research, Laboratory Equipment Operation</li>
-                        <li><strong>Technology:</strong> Python (Django, Scikit-learn, OpenCV, Data Science), MATLAB, Arduino, Proteus Design Suite, Machine Learning, SIEM, Cyber Security</li>
+                        <li><strong>Engineering:</strong> CAD (SolidWorks, Autodesk Fusion), Medical Equipment Maintenance, Engineering Design, Research</li>
+                        <li><strong>Technology:</strong> Python (Django, Scikit-learn, OpenCV), MATLAB, Arduino, Machine Learning, Cybersecurity</li>
                     </ul>
 
-                    <h3 class="subsection-title">Certificates</h3>
+                    <h3 class="subsection-title">Recent Certifications</h3>
                     <ul class="certificates-list">
-                        <li><strong>Global SDGs Leadership Certificate</strong> - Echo Change (Issued Nov 2025)</li>
-                        <li><strong>Google Advanced Data Analytics Certificate Badge</strong> - Coursera & Google (2025)</li>
-                        <li><strong>Google Project Management Professional Certificate Badge</strong> - Coursera & Google (2024)</li>
-                        <li><strong>Hospital Planning & Design and Equipment Management</strong> - Hospital Engineering Academy (November 2024)</li>
-                        <li><strong>Particle Physics: An Introduction</strong> - Coursera & Université de Genève (Nov 2023)</li>
-                        <li><strong>Quantum Computing</strong> - Qubit by Qubit, The Coding School & IBM (Oct 2022 - Apr 2023)</li>
-                        <li><strong>Virtual Immersion in Biomedical Engineering</strong> - Worcester Polytechnic Institute (Summer Program 2022)</li>
+                        <li>Global SDGs Leadership Certificate - Echo Change (2025)</li>
+                        <li>Google Advanced Data Analytics - Coursera & Google (2025)</li>
+                        <li>Google Project Management Professional - Coursera & Google (2024)</li>
+                        <li>Hospital Planning & Design - Hospital Engineering Academy (2024)</li>
+                        <li>Quantum Computing - The Coding School & IBM (2023)</li>
                     </ul>
-                    <p>View my <a href="skills.html#certifications" class="certificate-link">complete list of professional certifications</a> in the Skills & Expertise section.</p>
+                    <p>→ <a href="skills.html" class="certificate-link">View complete skills profile and certifications</a></p>
                 </div>
                 
                 <div class="cv-section">
@@ -435,41 +627,12 @@
                         <li><strong>Ghana Institution of Engineering</strong> - Student Member (2024-Present)</li>
                         <li><strong>The Field Engineer</strong> - Student Member (2023-Present)</li>
                         <li><strong>Elsie Effah Kaufmann Foundation</strong> - Volunteer (2023-Present)</li>
-                        <li><strong>Vispad Institute of Technology, Ghana</strong> - Member and Teaching Assistant (2022-Present)</li>
                     </ul>
-                </div>
-                
-                <div class="cv-section">
-                    <h2 class="section-title">Speaking Engagements</h2>
-                    
-                    <div class="entry">
-                        <h3 class="entry-title">UG Open Day</h3>
-                        <p class="entry-subtitle">University of Ghana</p>
-                        <p class="entry-date">November 3-4, 2023</p>
-                        <ul class="entry-details-list">
-                            <li>Presented to prospective engineering students about academic programs and admission requirements at the University of Ghana</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="entry">
-                        <h3 class="entry-title">KNUST BMESS TRATECH Vacathon</h3>
-                        <p class="entry-subtitle">Kwame Nkrumah University of Science and Technology</p>
-                        <p class="entry-date">September 8, 2023</p>
-                        <ul class="entry-details-list">
-                            <li>Keynote speaker on "Leveraging Occupational Breaks to Raise Industry Professionals" for biomedical engineering students</li>
-                        </ul>
-                    </div>
                 </div>
 
                 <div class="cv-section">
-                    <h2 class="section-title">Featured in Media Outlets</h2>
-                    <ul class="media-list">
-                        <li><strong>NSMQ Superstar Spotlight</strong> by Prof. Elsie Effah Kaufmann for excellence. → <a href="https://www.linkedin.com/posts/elsie-effah-kaufmann-phd-b1121a42_superstar-activity-7380622116070797312-68Ux?utm_source=share&utm_medium=member_desktop&rcm=ACoAADnqfwUBj4t375IuK6rq4gJiGmZOduQEHSc" target="_blank">LinkedIn Post</a></li>
-                        <li><strong>Life Studying Biomedical Engineering in Africa</strong> → <a href="https://thefieldengineer.com/blog/a-day-in-the-life-of/life-studying-biomedical-engineering-in-africa/?utm_source=linkedin&utm_medium=social&utm_campaign=grow-social-pro" target="_blank">The Field Engineer Article</a></li>
-                        <li><strong>GSBE-UG Healthcare Revolution</strong> → <a href="https://www.elevatehtm.com/post/revolutionizing-healthcare-gsbe-ug-s-mission-to-empower-biomedical-engineers-in-ghana" target="_blank">Elevate HTM Post</a></li>
-                        <li><strong>Hybrid Power Plant Presentation at the SHS Renewable Energy Challenge</strong> → <a href="https://web.facebook.com/homeradio99.7fmWa/posts/nandom-senior-high-school-students-present-hybrid-package-as-an-alternative-sour/996507717557787/?_rdc=1&_rdr" target="_blank">Home Radio Post</a></li>
-                        <li><strong>Quantum Computing Capstone Project Showcase</strong> → <a href="https://youtu.be/aZ8f94XUji4?si=dEJYnQueCn6p0OlM" target="_blank">YouTube Video</a></li>
-                    </ul>
+                    <h2 class="section-title">Research Projects</h2>
+                    <p>→ <a href="portfolio.html" class="certificate-link">View full project portfolio</a></p>
                 </div>
                 
                 <div class="cv-section signature-section">
@@ -492,80 +655,78 @@
     </div>
 
     <script>
-        // Toggle experience function - improved with smooth animation
-        function toggleExperience() {
-            const additional = document.querySelector('.additional-experiences');
-            const toggle = document.querySelector('.experience-toggle');
-            const icon = document.querySelector('.toggle-icon');
+        // Create photon particles for biophotonics effect
+        function createPhotons() {
+            const waveContainer = document.querySelector('.wave-container');
+            const photonCount = 15;
             
-            if (additional.style.display === 'none') {
-                // Show additional experiences with a fade-in effect
-                additional.style.display = 'block';
-                additional.style.opacity = 0;
-                setTimeout(() => {
-                    additional.style.transition = 'opacity 0.5s ease';
-                    additional.style.opacity = 1;
-                }, 10);
-                
-                toggle.querySelector('.toggle-text').textContent = 'Show Less';
-                icon.textContent = '▲';
-            } else {
-                // Hide with fade-out effect
-                additional.style.transition = 'opacity 0.5s ease';
-                additional.style.opacity = 0;
-                setTimeout(() => {
-                    additional.style.display = 'none';
-                }, 500);
-                
-                toggle.querySelector('.toggle-text').textContent = 'Show All Experiences';
-                icon.textContent = '▼';
+            for (let i = 0; i < photonCount; i++) {
+                const photon = document.createElement('div');
+                photon.className = 'photon';
+                photon.style.top = Math.random() * 100 + '%';
+                photon.style.left = '-10px';
+                photon.style.animationDelay = Math.random() * 8 + 's';
+                photon.style.setProperty('--angle', Math.random() * 6.28);
+                waveContainer.appendChild(photon);
             }
         }
 
-        // Enhanced interest filter functionality with animations
+        // Toggle experience function with smooth animation
+        function toggleExperience() {
+            const additional = document.querySelector('.additional-experiences');
+            const toggle = document.querySelector('.experience-toggle');
+            const countElement = toggle.querySelector('.experience-count');
+            
+            if (additional.classList.contains('show')) {
+                additional.classList.remove('show');
+                toggle.querySelector('.toggle-text').textContent = 'View All Experiences';
+                toggle.classList.remove('active');
+                countElement.textContent = '+7 more';
+            } else {
+                additional.classList.add('show');
+                toggle.querySelector('.toggle-text').textContent = 'Show Less';
+                toggle.classList.add('active');
+                countElement.textContent = '-7 less';
+            }
+        }
+
+        // Enhanced interest filter functionality
         document.addEventListener('DOMContentLoaded', function() {
-            // Get all filter buttons and interest tags
+            // Create photon particles
+            createPhotons();
+
+            // Filter functionality
             const filterButtons = document.querySelectorAll('.filter-btn');
             const interestTags = document.querySelectorAll('.interest-tag');
             
-            // Add click event listener to each filter button
             filterButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    // Remove active class from all buttons
                     filterButtons.forEach(btn => btn.classList.remove('active'));
-                    
-                    // Add active class to clicked button with a subtle animation
                     this.classList.add('active');
                     
-                    // Get filter value
                     const filterValue = this.getAttribute('data-filter');
                     
-                    // Apply staggered animation to interest tags
                     interestTags.forEach((tag, index) => {
-                        // Remove any existing animation classes
                         tag.classList.remove('visible');
-                        
-                        // First hide all tags
                         tag.classList.add('hidden');
                         
-                        // Then show relevant tags with a staggered delay
                         if (filterValue === 'all' || tag.getAttribute('data-category') === filterValue) {
                             setTimeout(() => {
                                 tag.classList.remove('hidden');
                                 tag.classList.add('visible');
-                            }, index * 50); // Stagger the animation by 50ms per tag
+                            }, index * 50);
                         }
                     });
                 });
             });
             
-            // Initialize - ensure all tags are visible at start
+            // Initialize all tags as visible
             interestTags.forEach(tag => {
                 tag.classList.add('visible');
             });
         });
 
-        // Scroll to top functionality with improved animation
+        // Scroll to top functionality
         const scrollToTopBtn = document.getElementById('scrollTopBtn');
         
         window.addEventListener('scroll', function() {
@@ -585,11 +746,10 @@
             });
         });
 
-        // Enhanced intersection observer for fade-in effects
+        // Intersection observer for fade-in effects
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Add a small delay before adding the visible class
                     setTimeout(() => {
                         entry.target.classList.add('visible');
                     }, 100);
@@ -603,7 +763,3 @@
     </script>
 </body>
 </html>
-
-
-
-
