@@ -183,6 +183,26 @@
             filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
         }
 
+        /* LinkedIn Icon Styles - NEW */
+        .linkedin-icon {
+            display: inline-block;
+            margin-left: 10px;
+            color: #0077b5; /* LinkedIn brand color */
+            font-size: 0.7em;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            vertical-align: middle;
+        }
+
+        .linkedin-icon:hover {
+            color: #005582; /* Darker LinkedIn blue on hover */
+            transform: translateY(-3px) scale(1.1);
+        }
+
+        .linkedin-icon i {
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+
         /* Improved list styles */
         ul.entry-details-list,
         ul.awards-list,
@@ -330,6 +350,13 @@
             padding-left: 15px;
             border-left-width: 2px;
         }
+        
+        /* Header icons container for better alignment */
+        .header-icons {
+            display: inline-block;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
     </style>
 </head>
 <body>
@@ -347,9 +374,15 @@
             </div>
             <h1 class="book-title">
                 Naya James Mbabila 
-                <a href="assets/Naya_CV.pdf" download class="cv-download-icon" title="Download CV" aria-label="Download CV">
-                    <i class="fas fa-file-pdf"></i>
-                </a>
+                <!-- UPDATED: Added LinkedIn icon next to CV download -->
+                <div class="header-icons">
+                    <a href="assets/Naya_CV.pdf" download class="cv-download-icon" title="Download CV" aria-label="Download CV">
+                        <i class="fas fa-file-pdf"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/jm-naya/" target="_blank" class="linkedin-icon" title="LinkedIn Profile" aria-label="LinkedIn Profile">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
             </h1>
             <p class="book-subtitle">B.Sc. Biomedical Engineering (First Class Honours) | Graduating February 2026</p>
         </header>
