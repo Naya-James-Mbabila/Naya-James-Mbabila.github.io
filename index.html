@@ -183,7 +183,7 @@
             filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
         }
 
-        /* LinkedIn Icon Styles - NEW */
+        /* LinkedIn Icon Styles */
         .linkedin-icon {
             display: inline-block;
             margin-left: 10px;
@@ -195,7 +195,7 @@
         }
 
         .linkedin-icon:hover {
-            color: #005582; /* Darker LinkedIn blue on hover */
+            color: #005582;
             transform: translateY(-3px) scale(1.1);
         }
 
@@ -374,7 +374,6 @@
             </div>
             <h1 class="book-title">
                 Naya James Mbabila 
-                <!-- UPDATED: Added LinkedIn icon next to CV download -->
                 <div class="header-icons">
                     <a href="assets/Naya_CV.pdf" download class="cv-download-icon" title="Download CV" aria-label="Download CV">
                         <i class="fas fa-file-pdf"></i>
@@ -466,7 +465,6 @@
                         <p class="entry-subtitle">Nandom Senior High School</p>
                         <p class="entry-date">2018 - 2021</p>
                         <ul class="entry-details-list">
-                            <!-- <li><strong>WASSCE Aggregate:</strong> 9</li> -->
                             <li><strong>Highlights:</strong> Contestant, National Science & Maths Quiz (NSMQ 2021); Contestant, Senior High School Renewable Energy Challenge (SHSREC 2021); Health Prefect (2020/2021)</li>
                         </ul>
                     </div>
@@ -476,9 +474,14 @@
                     <h2 class="section-title">Professional and Academic Experience Highlights</h2>
                     
                     <div class="default-experiences">
-                        <!-- Updated first 4 experiences -->
+                        <!-- Updated first 4 experiences (most recent) -->
                         <div class="entry">
-                            <h3 class="entry-title">Founder and Operations Manager</h3>
+                            <h3 class="entry-title">
+                                Founder and Operations Manager 
+                                <a href="https://www.linkedin.com/company/innogen-gh" target="_blank" class="linkedin-icon" title="INNOGEN LinkedIn" style="margin-left:5px;">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                            </h3>
                             <p class="entry-subtitle">INNOGEN | Institute for Innovation and Next-Generation Engineering</p>
                             <p class="entry-date">Nov 2025 - Present</p>
                             <p class="entry-subtitle">Ghana</p>
@@ -490,11 +493,22 @@
                         </div>
                         
                         <div class="entry">
-                            <h3 class="entry-title">Editorial Board Member (National Service)</h3>
-                            <p class="entry-subtitle">National Service Scheme (NSS), University of Ghana</p>
-                            <p class="entry-date">Nov 2025 - Present</p>
-                            <p class="entry-subtitle">Legon, Accra</p>
+                            <h3 class="entry-title">Teaching Assistant (Medical Physics, Biophysics, Bioelectronics)</h3>
+                            <p class="entry-subtitle">Department of Biomedical Engineering, University of Ghana</p>
+                            <p class="entry-date">Jan 2026 - Present</p>
+                            <p class="entry-subtitle">Accra, Ghana · Hybrid</p>
                             <ul class="entry-details-list">
+                                <li>Support professors in curriculum delivery, student instruction, and laboratory facilitation for undergraduate courses.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="entry">
+                            <h3 class="entry-title">Editorial Board Member (National Service Personnel)</h3>
+                            <p class="entry-subtitle">School of Engineering Sciences, University of Ghana</p>
+                            <p class="entry-date">Nov 2025 - Present</p>
+                            <p class="entry-subtitle">Legon, Accra · On-site</p>
+                            <ul class="entry-details-list">
+                                <!-- details intentionally left empty per original -->
                             </ul>
                         </div>
                         
@@ -509,31 +523,85 @@
                                 <li>Engaged in SDG discussions with international changemakers and leaders</li>
                             </ul>
                         </div>
-                        
-                        <div class="entry">
-                            <h3 class="entry-title">2024 OBED Fellow, Global Health Design Initiative</h3>
-                            <p class="entry-subtitle">University of Michigan & University of Ghana | OBED Fellowship</p>
-                            <p class="entry-date">Aug 2024 – Sep 2024</p>
-                            <p class="entry-subtitle">Korle Bu Teaching Hospital, Accra</p>
-                            <ul class="entry-details-list">
-                                <li>Conducted comprehensive needs assessment in Obstetrics and Gynecology through ethnographic observation, interviews, and stakeholder engagement</li>
-                                <li>Assessed 60 unique problems, developed design specifications for capstone project</li>
-                                <li>Supervised by Ing. Prof. Elsie Effah Kaufmann, Dr. Claude Fiifi Hayford, Dr. Dhanalakshmi Thiyagarajan, and Prof. Julia Kramer</li>
-                            </ul>
-                        </div>
                     </div>
                     
                     <button class="experience-toggle" onclick="toggleExperience()">
                         <span class="toggle-text">View All Experiences</span>
                         <span class="toggle-icon">▼</span>
-                        <span class="experience-count">+8 more</span>
+                        <span class="experience-count">+ more</span>
                     </button>
                     
                     <div class="additional-experiences">
-                        <!-- Organized into clear categories -->
+                        <!-- Organized into clear categories with new entries added -->
                         <div class="experience-category">
                             <h3 class="subsection-title">Leadership Roles</h3>
 
+                            <!-- Aspire Leaders Program -->
+                            <div class="entry">
+                                <h3 class="entry-title">Aspire Leaders Program Participant</h3>
+                                <p class="entry-subtitle">Aspire Institute (Harvard-founded)</p>
+                                <p class="entry-date">Feb 2026 - Present · 2 mos</p>
+                                <p class="entry-subtitle">Remote</p>
+                                <ul class="entry-details-list">
+                                    <li>Participating in a free global leadership development journey focused on strengths assessment, professional skills, and building trust as a leader.</li>
+                                </ul>
+                            </div>
+
+                            <!-- Panel Discussion Moderator (Mar 2026) -->
+                            <div class="entry">
+                                <h3 class="entry-title">Panel Discussion Moderator</h3>
+                                <p class="entry-subtitle">World Engineering Day Celebration (UNESCO-supported) | School of Engineering Sciences</p>
+                                <p class="entry-date">Mar 2026 · 1 mo</p>
+                                <p class="entry-subtitle">University of Ghana</p>
+                                <ul class="entry-details-list">
+                                    <li>Moderated panel discussion at the World Engineering Day event organized by the School of Engineering Sciences with support from UNESCO.</li>
+                                </ul>
+                            </div>
+
+                            <!-- Debate Judge (Feb 2026) -->
+                            <div class="entry">
+                                <h3 class="entry-title">Debate Judge</h3>
+                                <p class="entry-subtitle">IMPLEMENTERS · 5th Annual Impact Roundtable Discussions and Robotics Competition (AIRTAD 2026)</p>
+                                <p class="entry-date">Feb 2026 · 1 mo</p>
+                                <p class="entry-subtitle">University of Ghana · On-site</p>
+                                <ul class="entry-details-list">
+                                    <li>Selected as judge for the debate on "Innovation should be prioritized over academic excellence" at an international event with delegates from Ghana, Liberia and The Gambia.</li>
+                                </ul>
+                            </div>
+
+                            <!-- Moderator (webinar) - new -->
+                            <div class="entry">
+                                <h3 class="entry-title">Moderator</h3>
+                                <p class="entry-subtitle">Advancing Computational Neuroscience Through Collaborative Learning Webinar Series</p>
+                                <p class="entry-date">Apr 2025 - May 2025 · 2 mos</p>
+                                <ul class="entry-details-list">
+                                    <li>Moderated Days 4 & 5 of a 5-day international webinar series featuring speakers from University College London, University of Ghana, and Yale School of Medicine. Supported by Allen Institute, Ghana Society of Biomedical Engineers, Ghana Neuroscience Society, and University of Amsterdam.</li>
+                                </ul>
+                            </div>
+
+                            <!-- Studentpreneur Africa Network Ambassador -->
+                            <div class="entry">
+                                <h3 class="entry-title">Ambassador</h3>
+                                <p class="entry-subtitle">Studentpreneur Africa Network (SAN)</p>
+                                <p class="entry-date">Feb 2025 - Apr 2025 · 3 mos</p>
+                                <p class="entry-subtitle">Ghana · On-site</p>
+                                <ul class="entry-details-list">
+                                    <li>Represented the network and promoted student entrepreneurship across African campuses.</li>
+                                </ul>
+                            </div>
+
+                            <!-- Euron Campus Ambassador -->
+                            <div class="entry">
+                                <h3 class="entry-title">Campus Ambassador</h3>
+                                <p class="entry-subtitle">Euron</p>
+                                <p class="entry-date">Nov 2024 - Apr 2025 · 6 mos</p>
+                                <p class="entry-subtitle">Hybrid</p>
+                                <ul class="entry-details-list">
+                                    <li>Promoted Euron's programs and engaged with student community.</li>
+                                </ul>
+                            </div>
+
+                            <!-- Existing leadership entries -->
                             <div class="entry">
                                 <h3 class="entry-title">President, GSBE-UG</h3>
                                 <p class="entry-subtitle">Ghana Society of Biomedical Engineering - University of Ghana</p>
@@ -573,6 +641,7 @@
                         <div class="experience-category">
                             <h3 class="subsection-title">Professional Experience</h3>
 
+                            <!-- Biomedical Engineering Intern (KATH) -->
                             <div class="entry">
                                 <h3 class="entry-title">Biomedical Engineering Intern</h3>
                                 <p class="entry-subtitle">Komfo Anokye Teaching Hospital</p>
@@ -584,6 +653,7 @@
                                 </ul>
                             </div>
 
+                            <!-- Medical Laboratory Intern (Powerhouse) -->
                             <div class="entry">
                                 <h3 class="entry-title">Medical Laboratory Intern</h3>
                                 <p class="entry-subtitle">Powerhouse Hospital</p>
@@ -599,6 +669,9 @@
                         <div class="experience-category">
                             <h3 class="subsection-title">Academic & Committee Roles</h3>
 
+                            <!-- Teaching Assistant (UG) - already in default, but also here for completeness? Already in default; we keep it only in default to avoid duplication. But we moved it to default. So we don't list it here again. -->
+
+                            <!-- Building Expansion Committee Member -->
                             <div class="entry">
                                 <h3 class="entry-title">Building Expansion Committee Member</h3>
                                 <p class="entry-subtitle">School of Engineering Sciences, University of Ghana</p>
@@ -607,7 +680,8 @@
                                     <li>Contributing to planning and expansion of engineering facilities</li>
                                 </ul>
                             </div>
-                            
+
+                            <!-- Overseer, Science and Maths Club -->
                             <div class="entry">
                                 <h3 class="entry-title">Overseer</h3>
                                 <p class="entry-subtitle">Science and Maths Club, Nandom Senior High School</p>
@@ -617,6 +691,7 @@
                                 </ul>
                             </div>
 
+                            <!-- Health Prefect -->
                             <div class="entry">
                                 <h3 class="entry-title">Health Prefect</h3>
                                 <p class="entry-subtitle">Nandom Senior High School</p>
@@ -630,6 +705,28 @@
                         <div class="experience-category">
                             <h3 class="subsection-title">Technical Programs & Training</h3>
 
+                            <!-- VISPAD Teaching Assistant (new) -->
+                            <div class="entry">
+                                <h3 class="entry-title">Teaching Assistant</h3>
+                                <p class="entry-subtitle">VISPAD Institute of Technology</p>
+                                <p class="entry-date">Oct 2025 - Dec 2025 · 3 mos</p>
+                                <ul class="entry-details-list">
+                                    <li>Led Alpha Lab sessions for the Introduction to Machine Learning Virtual Internship (Semester 1), focusing on foundational algebra and hands-on exercises. Prepared lab notebooks and guided participants through practical machine learning concepts. Received Certificate of Appreciation.</li>
+                                </ul>
+                            </div>
+
+                            <!-- Hospital Planning and Equipment Management Workshop -->
+                            <div class="entry">
+                                <h3 class="entry-title">Hospital Planning and Equipment Management Workshop Participant</h3>
+                                <p class="entry-subtitle">Hospital Engineering GmbH</p>
+                                <p class="entry-date">Oct 2024 - Nov 2024 · 2 mos</p>
+                                <p class="entry-subtitle">Bioinstrumentation Lab, School of Engineering Sciences · On-site</p>
+                                <ul class="entry-details-list">
+                                    <li>Participated in a 6-day workshop focused on hospital planning and equipment management.</li>
+                                </ul>
+                            </div>
+
+                            <!-- Quantum Computing Program -->
                             <div class="entry">
                                 <h3 class="entry-title">Quantum Computing Program</h3>
                                 <p class="entry-subtitle">The Coding School & IBM</p>
@@ -638,7 +735,8 @@
                                     <li>Completed intensive quantum computing course with IBM quantum platform</li>
                                 </ul>
                             </div>
-                            
+
+                            <!-- Biomedical Engineering Immersion (WPI) -->
                             <div class="entry">
                                 <h3 class="entry-title">Biomedical Engineering Immersion</h3>
                                 <p class="entry-subtitle">Worcester Polytechnic Institute</p>
@@ -652,6 +750,7 @@
                         <div class="experience-category">
                             <h3 class="subsection-title">Part-Time & Apprenticeship Roles</h3>
 
+                            <!-- Paint Technician Apprentice -->
                             <div class="entry">
                                 <h3 class="entry-title">Paint Technician Apprentice</h3>
                                 <p class="entry-subtitle">Lumba Vehicle Spraying Shop</p>
@@ -759,12 +858,12 @@
                 additional.classList.remove('show');
                 toggle.querySelector('.toggle-text').textContent = 'View All Experiences';
                 toggle.classList.remove('active');
-                countElement.textContent = '+8 more';
+                countElement.textContent = '+ more';
             } else {
                 additional.classList.add('show');
                 toggle.querySelector('.toggle-text').textContent = 'Show Less';
                 toggle.classList.add('active');
-                countElement.textContent = '-8 less';
+                countElement.textContent = '- less';
             }
         }
 
@@ -841,7 +940,3 @@
     </script>
 </body>
 </html>
-
-
-
-
