@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Professional gallery of Naya James Mbabila showcasing academic, professional, and project-related photos including Future Action Summit 2025">
+    <meta name="description" content="Professional gallery of Naya James Mbabila showcasing academic, professional, and project-related photos including Future Action Summit 2025 and graduation 2026">
     <title>Naya James Mbabila - Gallery</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -283,42 +283,6 @@
             transform: rotate(90deg);
         }
         
-        /* Latest Update Banner */
-        .latest-update {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 12px;
-            margin: 25px 0;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-        }
-        
-        .latest-update i {
-            font-size: 1.8rem;
-            color: white;
-        }
-        
-        .latest-update-content h4 {
-            margin: 0 0 5px 0;
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-        
-        .latest-update-content p {
-            margin: 0;
-            opacity: 0.9;
-            font-size: 0.95rem;
-        }
-        
         /* Filter Controls */
         .filter-controls {
             display: flex;
@@ -404,12 +368,6 @@
                 aspect-ratio: 16/9;
             }
             
-            .latest-update {
-                flex-direction: column;
-                text-align: center;
-                padding: 20px;
-            }
-            
             .filter-controls {
                 justify-content: center;
             }
@@ -478,15 +436,6 @@
                     <h2 class="section-title">Professional Gallery</h2>
                 </div>
                 
-                <!-- Latest Update Banner -->
-                <div class="latest-update">
-                    <i class="fas fa-images"></i>
-                    <div class="latest-update-content">
-                        <h4>Latest Update: Future Action Summit 2025</h4>
-                        <p>Featured image from my experience at the Future Action Summit in Kuala Lumpur, Malaysia.</p>
-                    </div>
-                </div>
-                
                 <!-- Filter Controls -->
                 <div class="filter-controls">
                     <button class="filter-btn active" data-filter="all">All Media</button>
@@ -553,8 +502,9 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Gallery data (19 items - added graduation picture with Prof. Kaufmann)
+            // Gallery data (19 items - graduation picture placed second (after featured summit) with updated title/description)
             const galleryData = [
+                // 1. Featured Summit (stays on top)
                 {
                     src: "images/fas.jpeg",
                     alt: "Future Action Summit 2025 Kuala Lumpur Malaysia",
@@ -566,6 +516,18 @@
                     isFeatured: true,
                     link: "https://www.linkedin.com/posts/jm-naya_fas-futureactionsummit-echochange-activity-7401482941538656256-4xIc?utm_source=share&utm_medium=member_desktop&rcm=ACoAADnqfwUBj4t375IuK6rq4gJiGmZOduQEHSc"
                 },
+                // 2. Graduation picture with Dean & Mentor (latest, straightforward)
+                {
+                    src: "images/Naya_Graduation Picture with Prof Kaufmann_Dean.jpg",
+                    alt: "Naya James Mbabila Graduation Picture with Prof. Elsie Effah Kaufmann, Dean",
+                    category: "academic",
+                    title: "Graduation Picture with Dean and Mentor",
+                    description: "Graduation picture with Prof. Elsie Effah Kaufmann (Dean) and mentor. Date: 20th February 2026.",
+                    type: "image",
+                    featured: false,
+                    link: "https://www.linkedin.com/posts/jm-naya_these-past-four-years-have-been-a-journey-ugcPost-7433682872365891584-Ml5x?utm_source=share&utm_medium=member_desktop&rcm=ACoAADnqfwUBj4t375IuK6rq4gJiGmZOduQEHSc"
+                },
+                // Rest of the images (original order preserved)
                 {
                     src: "images/gallery1.png",
                     alt: "Naya James Mbabila profile photo",
@@ -702,17 +664,6 @@
                     title: "Professional Portrait",
                     description: "Full-length professional shot",
                     type: "image"
-                },
-                // NEW GRADUATION PICTURE WITH PROF. KAUFMANN
-                {
-                    src: "images/Naya_Graduation Picture with Prof Kaufmann_Dean.jpg",
-                    alt: "Naya James Mbabila Graduation Picture with Prof. Elsie Effah Kaufmann, Dean",
-                    category: "academic",
-                    title: "Graduation with Prof. Elsie Effah Kaufmann",
-                    description: "Proud graduation moment with Professor Elsie Effah Kaufmann, Dean of the School of Engineering Sciences, University of Ghana.",
-                    type: "image",
-                    featured: false,
-                    link: null
                 }
             ];
 
@@ -740,7 +691,7 @@
                 
                 showingCount.textContent = filteredItems.length;
                 
-                // Sort featured items first
+                // Sort featured items first (maintains featured summit at top)
                 const sortedItems = [...filteredItems].sort((a, b) => {
                     if (a.featured && !b.featured) return -1;
                     if (!a.featured && b.featured) return 1;
