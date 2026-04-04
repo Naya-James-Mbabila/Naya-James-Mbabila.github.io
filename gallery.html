@@ -499,7 +499,7 @@
                 
                 <!-- Gallery Counter -->
                 <div class="gallery-counter">
-                    <span id="showing-count">18</span> of <span id="total-count">18</span> items
+                    <span id="showing-count">19</span> of <span id="total-count">19</span> items
                 </div>
                 
                 <!-- Gallery Grid -->
@@ -511,7 +511,7 @@
         </main>
         
         <footer class="book-footer">
-            <p>© 2025 Naya James Mbabila. All rights reserved.</p>
+            <p>© 2026 Naya James Mbabila. All rights reserved.</p>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/jm-naya/" class="social-link" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
                 <a href="mailto:nayajames2002@gmail.com" class="social-link" aria-label="Email" title="Email"><i class="fas fa-envelope"></i></a>
@@ -553,7 +553,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Gallery data 
+            // Gallery data (19 items - added graduation picture with Prof. Kaufmann)
             const galleryData = [
                 {
                     src: "images/fas.jpeg",
@@ -702,6 +702,17 @@
                     title: "Professional Portrait",
                     description: "Full-length professional shot",
                     type: "image"
+                },
+                // NEW GRADUATION PICTURE WITH PROF. KAUFMANN
+                {
+                    src: "images/Naya_Graduation Picture with Prof Kaufmann_Dean.jpg",
+                    alt: "Naya James Mbabila Graduation Picture with Prof. Elsie Effah Kaufmann, Dean",
+                    category: "academic",
+                    title: "Graduation with Prof. Elsie Effah Kaufmann",
+                    description: "Proud graduation moment with Professor Elsie Effah Kaufmann, Dean of the School of Engineering Sciences, University of Ghana.",
+                    type: "image",
+                    featured: false,
+                    link: null
                 }
             ];
 
@@ -823,6 +834,7 @@
                     
                     img.addEventListener('error', function() {
                         this.classList.remove('loading');
+                        // Fallback placeholder in case image fails to load
                         this.src = 'images/placeholder.jpg';
                         this.alt = 'Image not available';
                     });
@@ -1035,4 +1047,3 @@
     </script>
 </body>
 </html>
-
